@@ -19,6 +19,7 @@ import { WriteUsComponent } from './components/client/static/write-us/write-us.c
 import { FooterComponent } from './components/client/static/footer/footer.component';
 import { HeaderComponent } from './components/client/static/header/header.component';
 import { ContacComponent } from './components/client/static/contac/contac.component';
+import { IndexModule } from './components/client/dynamic/index/index.module';
 import { NewsComponent } from './components/client/dynamic/news/news.component';
 import { IndexComponent } from './components/client/dynamic/index/index.component';
 import { HomeComponent } from './components/client/dynamic/index/home/home.component';
@@ -28,6 +29,7 @@ import { RequestsFormComponent } from './components/client/static/write_us/reque
 import { DynamicModule } from './components/admin/dynamic/dynamic.module';
 import { InfoModule } from './components/admin/dynamic/info/info.module';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { OneNewComponent } from './components/client/dynamic/one-new/one-new.component';
 
 @NgModule({
   declarations: [
@@ -36,19 +38,20 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     //SideBarComponent,
     //MenuBarComponent,
     LoginComponent,
-    FormComponent,
-    ListComponent,
-    WriteUsComponent,
-    FooterComponent,
-    HeaderComponent,
-    ContacComponent,
-    NewsComponent,
-    IndexComponent,
-    HomeComponent,
+    //OneNewComponent,
+    //FormComponent,
+    //ListComponent,
+    //WriteUsComponent,
+    //FooterComponent,
+    //HeaderComponent,
+    //ContacComponent,
+    //NewsComponent,
+    //IndexComponent,
+    //HomeComponent,
     //ListComponentInfo,
     //InfoComponent,
-    LegalAreasComponent,
-    RequestsFormComponent
+    //LegalAreasComponent,
+    //RequestsFormComponent
   ],
   imports: [
     AngularFireAuthModule,
@@ -59,8 +62,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     BrowserModule,
     AppRoutingModule,    
     BrowserAnimationsModule, 
-    DynamicModule
-    //InfoModule
+    DynamicModule,
+    IndexModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

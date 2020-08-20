@@ -27,7 +27,6 @@ export class InfoService {
  
   getInfoList(): AngularFireList<Info> {
     this.infoRef = this.db.list(this.dbPath) as AngularFireList<Info>;
-    console.log(this.infoRef);
     return this.infoRef;
   }
 }
