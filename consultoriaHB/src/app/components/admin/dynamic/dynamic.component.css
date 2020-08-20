@@ -12,10 +12,11 @@ body{
     background-color: #fefefe;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     overflow-y: auto; 
+    padding: 0;
 }
 
 .side_bar{
-    position: absolute;
+    position: fixed;
     width: 33.3333%;
     width: 17em;
     height: 100%;
@@ -28,8 +29,17 @@ body{
     align-content: center;
     border-right: 1px #DADADA solid;
 }
-.site_content{
-    margin-left: 17em;
-    top: 0;
+
+.menu_bar{
+    float: right;
     position: relative;
+    text-align: right;
+    width: 37%;
+}
+.content{
+    margin-left: 17em;
+    
+}
+.element{
+    display: block;
 }
