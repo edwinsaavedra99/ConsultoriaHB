@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "consultoriaHB"
+    }
+  },
+  "defaultProject": "consultoriaHB",
+  "cli": {
+    "analytics": "162222ec-81b9-4f76-b6b0-5941c9b7f693"
+  }
 }
