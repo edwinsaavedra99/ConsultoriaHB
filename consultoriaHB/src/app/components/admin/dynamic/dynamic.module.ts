@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DynamicRoutes } from './dynamic.routing';
 import { RouterModule } from '@angular/router';
 import { DynamicComponent } from './dynamic.component';
-import { InfoComponent } from './info/info.component';
+//import { InfoComponent } from './info/info.component';
 //import { LegalAreasComponent } from './info/info.component';
 //import { NewsComponent } from './info/info.component';
 //import { RequestsComponent } from './info/info.component';
@@ -15,6 +15,14 @@ import { InfoComponent } from './info/info.component';
 import { MenuBarComponent } from '../static/menu-bar/menu-bar.component';
 import { SideBarComponent } from '../static/side-bar/side-bar.component';
 import { InfoModule } from './info/info.module';
+import { UsersComponent } from './users/users.component';
+import { UsersModule } from './users/users.module';
+import { RequestsModule } from './requests/requests.module'
+import { NewsModule } from './news/news.module'
+import { ContactModule } from './contact/contact.module'
+import { RequestsComponent } from './requests/requests.component';
+import { NewsComponent } from './news/news.component';
+import { ContactComponent } from './contact/contact.component';
 //import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
@@ -24,13 +32,21 @@ import { InfoModule } from './info/info.module';
     FormsModule,
     HttpClientModule,    
     InfoModule,
+    UsersModule,
+    RequestsModule,
+    NewsModule,
+    ContactModule,
     //NgbModule,
     ReactiveFormsModule
       //ClipboardModule
   ],declarations: [
     DynamicComponent,
     MenuBarComponent,
-    SideBarComponent
+    SideBarComponent,
+    //ContactComponent,
+    //NewsComponent,
+    //RequestsComponent,
+    //UsersComponent,
     //InfoComponent,
     //LegalAreasComponent
   ],
