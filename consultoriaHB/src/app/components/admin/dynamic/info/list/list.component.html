@@ -1,17 +1,15 @@
-<h1>list Info</h1>
-
 <table id="table">
   <tr>
     <th *ngFor = "let header of listHeaders">
       {{header}}
     </th>
   </tr>
-  <tr *ngFor ="let info of listInfo">
+  <tr *ngFor ="let info of listInfo;let count=index">
     <td>
-      {{info.titulo}}
+      {{count+1}}
     </td>
     <td>
-      {{info.contenido}}
+      {{info.titulo}}
     </td>
     <td>
       {{info.fecha}}
