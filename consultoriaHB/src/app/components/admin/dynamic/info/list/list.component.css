@@ -1,6 +1,10 @@
+#top{
+  display:inline-block;
+}
+
 h1
 {
-    text-align: center;
+    text-align: left;
     color: black;
 }
 
