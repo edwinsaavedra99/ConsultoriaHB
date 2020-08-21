@@ -1,1 +1,15 @@
-<p>form works!</p>
+<div class="modal" *ngIf="visible">
+    <div class="container">
+      <div>
+        <div>
+          <div class="modalHeader">
+            <ng-content select="h2"></ng-content>
+            <span (click)="closeModal()">x</span>
+          </div>
+          <div class="modalContent">
+            <ng-content select=".contenido"></ng-content>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 

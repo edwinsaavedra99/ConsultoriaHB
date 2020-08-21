@@ -7,8 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoComponent implements OnInit {
 
-  constructor() { 
-    
+
+  myModal = false;
+  texto: string;
+
+  constructor() {}
+
+  mostrarModal() {
+    this.myModal = true;
+  }
+
+  cerrarModal(e) {
+    this.myModal = e;
   }
 
   ngOnInit() {
