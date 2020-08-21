@@ -6,10 +6,12 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';  
 import { InfoComponent } from './info.component';
 import { ListComponentInfo } from './list/list.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
     InfoComponent,
+    FormComponent,
     ListComponentInfo
   ],
   imports: [
