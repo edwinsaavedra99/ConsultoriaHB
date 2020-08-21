@@ -8,7 +8,7 @@ import { InfoComponent } from './info.component';
 import { ListComponentInfo } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-
+import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     InfoComponent,
@@ -19,6 +19,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CommonModule,
     FormsModule,
     RouterModule,
+    ReactiveFormsModule,
     NgxPaginationModule
 //    NgbModule
   ],

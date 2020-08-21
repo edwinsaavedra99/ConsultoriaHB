@@ -30,6 +30,8 @@ import { DynamicModule } from './components/admin/dynamic/dynamic.module';
 import { InfoModule } from './components/admin/dynamic/info/info.module';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { OneNewComponent } from './components/client/dynamic/one-new/one-new.component';
+//import { ContentValidationDirective } from './validations/content-validation.directive';
+import { TitleValidationDirective } from './validations/title-validation.directive';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { OneNewComponent } from './components/client/dynamic/one-new/one-new.com
     //SideBarComponent,
     //MenuBarComponent,
     LoginComponent,
+    //ContentValidationDirective,
+    TitleValidationDirective,
     //OneNewComponent,
     //FormComponent,
     //ListComponent,
