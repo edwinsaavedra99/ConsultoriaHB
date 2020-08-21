@@ -20,9 +20,11 @@ import { UsersModule } from './users/users.module';
 import { RequestsModule } from './requests/requests.module'
 import { NewsModule } from './news/news.module'
 import { ContactModule } from './contact/contact.module'
+import { LegalAreasModule} from './legal-areas/legal-areas.module'
 import { RequestsComponent } from './requests/requests.component';
 import { NewsComponent } from './news/news.component';
 import { ContactComponent } from './contact/contact.component';
+import { LegalAreasComponent } from './legal-areas/legal-areas.component';
 //import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
@@ -36,6 +38,7 @@ import { ContactComponent } from './contact/contact.component';
     RequestsModule,
     NewsModule,
     ContactModule,
+    LegalAreasModule,
     //NgbModule,
     ReactiveFormsModule
       //ClipboardModule
@@ -43,6 +46,7 @@ import { ContactComponent } from './contact/contact.component';
     DynamicComponent,
     MenuBarComponent,
     SideBarComponent,
+    //LegalAreasComponent,
     //ContactComponent,
     //NewsComponent,
     //RequestsComponent,
