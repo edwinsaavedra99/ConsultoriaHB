@@ -4,7 +4,7 @@
       {{header}}
     </th>
   </tr>
-  <tr *ngFor ="let info of listInfo;let count=index">
+  <tr *ngFor ="let info of listInfo | paginate: { itemsPerPage: 2, currentPage: actualPage} ;let count=index">
     <td>
       {{count+1}}
     </td>
@@ -23,4 +23,5 @@
     </td>
   </tr>
 </table>
+<pagination-controls (pageChange)="actualPage = $event"></pagination-controls>
 

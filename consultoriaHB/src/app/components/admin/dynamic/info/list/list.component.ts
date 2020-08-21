@@ -15,6 +15,7 @@ export class ListComponentInfo implements OnInit {
   listInfo: Info[] = [];
   items : Observable<any[]>;
   listHeaders: String[] = ["id","titulo","fecha","hora","acciones"];
+  actualPage: number = 1;
 
   constructor(private infoService: InfoService,public db:AngularFireDatabase) { 
     //this.items = db.list('info').valueChanges();

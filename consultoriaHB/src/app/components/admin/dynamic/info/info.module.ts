@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { InfoComponent } from './info.component';
 import { ListComponentInfo } from './list/list.component';
 import { FormComponent } from './form/form.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormComponent } from './form/form.component';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
 //    NgbModule
   ],
   exports:[ InfoComponent],
