@@ -38,8 +38,16 @@ body{
 }
 .content{
     margin-left: 17em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
     
 }
 .element{
     display: block;
+}
+.site_name{
+    font-size: 3ch;
+    margin: 0.5em;
+    top: 1em;
+
 }
