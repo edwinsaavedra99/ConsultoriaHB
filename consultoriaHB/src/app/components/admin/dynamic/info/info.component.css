@@ -47,3 +47,7 @@ button:focus{
     background-color: white;
     border: 1px #AB2A3E solid;
 }
+.modal{
+    width: 50%;
+    left: 25%;
+}
