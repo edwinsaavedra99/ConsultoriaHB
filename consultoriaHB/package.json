@@ -22,6 +22,7 @@
     "@angular/router": "~8.2.11",
     "acorn": "^8.0.1",
     "firebase": "^7.18.0",
+    "ngx-pagination": "^5.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
