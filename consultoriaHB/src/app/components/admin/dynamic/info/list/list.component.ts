@@ -11,10 +11,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list.component.css']
 })
 export class ListComponentInfo implements OnInit {
-
+  i = 1;
   listInfo: Info[] = [];
   items : Observable<any[]>;
-  listHeaders: String[] = ["titulo","contenido","fecha","hora","acciones"];
+  listHeaders: String[] = ["id","titulo","fecha","hora","acciones"];
 
   constructor(private infoService: InfoService,public db:AngularFireDatabase) { 
     //this.items = db.list('info').valueChanges();
