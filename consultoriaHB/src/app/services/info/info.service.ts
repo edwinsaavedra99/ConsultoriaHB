@@ -13,8 +13,8 @@ export class InfoService {
   	this.infoRef = db.list(this.dbPath);
   }
 
-  addInfo(info: Info): void {
-    this.infoRef.push(info);
+  addInfo(info: Info): any {
+    return this.infoRef.push(info);
   }
  
   updateInfo(id: string, value: any): Promise<void> {

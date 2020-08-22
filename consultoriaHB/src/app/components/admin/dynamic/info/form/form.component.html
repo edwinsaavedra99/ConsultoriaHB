@@ -14,8 +14,17 @@
                   <label for="titulo">Titulo</label>
                   <input type="text" class="form-control" formControlName="titulo">
                   <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="alert alert-danger">
-                    <div *ngIf="titulo.errors.titleValidation">
-                      {{titulo.errors.titleValidation.message}}
+                    <div *ngIf="titulo.errors.required">
+                      El titulo es requerido
+                    </div>
+                    <div *ngIf="titulo.errors.minlength">
+                      La longitud mínima del titulo es 3 caracteres
+                    </div>
+                    <div *ngIf="titulo.errors.maxlength">
+                      La longitud máxima del titulo es 30 caracteres
+                    </div>
+                    <div *ngIf="titulo.errors.pattern">
+                      El titulo contiene caracteres no alfanumericos
                     </div>
                     <!--div *ngIf="titulo.errors.tituloUnico">
                       Este titulo ya está en uso
