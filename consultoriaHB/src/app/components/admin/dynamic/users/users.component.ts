@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  myModal = false;
+  constructor() {
+   }
 
   ngOnInit() {
+  }
+
+  mostrarModal() {
+    this.myModal = true;
+  }
+
+  cerrarModal(e) {
+    this.myModal = e;
   }
 
 }

@@ -5,16 +5,19 @@ import { ListComponent} from './list/list.component'
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UsersComponent } from './users.component';
+import { ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     UsersComponent,
-    ListComponent
+    ListComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports:[ UsersComponent ],
   bootstrap: [ UsersComponent ],

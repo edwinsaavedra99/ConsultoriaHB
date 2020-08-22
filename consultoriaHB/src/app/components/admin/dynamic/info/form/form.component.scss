@@ -4,22 +4,79 @@
         display: table;
         width: 100%;
         height: 100%;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
        // background-color: rgba(0, 0, 0, .4);
     }
     .container {
         display: table-cell;
         & > div {
             font-family: 'Roboto', sans-serif;
-            width: 300px;
-            height: 200px;
+            width: 50%;
+            height: auto;
             background-color: #fff;
-            margin: 0 auto;
             padding: 1rem;
+            margin-left: 12%;
             box-shadow: 0 0 40px rgba(0, 0, 0, .4);;
+            box-sizing: border-box;
         }
     }
     .modalContent {
         padding-top: 1rem;
+        width: 100%;
+
+        form{
+            width: 100%;
+            
+            .form-group{
+                width: 100%;
+                padding: 1em 1em;;
+                box-sizing: border-box;
+                align-items: center;
+                
+                input, textarea{
+                    float: right;
+                    width: 75%;
+                    padding: 0.5em;
+                    box-sizing: border-box;
+                    border-radius: 10px;
+                    margin-left: 5px;
+                    color: #6a6a6a;
+                    background-color: #FBFBFB;
+                }
+
+                
+                
+            }
+
+            button{
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                padding: 1em;
+                margin: 1em;
+                width: 15%;
+                align-self: flex-end;
+                background-color: #AB2A3E;
+                color: white;
+                border-radius: 10px;
+                border: 1px solid #AB2A3E;
+            }
+
+            button:hover{
+                background-color: white;
+                color: #AB2A3E;
+                border-radius: 10px;
+                border: 1px solid #AB2A3E;
+                
+            }
+            button:disabled{
+                background-color:#DA8895;
+            }
+
+
+            button:disabled:hover{
+                color: white;
+            }
+
+        }
     }
     .modalHeader {
         position: relative;
@@ -36,5 +93,11 @@
                 color: orange;
             }
         }
+    }
+
+    .alert-danger{
+        font-size: 0.8em;
+        color: red;
+        text-align: justify;
     }
 }
