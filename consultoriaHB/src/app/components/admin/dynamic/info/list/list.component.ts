@@ -13,28 +13,30 @@ import { Observable } from 'rxjs';
 export class ListComponentInfo implements OnInit {
   i = 1;
   listInfo: Info[] = [];
+  itemInfo : Info = new Info();
   items : Observable<any[]>;
   listHeaders: String[] = ["id","titulo","fecha","hora","acciones"];
   actualPage: number = 1;
 
-  constructor(private infoService: InfoService,public db:AngularFireDatabase) { 
-    //this.items = db.list('info').valueChanges();
-  }
+  constructor(private infoService: InfoService) {   }
  
   ngOnInit() {
     this.getInfoList();
   }
 
   updateInfo(id:string,data: Info) {
-    this.infoService
+    /*this.infoService
       .updateInfo(id, data)
       .catch(err => console.log(err));
+      
+      */
   }
  
   deleteInfo(id:string) {
-      this.infoService
-      .deleteInfo(id)
-      .catch(err => console.log(err));
+    console.log(id);
+    this.infoService.deleteInfo(id).catch(
+      err => console.log(err)
+    );
   }
 
   getInfoList() {

@@ -35,7 +35,7 @@ export class FormComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(30),
-        Validators.pattern('^[a-zA-Z0-9]*$')
+        Validators.pattern("^[a-zA-ZÀ-ÿ\u00f1\u00d10-9 ]*$")
       ]
     }],
     contenido : ['',{
@@ -43,7 +43,7 @@ export class FormComponent implements OnInit {
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(300),
-        Validators.pattern('^[a-zA-Z0-9]*$')
+        Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9., '-])*$")
       ]
     }]
   });
