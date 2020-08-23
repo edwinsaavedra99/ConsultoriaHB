@@ -30,10 +30,8 @@ export class FormComponent implements OnInit {
             titulo: this.info.titulo,
             contenido: this.info.contenido
           });
-          console.log('entraaa1');
         }else{
           this.refrescar();
-          console.log('entraaa2');
         }        
       }
     }
@@ -91,7 +89,12 @@ export class FormComponent implements OnInit {
     }
     this.infoService
     .updateInfo($id, aux)
-    .catch(err => console.log(err));     
+    .then(function (result){
+      console.log(result);
+      
+    }).catch(function(error){
+      console.log(error);
+    });     
   }
 
 
@@ -106,8 +109,10 @@ export class FormComponent implements OnInit {
       this.info.hora = formatDate(this.today,'hh:mm:ss','en-US');
       if(this.info.$id==null){
         this.addInfo(this.info);
-      }else{        
-        this.editInfo(this.info.$id,this.info);
+      }else{      
+        if(confirm('¿Esta seguro de querer guardar su edición?')){
+          this.editInfo(this.info.$id,this.info);
+        }        
       }
     }    
     this.closeModal();

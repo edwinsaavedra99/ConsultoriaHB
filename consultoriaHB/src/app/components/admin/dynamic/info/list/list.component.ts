@@ -35,10 +35,12 @@ export class ListComponentInfo implements OnInit {
   }
  
   deleteInfo(id:string) {
-    console.log(id);
-    this.infoService.deleteInfo(id).catch(
-      err => console.log(err)
-    );
+    if (confirm("¿Esta seguro de quere eliminar a este elemento?")){
+      this.infoService.deleteInfo(id).catch(
+        err => console.log(err)
+      );
+    }
+    
   }
 
   getInfoList() {
