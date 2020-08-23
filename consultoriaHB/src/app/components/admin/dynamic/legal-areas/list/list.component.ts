@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
       
       */
   }
-  deleteInfo(id:string) {
+  deleteArea(id:string) {
     console.log(id);
     this.areaService.deleteArea(id).catch(
       err => console.log(err)
