@@ -1,3 +1,6 @@
+<div class="search">
+    <label class="label_buscar">Buscar</label>  <input class="input" type="text" [(ngModel)]="search_value" (input)="search()" placeholder="Ingrese su búsqueda"/>
+</div>
 <table id="table" class="table">
     <tr>
         <td class="cell header number">#Nro</td>
@@ -5,7 +8,7 @@
         <td class="actions cell header">Acciones</td>
     </tr>
 
-    <tr class="body" *ngFor ="let user of listUser | paginate: { itemsPerPage: 20, currentPage: actualPage}; let count=index">
+    <tr class="body" *ngFor ="let user of list | paginate: { itemsPerPage: 20, currentPage: actualPage}; let count=index">
         <td class="cell number">{{ count+1 }}</td>
         <td class="cell">
             {{user.fullname}}

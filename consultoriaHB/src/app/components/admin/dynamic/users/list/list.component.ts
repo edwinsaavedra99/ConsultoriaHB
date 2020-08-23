@@ -9,8 +9,10 @@ import { User } from '../../../../../models/user'
 export class ListComponent implements OnInit {
 
   listUser: User[] = [];
+  list: User[]=[];
   listHeaders: String[] = ["Nombre Completo","Acciones"];
   actualPage: number = 1;
+  search_value:string;
 
   constructor(private userService: UsersService) {
 
@@ -18,6 +20,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.getUserList();
+    this.list=this.listUser;
   }
 
   deleteUser(id:string) {
@@ -35,6 +38,12 @@ export class ListComponent implements OnInit {
         user['$id'] = t.key;
         this.listUser.push(user as User)
       });
+    });
+  }
+
+  search(){
+    this.list = this.listUser.filter(res=>{
+      return res.fullname.toLowerCase().match(this.search_value.toLocaleLowerCase());
     });
   }
 }
