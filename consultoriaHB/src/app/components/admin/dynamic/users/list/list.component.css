@@ -1,0 +1,43 @@
+.table{
+    width: 100%;
+    position: relative;
+    border-collapse: collapse;
+    font-size: 1.62ch;
+}
+
+.actions{
+    width: 8em;
+    text-align: center;
+}
+.cell{
+    border: 1px solid #ABABAB;
+    padding: 0.65em;
+    box-sizing: border-box;
+}
+
+.header{
+    font-weight: bolder;
+}
+
+.body:hover{
+    background-color: #EEEEEE;
+}
+.action-icon{
+    margin: 0.4em;
+    cursor: pointer;
+}
+.paginaton_position{
+    text-align: right;
+}
+.pagination{
+    position: relative;
+    font-size: 0.65em;
+}
+.current, .btn-info {
+    background:black !important;
+    border: transparent !important;
+    border-radius: 20px !important;
+}
+.pagination /deep/ .ngx-pagination .current {
+    background: #AB2A3E;
+}

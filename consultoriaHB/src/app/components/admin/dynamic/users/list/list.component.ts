@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { UsersService } from '../../../../../services/users/users.service'
+import { User } from '../../../../../models/user'
 @Component({
   selector: 'app-list-users',
   templateUrl: './list.component.html',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  listUser: User[] = [];
+  listHeaders: String[] = ["Nombre Completo","Acciones"];
+  actualPage: number = 1;
 
-  ngOnInit() {
+  constructor(private userService: UsersService) {
+
   }
 
+  ngOnInit() {
+    this.getUserList();
+  }
+
+  getUserList() {
+    this.userService.getUserList().snapshotChanges().subscribe(res =>{
+      this.listUser.length = 0;
+      res.forEach(t => {
+        const user = t.payload.toJSON();
+        user['$id'] = t.key;
+        this.listUser.push(user as User)
+      });
+    });
+  }
 }

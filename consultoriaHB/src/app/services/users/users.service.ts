@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase, AngularFireList} from '@angular/fire/database';
+import { User } from '../../models/user'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
+  private dbPath = '/user';
+  userRef: AngularFireList<User> = null;
+  constructor(private db: AngularFireDatabase) {
+  	this.userRef = db.list(this.dbPath);
+  }
 
-  constructor() { }
+  getUserList(): AngularFireList<User> {
+    this.userRef = this.db.list(this.dbPath) as AngularFireList<User>;
+    return this.userRef;
+  }
 }

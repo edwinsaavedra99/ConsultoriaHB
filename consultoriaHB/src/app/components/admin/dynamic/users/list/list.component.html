@@ -1,1 +1,21 @@
-<p>list works! users</p>
+<table id="table" class="table">
+    <tr>
+      <td class="cell header">Nombre Completo</td>
+      <td class="actions cell header">Acciones</td>
+    </tr>
+
+    <tr class="body" *ngFor ="let user of listUser | paginate: { itemsPerPage: 20, currentPage: actualPage}">
+        <td class="cell">
+            {{user.fullname}}
+        </td>
+        <td class="actions cell">
+            <i class="far fa-edit action-icon"></i>
+            <i class="far fa-trash-alt action-icon"></i>
+        </td>
+    </tr>  
+</table>
+<div class="paginaton_position">
+    <pagination-controls class="pagination" (pageChange)="actualPage = $event" previousLabel="" nextLabel="">
+    
+    </pagination-controls>
+</div>
