@@ -14,12 +14,12 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
   }
 
-  mostrarModal() {
-    this.myModal = true;
+  mostrarModal(e) {
+    this.myModal = e;
   }
 
   cerrarModal(e) {
     this.myModal = e;
   }
-
+  
 }

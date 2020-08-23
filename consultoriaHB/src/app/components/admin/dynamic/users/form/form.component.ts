@@ -1,6 +1,7 @@
 import { Component, OnInit , Input, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators, FormGroup} from '@angular/forms';
-import { titleValidation } from 'src/app/validations/title-validation.directive';
+import { UsersService} from '../../../../../services/users/users.service';
+import { User } from '../../../../../models/user'
 
 @Component({
   selector: 'app-form',
@@ -11,7 +12,9 @@ export class FormComponent implements OnInit {
   @Input() visible: boolean;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
   dataForm: any;
-  constructor(private formBuilder : FormBuilder) { }
+  constructor(
+    private formBuilder : FormBuilder,
+    private userService: UsersService) { }
 
   ngOnInit() {
     this.dataForm = this.formBuilder.group({
@@ -20,7 +23,7 @@ export class FormComponent implements OnInit {
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(60),
-          Validators.pattern('^[a-zA-Z0-9 ]*$')
+          Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9., '-])*$")
         ]
       }],
       email : ['', {
@@ -48,26 +51,53 @@ export class FormComponent implements OnInit {
   }
 
   password1(){
-    console.log(this.dataForm.valid)
     return this.dataForm.get('password1')
-  }
-
-  password2(){
-    return this.dataForm.get('password2')
   }
 
   submit(){
 
     if(!this.dataForm.valid){
-      alert('Los datos no son correctos')
-      return;
+      alert('Los datos no son correctos');
+    } else {
+      if (this.getUser().$id == undefined){
+        this.addUser(this.getUser());
+      } else {
+        if(confirm('¿Esta seguro de querer guardar su edición?')){
+          this.userService.updateUser(this.getUser().$id, this.dataForm.value)
+          .then(function (result){
+            console.log(result);
+            
+          }).catch(function(error){
+            console.log(error);
+          })
+        }
+      }
+      this.closeModal()
     }
-
-    console.log(this.dataForm.value);
   }
 
   closeModal() {
     this.close.emit(false);
+    this.userService.userSelected = new User();
+    this.refrescar();
   }
 
+  refrescar(){
+    this.dataForm.reset();
+  }
+
+  addUser(data: User) {
+    this.userService
+      .addUser(data)
+      .then(result =>{
+        console.log(result)
+      }).catch(err => {
+        console.log(err);
+        alert('Error')
+      });
+  }
+
+  getUser(){
+    return this.userService.userSelected;
+  }
 }

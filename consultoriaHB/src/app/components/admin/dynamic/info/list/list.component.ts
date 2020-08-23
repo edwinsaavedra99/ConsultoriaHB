@@ -29,7 +29,6 @@ export class ListComponentInfo implements OnInit {
     this.getInfoList();    
     this.list=this.listInfo;
   }  
-
   openFormEdit(data: Info) {
     this.dataItemInfo.emit(true);
     this.infoService.selectedInfo = Object.assign({}, data);   
@@ -52,11 +51,9 @@ export class ListComponentInfo implements OnInit {
         })
       });
   }
-
-  Search(){
+   Search(){
     this.list = this.listInfo.filter(res=>{
       return res.titulo.toLowerCase().match(this.title.toLocaleLowerCase());
     });
   }
-
 }

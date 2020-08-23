@@ -1,0 +1,66 @@
+.table{
+    width: 100%;
+    position: relative;
+    border-collapse: collapse;
+    font-size: 1.62ch;
+}
+
+.actions{
+    width: 8em;
+    text-align: center;
+}
+.cell{
+    border: 1px solid #ABABAB;
+    padding: 0.65em;
+    box-sizing: border-box;
+}
+
+.header{
+    font-weight: bolder;
+}
+
+.body:hover{
+    background-color: #EEEEEE;
+}
+.number{
+    width: 1em;
+    text-align: center;
+}
+.action-icon{
+    margin: 0.4em;
+    cursor: pointer;
+}
+.action-icon:hover{
+    color: #AB2A3E;
+}
+.paginaton_position{
+    text-align: right;
+}
+.pagination{
+    position: relative;
+    font-size: 0.65em;
+}
+.current, .btn-info {
+    background:black !important;
+    border: transparent !important;
+    border-radius: 20px !important;
+}
+.pagination /deep/ .ngx-pagination .current {
+    background: #AB2A3E;
+}
+.search{
+    text-align: end;
+    padding-bottom: 1em;
+}
+.label_buscar{
+    padding-right: 1em;
+    font-size: 1.75ch;
+}
+.input{
+    border-radius: 30px;
+    font-size: 1.75ch;
+    padding: 0.5em;
+    border: 1px solid #ABABAB;
+    width: 35%;
+    min-width: 150px;
+}
