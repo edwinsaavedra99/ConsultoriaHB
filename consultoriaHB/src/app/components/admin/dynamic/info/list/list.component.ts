@@ -13,15 +13,18 @@ import { Observable } from 'rxjs';
 export class ListComponentInfo implements OnInit {
   i = 1;
   listInfo: Info[] = [];
+  list: Info[]=[];//We are using this variable for showing data instead of calling FireBase database again
   itemInfo : Info = new Info();
   items : Observable<any[]>;
   listHeaders: String[] = ["id","titulo","fecha","hora","acciones"];
   actualPage: number = 1;
+  title:String;
 
   constructor(private infoService: InfoService) {   }
  
   ngOnInit() {
     this.getInfoList();
+    this.list=this.listInfo;
   }
 
   updateInfo(id:string,data: Info) {
@@ -51,5 +54,9 @@ export class ListComponentInfo implements OnInit {
         })
       });
   }
-
+  Search(){
+    this.list = this.listInfo.filter(res=>{
+      return res.titulo.toLowerCase().match(this.title.toLocaleLowerCase());
+    });
+  }
 }
