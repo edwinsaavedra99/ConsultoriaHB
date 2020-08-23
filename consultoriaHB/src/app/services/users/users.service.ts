@@ -20,4 +20,8 @@ export class UsersService {
   addUser(user: User): any {
     return this.userRef.push(user);
   }
+
+  deleteUser(id: string): Promise<void> {
+    return this.userRef.remove(id);
+  }
 }

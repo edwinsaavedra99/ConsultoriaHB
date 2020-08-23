@@ -13,7 +13,9 @@ export class FormComponent implements OnInit {
   @Output() close: EventEmitter<boolean> = new EventEmitter();
   dataForm: any;
   user: User = new User();
-  constructor(private formBuilder : FormBuilder, private userService: UsersService) { }
+  constructor(
+    private formBuilder : FormBuilder,
+    private userService: UsersService) { }
 
   ngOnInit() {
     this.dataForm = this.formBuilder.group({
