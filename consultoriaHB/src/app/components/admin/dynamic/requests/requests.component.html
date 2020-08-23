@@ -1,7 +1,10 @@
+<div class="modal">
+    <app-form [visible]="myModal" (close)="cerrarModal($event)">       
+    </app-form>
+</div>
 <div class="title_content section">
     <span class="title_section content">Solicitudes</span>
 </div>
 <div class="section">
-    <app-list-requests></app-list-requests>
- 
+    <app-list-requests (openForm)="mostrarModal($event)"></app-list-requests> 
 </div>

@@ -4,16 +4,22 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { RequestsComponent } from './requests.component'
 import { ListComponent } from './list/list.component'
+import { FormComponent} from './form/form.component';
+import { ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
     RequestsComponent,
-    ListComponent
+    ListComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   exports:[ RequestsComponent ],
   bootstrap: [ RequestsComponent ],
