@@ -29,14 +29,15 @@
   
   /* Change the background color on mouse-over */
   .header a:hover {
-    background-color: rgb(41, 41, 41);
-    color: black;
+    /*background-color: rgb(233, 233, 233);*/
+    border-color:rgba(201, 76, 76, 0.3);
+    /*color: rgb(255, 255, 255);*/
   }
   
   /* Style the active/current link*/
   .header a.active {
-    background-color: dodgerblue;
-    color: white;
+    border-color: rgba(201, 76, 76, 0.3);
+    /*color: rgb(255, 255, 255);*/
   }
   
   /* Float the link section to the right */
