@@ -1,4 +1,18 @@
-
+.search{
+  text-align: end;
+  padding-bottom: 10px;
+}
+.label_buscar{
+  padding-right: 15px;
+  font-size: 20px;
+}
+.input{
+  border-radius: 30px;
+  width: 300px;
+  height: 30px;
+  font-size: 20px;
+  padding-left: 10px;
+}
 #table {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -21,3 +35,12 @@
     background-color: #AB2A3E;
     color: white;
   }
+  .pagination_control{
+    text-align: end;
+    padding-top: 10px;
+
+  }
+
+.pagination /deep/ .ngx-pagination .current {
+    background: #AB2A3E;
+}
