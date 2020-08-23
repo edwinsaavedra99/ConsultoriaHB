@@ -4,6 +4,7 @@
         display: table;
         width: 100%;
         height: 100%;
+        z-index: 100;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
        // background-color: rgba(0, 0, 0, .4);
     }
@@ -32,6 +33,16 @@
                 padding: 1em 1em;;
                 box-sizing: border-box;
                 align-items: center;
+
+                .form-input{
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 0.5em;
+
+                    .input-label{
+                        width: 25%;;
+                    }
+                }
                 
                 input, textarea{
                     float: right;
@@ -48,6 +59,10 @@
                 
             }
 
+            .buttons{
+                text-align: right;
+            }
+
             button{
                 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
                 padding: 1em;
@@ -58,6 +73,7 @@
                 color: white;
                 border-radius: 10px;
                 border: 1px solid #AB2A3E;
+                min-width: 100px;
             }
 
             button:hover{
@@ -69,6 +85,7 @@
             }
             button:disabled{
                 background-color:#DA8895;
+                border: 1px solid #DA8895;
             }
 
 
