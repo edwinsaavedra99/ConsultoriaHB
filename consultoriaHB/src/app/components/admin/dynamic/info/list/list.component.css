@@ -44,3 +44,6 @@
 .pagination /deep/ .ngx-pagination .current {
     background: #AB2A3E;
 }
+.table_size{
+  height: 300px;
+}

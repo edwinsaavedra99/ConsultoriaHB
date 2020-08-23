@@ -1,31 +1,34 @@
 <div class="search">
   <label class="label_buscar">Buscar</label>  <input class="input" type="text" [(ngModel)]="title" (input)="Search()" placeholder="Ingrese su búsqueda"/>
 </div>
-<table id="table">
-  <tr>
-    <th *ngFor = "let header of listHeaders">
-      {{header}}
-    </th>
-  </tr>
-  <tr *ngFor ="let info of list | paginate: { itemsPerPage: 5, currentPage: actualPage} ;let count=index">
-    <td>
-      {{count+1}}
-    </td>
-    <td>
-      {{info.titulo}}
-    </td>
-    <td>
-      {{info.fecha}}
-    </td>
-    <td>
-      {{info.hora}}
-    </td>
-    <td>
-      <span class="button is-small btn-danger" (click)='deleteInfo(info.$id)'>Delete</span>
-      <span class="button is-small btn-danger" (click)='updateInfo()'>Update</span>
-    </td>
-  </tr>
-</table>
+<div class="table_size">
+  <table id="table">
+    <tr>
+      <th *ngFor = "let header of listHeaders">
+        {{header}}
+      </th>
+    </tr>
+    <tr *ngFor ="let info of list | paginate: { itemsPerPage: 7, currentPage: actualPage} ;let count=index">
+      <td>
+        {{count+1}}
+      </td>
+      <td>
+        {{info.titulo}}
+      </td>
+      <td>
+        {{info.fecha}}
+      </td>
+      <td>
+        {{info.hora}}
+      </td>
+      <td>
+        <span class="button is-small btn-danger" (click)='deleteInfo(info.$id)'>Delete</span>
+        <span class="button is-small btn-danger" (click)='updateInfo()'>Update</span>
+      </td>
+    </tr>
+  </table>
+</div>
+
 <div class="pagination_control">
   <pagination-controls class="pagination" (pageChange)="actualPage = $event"></pagination-controls>
 </div>
