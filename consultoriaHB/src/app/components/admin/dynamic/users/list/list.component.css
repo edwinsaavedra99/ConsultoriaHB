@@ -22,9 +22,16 @@
 .body:hover{
     background-color: #EEEEEE;
 }
+.number{
+    width: 1em;
+    text-align: center;
+}
 .action-icon{
     margin: 0.4em;
     cursor: pointer;
+}
+.action-icon:hover{
+    color: #AB2A3E;
 }
 .paginaton_position{
     text-align: right;

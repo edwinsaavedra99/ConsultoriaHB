@@ -1,10 +1,12 @@
 <table id="table" class="table">
     <tr>
-      <td class="cell header">Nombre Completo</td>
-      <td class="actions cell header">Acciones</td>
+        <td class="cell header number">#Nro</td>
+        <td class="cell header">Nombre Completo</td>
+        <td class="actions cell header">Acciones</td>
     </tr>
 
-    <tr class="body" *ngFor ="let user of listUser | paginate: { itemsPerPage: 20, currentPage: actualPage}">
+    <tr class="body" *ngFor ="let user of listUser | paginate: { itemsPerPage: 20, currentPage: actualPage}; let count=index">
+        <td class="cell number">{{ count+1 }}</td>
         <td class="cell">
             {{user.fullname}}
         </td>
