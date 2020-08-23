@@ -1,7 +1,8 @@
 import { Component, OnInit , Input, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators, FormGroup} from '@angular/forms';
-import { titleValidation } from 'src/app/validations/title-validation.directive';
 import { UsersService} from '../../../../../services/users/users.service';
+import { User } from '../../../../../models/user'
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -11,6 +12,7 @@ export class FormComponent implements OnInit {
   @Input() visible: boolean;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
   dataForm: any;
+  user: User = new User();
   constructor(private formBuilder : FormBuilder, private userService: UsersService) { }
 
   ngOnInit() {
@@ -56,7 +58,10 @@ export class FormComponent implements OnInit {
     if(!this.dataForm.valid){
       alert('Los datos no son correctos');
     } else {
-      
+      this.user.fullname = this.dataForm.value.fullname;
+      this.user.email = this.dataForm.value.email;
+      this.user.password = this.dataForm.value.password1;
+      this.addUser(this.user);
     }
   }
 
@@ -71,5 +76,17 @@ export class FormComponent implements OnInit {
       email: '',
       password1: ''
     });
+  }
+
+  addUser(data: User) {
+    this.userService
+      .addUser(data)
+      .then(result =>{
+        this.closeModal()
+        console.log(result)
+      }).catch(err => {
+        console.log(err);
+        alert('Error')
+      });
   }
 }

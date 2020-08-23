@@ -16,4 +16,8 @@ export class UsersService {
     this.userRef = this.db.list(this.dbPath) as AngularFireList<User>;
     return this.userRef;
   }
+
+  addUser(user: User): any {
+    return this.userRef.push(user);
+  }
 }
