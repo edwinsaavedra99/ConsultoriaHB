@@ -16,7 +16,7 @@ export class ListComponentInfo implements OnInit {
   list: Info[]=[];//We are using this variable for showing data instead of calling FireBase database again
   itemInfo : Info = new Info();
   items : Observable<any[]>;
-  listHeaders: String[] = ["id","titulo","fecha","hora","acciones"];
+  listHeaders: String[] = ["#Nro","Título","Fecha","Hora","Acciones"];
   actualPage: number = 1;
   title:String;
 
