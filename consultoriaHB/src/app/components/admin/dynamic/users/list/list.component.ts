@@ -20,6 +20,13 @@ export class ListComponent implements OnInit {
     this.getUserList();
   }
 
+  deleteUser(id:string) {
+    console.log(id);
+    this.userService.deleteUser(id).catch(
+      err => console.log(err)
+    );
+  }
+
   getUserList() {
     this.userService.getUserList().snapshotChanges().subscribe(res =>{
       this.listUser.length = 0;
