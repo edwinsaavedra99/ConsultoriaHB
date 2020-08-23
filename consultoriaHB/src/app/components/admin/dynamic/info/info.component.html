@@ -1,9 +1,5 @@
 <div class="modal">
-    <app-form [visible]="myModal" (close)="cerrarModal($event)">
-        <!--h2>Agregar Elemento</h2-->
-        <!--div class="contenido">
-    
-        </div-->
+    <app-form  [visible]="myModal" (close)="cerrarModal($event)">
     </app-form>
 </div>
 
@@ -15,5 +11,5 @@
     </div>
 </div>
 <div class="section">
-    <app-list-info></app-list-info>
+    <app-list-info  (dataItemInfo)="dataInfoTraslate($event)"  ></app-list-info>
 </div>

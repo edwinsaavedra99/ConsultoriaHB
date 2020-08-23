@@ -1,10 +1,10 @@
 import { Component, OnInit , Input, Output, EventEmitter} from '@angular/core';
 import { Info } from '../../../../../models/info';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import { titleValidation } from 'src/app/validations/title-validation.directive';
+//import { titleValidation } from 'src/app/validations/title-validation.directive';
 import { InfoService } from '../../../../../services/info/info.service';
 import { formatDate } from '@angular/common';
-
+//import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-form',
@@ -21,17 +21,34 @@ export class FormComponent implements OnInit {
 
   constructor(private formBuilder : FormBuilder,private infoService: InfoService) { }
 
+  ngOnChanges(changes: any) {
+    if (this.visible && changes.visible){
+      if (changes.visible.currentValue == true ){
+        this.info = this.infoService.selectedInfo;
+        if(this.info.titulo !=null){
+          this.dataForm.patchValue({
+            titulo: this.info.titulo,
+            contenido: this.info.contenido
+          });
+          console.log('entraaa1');
+        }else{
+          this.refrescar();
+          console.log('entraaa2');
+        }        
+      }
+    }
+  }
   get titulo(){
     return this.dataForm.get('titulo');
   }
   get contenido(){
     return this.dataForm.get('contenido');
+    
   }
 
   dataForm = this.formBuilder.group({
     titulo : ['',{
       validators:[
-        //titleValidation
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(30),
@@ -65,17 +82,33 @@ export class FormComponent implements OnInit {
       });
   }
 
+  editInfo($id: string, data:Info){
+    const aux = {
+      titulo : data.titulo,
+      contenido: data.contenido,
+      fecha : data.fecha,
+      hora : data.hora
+    }
+    this.infoService
+    .updateInfo($id, aux)
+    .catch(err => console.log(err));     
+  }
+
+
   submit(){
     if(!this.dataForm.valid){
       alert('Los datos no son correctos')
       return;
-    }else{      
-      //consulta
+    }else{
       this.info.contenido =this.contenido.value;
       this.info.titulo =this.titulo.value;
       this.info.fecha = formatDate(this.today,'dd/MM/yyyy','en-US');
       this.info.hora = formatDate(this.today,'hh:mm:ss','en-US');
-      this.addInfo(this.info);
+      if(this.info.$id==null){
+        this.addInfo(this.info);
+      }else{        
+        this.editInfo(this.info.$id,this.info);
+      }
     }    
     this.closeModal();
   }
@@ -85,6 +118,11 @@ export class FormComponent implements OnInit {
       titulo: '',
       contenido: ''
     });
+    this.info = new Info();
+    this.info.contenido ='';
+    this.info.titulo ='';
+    this.info.fecha = '';
+    this.info.hora = '';
+    this.infoService.selectedInfo = new Info();
   }
-
 }

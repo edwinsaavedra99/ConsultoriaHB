@@ -21,7 +21,7 @@ import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
     RouterModule,
     ReactiveFormsModule,
     NgxPaginationModule
-//    NgbModule
+    //NgModule
   ],
   exports:[ InfoComponent],
   bootstrap: [InfoComponent],
