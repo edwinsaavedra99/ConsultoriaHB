@@ -12,7 +12,6 @@ export class FormComponent implements OnInit {
   @Input() visible: boolean;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
   dataForm: any;
-  user: User = new User();
   constructor(
     private formBuilder : FormBuilder,
     private userService: UsersService) { }
@@ -60,35 +59,43 @@ export class FormComponent implements OnInit {
     if(!this.dataForm.valid){
       alert('Los datos no son correctos');
     } else {
-      this.user.fullname = this.dataForm.value.fullname;
-      this.user.email = this.dataForm.value.email;
-      this.user.password = this.dataForm.value.password1;
-      this.addUser(this.user);
+      if (this.getUser().$id == undefined){
+        this.addUser(this.getUser());
+      } else {
+        this.userService.updateUser(this.getUser().$id, this.dataForm.value)
+        .then(function (result){
+          console.log(result);
+          
+        }).catch(function(error){
+          console.log(error);
+        })
+      }
+      this.closeModal()
     }
   }
 
   closeModal() {
     this.close.emit(false);
+    this.userService.userSelected = new User();
     this.refrescar();
   }
 
   refrescar(){
-    this.dataForm.patchValue({
-      fullname: '',
-      email: '',
-      password1: ''
-    });
+    this.dataForm.reset();
   }
 
   addUser(data: User) {
     this.userService
       .addUser(data)
       .then(result =>{
-        this.closeModal()
         console.log(result)
       }).catch(err => {
         console.log(err);
         alert('Error')
       });
+  }
+
+  getUser(){
+    return this.userService.userSelected;
   }
 }

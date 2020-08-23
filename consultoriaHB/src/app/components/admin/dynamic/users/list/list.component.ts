@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {  Component, OnInit , Input, Output, EventEmitter } from '@angular/core';
 import { UsersService } from '../../../../../services/users/users.service'
 import { User } from '../../../../../models/user'
+
 @Component({
   selector: 'app-list-users',
   templateUrl: './list.component.html',
@@ -8,11 +9,13 @@ import { User } from '../../../../../models/user'
 })
 export class ListComponent implements OnInit {
 
+  @Output() openForm: EventEmitter<boolean> = new EventEmitter();
   listUser: User[] = [];
   list: User[]=[];
   listHeaders: String[] = ["Nombre Completo","Acciones"];
   actualPage: number = 1;
   search_value:string;
+  user: User;
 
   constructor(private userService: UsersService) {
 
@@ -45,5 +48,10 @@ export class ListComponent implements OnInit {
     this.list = this.listUser.filter(res=>{
       return res.fullname.toLowerCase().match(this.search_value.toLocaleLowerCase());
     });
+  }
+
+  update(user: User){
+    this.openForm.emit(true);
+    this.userService.userSelected = Object.assign({}, user);
   }
 }
