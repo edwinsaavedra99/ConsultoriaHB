@@ -1,0 +1,16 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+.notifications{
+    position: fixed;
+    overflow-y: hidden;
+    width: 20em;
+    right: 0.5em;
+    margin: 0px;
+    bottom: 0.5em;
+    z-index: 1000;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

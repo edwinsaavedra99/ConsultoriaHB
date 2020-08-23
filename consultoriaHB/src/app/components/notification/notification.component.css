@@ -1,0 +1,46 @@
+.notification{
+    background-color: green;
+    margin: 0.5em;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.notification .content{
+    position: relative;
+    margin: 1em;
+    width: 75%;
+    height: auto;
+}
+
+.notification .content .title_notification{
+    display: block;
+    font-size: 1.75ch;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.notification .content .contente_notification{
+    font-size: 1.5ch;
+}
+
+.sucess{
+    background-color: #346B1B;
+
+}
+
+.danger{
+    background-color: #A30606;
+}
+
+.warning{
+    background-color: #B5AA00;
+}
+
+.notification_icon{
+    float: left;
+    width: 10%;
+    padding: 1ch;
+    font-size: 3ch;
+    text-align: center;
+}

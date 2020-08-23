@@ -32,6 +32,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { OneNewComponent } from './components/client/dynamic/one-new/one-new.component';
 //import { ContentValidationDirective } from './validations/content-validation.directive';
 import { TitleValidationDirective } from './validations/title-validation.directive';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { TitleValidationDirective } from './validations/title-validation.directi
     LoginComponent,
     //ContentValidationDirective,
     TitleValidationDirective,
+    NotificationComponent,
     //OneNewComponent,
     //FormComponent,
     //ListComponent,

@@ -1,0 +1,11 @@
+<div *ngFor="let noti of notification.notificationList" class="notification" [ngClass]="{'danger': noti.type === notification.ERROR, 'sucess': noti.type ===notification.SUCCESS, 'warning': noti.type ===notification.WARNING}" >
+    <div class="notification_icon">
+        <i *ngIf="noti.type==notification.SUCCESS"class="fas fa-bell"></i>
+        <i *ngIf="noti.type==notification.ERROR" class="fas fa-skull-crossbones"></i>
+        <i *ngIf="noti.type==notification.WARNING"class="fas fa-radiation"></i>
+    </div>
+    <div class="content">
+        <span class="title_notification">{{ noti.title }}</span>
+        <span class="contente_notification">{{ noti.body }}</span>
+    </div>
+</div>
