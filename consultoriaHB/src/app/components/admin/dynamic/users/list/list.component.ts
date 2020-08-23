@@ -1,6 +1,7 @@
 import {  Component, OnInit , Input, Output, EventEmitter } from '@angular/core';
 import { UsersService } from '../../../../../services/users/users.service'
 import { User } from '../../../../../models/user'
+import { NotificationService } from '../../../../../services/notification/notification.service'
 
 @Component({
   selector: 'app-list-users',
@@ -17,7 +18,7 @@ export class ListComponent implements OnInit {
   search_value:string;
   user: User;
 
-  constructor(private userService: UsersService) {
+  constructor(private userService: UsersService, private notificationService: NotificationService) {
 
   }
 
@@ -28,12 +29,27 @@ export class ListComponent implements OnInit {
 
   deleteUser(id:string) {
     if (confirm("¿Esta seguro de quere eliminar a este usuario?")){
-      this.userService.deleteUser(id).catch(
-        err => console.log(err)
+      this.userService.deleteUser(id)
+      .then(
+        result =>{
+          this.notificationService.sucess("Proceso Exitoso", "Usuario eliminado con exito.")
+        }
+      )
+      .catch(
+        err => {
+          this.notificationService.error("Ocurrio un error", "No se pudo eliminar el usuario.")
+        }
       );
     }
     
   }
+
+  successAlert(result){
+    this.notificationService.sucess("Proceso Exitoso", "Body");
+  }
+
+
+
 
   getUserList() {
     this.userService.getUserList().snapshotChanges().subscribe(res =>{

@@ -23,7 +23,7 @@ export class NotificationService {
 
   publishNotification(notification: Notification){
     this.notificationList.push(notification);
-    setTimeout(this.removeNotificacion , 2000, this.notificationList)
+    setTimeout(this.removeNotificacion , 5000, this.notificationList)
   }
 
   removeNotificacion(notificationList: Notification[]){

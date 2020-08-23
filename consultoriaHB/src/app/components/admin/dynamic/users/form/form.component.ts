@@ -2,6 +2,7 @@ import { Component, OnInit , Input, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators, FormGroup} from '@angular/forms';
 import { UsersService} from '../../../../../services/users/users.service';
 import { User } from '../../../../../models/user'
+import { NotificationService } from '../../../../../services/notification/notification.service'
 
 @Component({
   selector: 'app-form',
@@ -14,7 +15,8 @@ export class FormComponent implements OnInit {
   dataForm: any;
   constructor(
     private formBuilder : FormBuilder,
-    private userService: UsersService) { }
+    private userService: UsersService,
+    private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.dataForm = this.formBuilder.group({
@@ -64,12 +66,16 @@ export class FormComponent implements OnInit {
       } else {
         if(confirm('¿Esta seguro de querer guardar su edición?')){
           this.userService.updateUser(this.getUser().$id, this.dataForm.value)
-          .then(function (result){
-            console.log(result);
-            
-          }).catch(function(error){
-            console.log(error);
-          })
+          .then(
+            result =>{
+              this.notificationService.sucess("Proceso Exitoso", "Usuario fue editado con exito.")
+            }
+          )
+          .catch(
+            err => {
+              this.notificationService.error("Ocurrio un error", "No se pudo editar el usuario.")
+            }
+          );
         }
       }
       this.closeModal()
@@ -89,12 +95,16 @@ export class FormComponent implements OnInit {
   addUser(data: User) {
     this.userService
       .addUser(data)
-      .then(result =>{
-        console.log(result)
-      }).catch(err => {
-        console.log(err);
-        alert('Error')
-      });
+      .then(
+        result =>{
+          this.notificationService.sucess("Proceso Exitoso", "Usuario registrado con exito.")
+        }
+      )
+      .catch(
+        err => {
+          this.notificationService.error("Ocurrio un error", "No se pudo registrar el usuario.")
+        }
+      );
   }
 
   getUser(){

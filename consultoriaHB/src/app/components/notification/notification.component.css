@@ -15,9 +15,8 @@
 
 .notification .content .title_notification{
     display: block;
-    font-size: 1.75ch;
+    font-size: 1.82ch;
     font-weight: bolder;
-    text-transform: uppercase;
 }
 
 .notification .content .contente_notification{
