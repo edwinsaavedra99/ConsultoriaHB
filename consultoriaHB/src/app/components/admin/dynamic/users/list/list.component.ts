@@ -27,10 +27,12 @@ export class ListComponent implements OnInit {
   }
 
   deleteUser(id:string) {
-    console.log(id);
-    this.userService.deleteUser(id).catch(
-      err => console.log(err)
-    );
+    if (confirm("¿Esta seguro de quere eliminar a este usuario?")){
+      this.userService.deleteUser(id).catch(
+        err => console.log(err)
+      );
+    }
+    
   }
 
   getUserList() {

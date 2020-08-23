@@ -62,13 +62,15 @@ export class FormComponent implements OnInit {
       if (this.getUser().$id == undefined){
         this.addUser(this.getUser());
       } else {
-        this.userService.updateUser(this.getUser().$id, this.dataForm.value)
-        .then(function (result){
-          console.log(result);
-          
-        }).catch(function(error){
-          console.log(error);
-        })
+        if(confirm('¿Esta seguro de querer guardar su edición?')){
+          this.userService.updateUser(this.getUser().$id, this.dataForm.value)
+          .then(function (result){
+            console.log(result);
+            
+          }).catch(function(error){
+            console.log(error);
+          })
+        }
       }
       this.closeModal()
     }
