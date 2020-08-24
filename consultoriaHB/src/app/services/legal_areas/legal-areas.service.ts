@@ -7,7 +7,10 @@ import {AreaLegal} from '../../models/areaLegal'
 })
 export class LegalAreasService {
   private dbPath = '/legal-areas';
+
   areaRef: AngularFireList<AreaLegal> = null;
+  selectedAreaLegal: AreaLegal = new AreaLegal();
+  
   constructor(private db: AngularFireDatabase) { 
     this.areaRef = db.list(this.dbPath);
   }

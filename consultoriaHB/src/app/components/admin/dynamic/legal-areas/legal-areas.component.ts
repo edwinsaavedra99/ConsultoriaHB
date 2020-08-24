@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AreaLegal} from '../../../../models/areaLegal';
 
 @Component({
   selector: 'app-legal-areas',
@@ -7,8 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LegalAreasComponent implements OnInit {
 
+  myModal = false;
+
   constructor() { }
 
+
+  dataAreaTraslate(info:boolean){
+    //this.itemInfo = info;
+    this.mostrarModal();
+  }
+
+  mostrarModal() {
+    this.myModal = true;
+  }
+
+  cerrarModal(e) {
+    this.myModal = e;
+  }
   ngOnInit() {
   }
 

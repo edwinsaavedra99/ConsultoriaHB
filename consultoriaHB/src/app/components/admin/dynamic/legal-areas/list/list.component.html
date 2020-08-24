@@ -22,8 +22,8 @@
           {{area.hora}}
         </td>
         <td>
-          <span class="button is-small btn-danger" (click)='deleteInfo(info.$id)'>Delete</span>
-          <span class="button is-small btn-danger" (click)='updateInfo()'>Update</span>
+          <i class="far fa-edit action-icon" (click)='openFormEdit(area)'></i>
+          <i class="far fa-trash-alt action-icon" (click)='deleteArea(area.$id)'></i>
         </td>
       </tr>
     </table>
