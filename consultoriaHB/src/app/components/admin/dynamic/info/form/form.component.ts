@@ -80,12 +80,12 @@ export class FormComponent implements OnInit {
       .addInfo(data)
       .then(
         result =>{
-          this.notificationService.sucess("Proceso Exitoso", "Usuario registrado con exito.")
+          this.notificationService.sucess("Proceso Exitoso", "Elemento registrado con exito.")
         }
       )
       .catch(
         err => {
-          this.notificationService.error("Ocurrio un error", "No se pudo registrar el usuario.")
+          this.notificationService.error("Ocurrio un error", "No se pudo registrar el elemento.")
         }
       );
   }
@@ -101,12 +101,12 @@ export class FormComponent implements OnInit {
     .updateInfo($id, aux)
     .then(
       result =>{
-        this.notificationService.sucess("Proceso Exitoso", "Usuario fue editado con exito.")
+        this.notificationService.sucess("Proceso Exitoso", "Elemento fue editado con exito.")
       }
     )
     .catch(
       err => {
-        this.notificationService.error("Ocurrio un error", "No se pudo editar el usuario.")
+        this.notificationService.error("Ocurrio un error", "No se pudo editar el elemento.")
       }
     );   
   }

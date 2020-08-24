@@ -45,12 +45,12 @@ export class ListComponentInfo implements OnInit {
       this.infoService.deleteInfo(id)
       .then(
         result =>{
-          this.notificationService.sucess("Proceso Exitoso", "Usuario eliminado con exito.")
+          this.notificationService.sucess("Proceso Exitoso", "Elemento eliminado con exito.")
         }
       )
       .catch(
         err => {
-          this.notificationService.error("Ocurrio un error", "No se pudo eliminar el usuario.")
+          this.notificationService.error("Ocurrio un error", "No se pudo eliminar el elemento.")
         }
       );
     }
