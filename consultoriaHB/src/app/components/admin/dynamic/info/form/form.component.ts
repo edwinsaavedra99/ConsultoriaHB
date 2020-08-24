@@ -6,6 +6,7 @@ import { InfoService } from '../../../../../services/info/info.service';
 import { formatDate } from '@angular/common';
 //import { NgModule } from '@angular/core';
 
+import { NotificationService } from '../../../../../services/notification/notification.service'
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -19,7 +20,10 @@ export class FormComponent implements OnInit {
   today = new Date();
   tsToday = '';
 
-  constructor(private formBuilder : FormBuilder,private infoService: InfoService) { }
+  constructor(
+    private formBuilder : FormBuilder,
+    private infoService: InfoService,
+    private notificationService: NotificationService) { }
 
   ngOnChanges(changes: any) {
     if (this.visible && changes.visible){
@@ -74,10 +78,16 @@ export class FormComponent implements OnInit {
   addInfo(data: Info) {
     this.infoService
       .addInfo(data)
-      .catch(err => {
-        console.log(err);
-        alert('Error')
-      });
+      .then(
+        result =>{
+          this.notificationService.sucess("Proceso Exitoso", "Usuario registrado con exito.")
+        }
+      )
+      .catch(
+        err => {
+          this.notificationService.error("Ocurrio un error", "No se pudo registrar el usuario.")
+        }
+      );
   }
 
   editInfo($id: string, data:Info){
@@ -89,12 +99,16 @@ export class FormComponent implements OnInit {
     }
     this.infoService
     .updateInfo($id, aux)
-    .then(function (result){
-      console.log(result);
-      
-    }).catch(function(error){
-      console.log(error);
-    });     
+    .then(
+      result =>{
+        this.notificationService.sucess("Proceso Exitoso", "Usuario fue editado con exito.")
+      }
+    )
+    .catch(
+      err => {
+        this.notificationService.error("Ocurrio un error", "No se pudo editar el usuario.")
+      }
+    );   
   }
 
 

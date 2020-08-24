@@ -4,6 +4,7 @@ import { Info } from '../../../../../models/info';
 import { map } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { NotificationService } from '../../../../../services/notification/notification.service'
 
 @Component({
   selector: 'app-list-info',
@@ -23,12 +24,17 @@ export class ListComponentInfo implements OnInit {
   actualPage: number = 1;
   title:String;
 
-  constructor(private infoService: InfoService) {   }
+  constructor(private infoService: InfoService, private notificationService: NotificationService) {   }
  
   ngOnInit() {
     this.getInfoList();    
     this.list=this.listInfo;
-  }  
+  }
+
+  successAlert(result){
+    this.notificationService.sucess("Proceso Exitoso", "Body");
+  }
+  
   openFormEdit(data: Info) {
     this.dataItemInfo.emit(true);
     this.infoService.selectedInfo = Object.assign({}, data);   
@@ -36,8 +42,16 @@ export class ListComponentInfo implements OnInit {
  
   deleteInfo(id:string) {
     if (confirm("¿Esta seguro de quere eliminar a este elemento?")){
-      this.infoService.deleteInfo(id).catch(
-        err => console.log(err)
+      this.infoService.deleteInfo(id)
+      .then(
+        result =>{
+          this.notificationService.sucess("Proceso Exitoso", "Usuario eliminado con exito.")
+        }
+      )
+      .catch(
+        err => {
+          this.notificationService.error("Ocurrio un error", "No se pudo eliminar el usuario.")
+        }
       );
     }
     
