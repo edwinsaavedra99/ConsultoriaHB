@@ -33,6 +33,8 @@ import { OneNewComponent } from './components/client/dynamic/one-new/one-new.com
 //import { ContentValidationDirective } from './validations/content-validation.directive';
 import { TitleValidationDirective } from './validations/title-validation.directive';
 import { NotificationComponent } from './components/notification/notification.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { NotificationComponent } from './components/notification/notification.co
     AppRoutingModule,    
     BrowserAnimationsModule, 
     DynamicModule,
-    IndexModule
+    IndexModule,
+    FormsModule,
+    ReactiveFormsModule
   
   ],
   providers: [],

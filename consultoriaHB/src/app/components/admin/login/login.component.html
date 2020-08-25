@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="body">
+    <div class="content">
+        <div class="image">
+            <img src="assets/img/login.jpg" alt="login-picture">
+        </div>
+        <div class="login_form">
+            <form [formGroup]="dataForm" (submit)="submit()">
+                <h3 class="title">Inicio de Sesión</h3>
+                <div class="form-group">
+                    <div class="form-input">
+                        <div class="input-label"><label for="email">Correo Electronico:</label></div>
+                        <input  class="form-control" type="email" id="email" formControlName="email" [(ngModel)]="email_value">
+                    </div>
+                    <div *ngIf="email().invalid && (email().dirty || email().touched)"  class="alert alert-danger">
+                        <div *ngIf="email().errors.required">
+                            Por favor, ingrese su correo electronico.
+                        </div>
+                        <div *ngIf="email().errors.email">
+                            Correo electronico no valido.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-input">
+                        <div class="input-label"><label for="pasword">Contraseña:</label></div>
+                        <input type="password" id="password" formControlName="password" [(ngModel)]="password_value">
+                    </div>
+                    <div *ngIf="password().invalid && (password().dirty || password().touched)" class="alert alert-danger">
+                        <div *ngIf="password().errors.required">
+                          Por favor, ingrese su contraseña.
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button [disabled]="dataForm.invalid">Iniciar Sesión</button>
+                    <a href="">Recuperar Contraseña</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
