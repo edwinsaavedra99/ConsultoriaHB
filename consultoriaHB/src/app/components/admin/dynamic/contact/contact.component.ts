@@ -7,7 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  
+  myModal = false;
+  
+  //itemInfo : Info = new Info();
+
+  constructor() {}
+
+  dataInfoTraslate(info:boolean){
+    //this.itemInfo = info;
+    this.mostrarModal();
+  }
+
+  mostrarModal() {
+    this.myModal = true;
+  }
+
+  cerrarModal(e) {
+    this.myModal = e;
+  }
 
   ngOnInit() {
   }

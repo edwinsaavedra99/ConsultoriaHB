@@ -1,13 +1,17 @@
+<div class="modal">
+    <app-form  [visible]="myModal" (close)="cerrarModal($event)">
+    </app-form>
+</div>
 <div class="title_content section">
     <span class="title_section content">Contacto: Compañia y Abogados</span>
     <div class="button content">
-        <button><i class="fas fa-plus"></i> Agregar</button>
+        <button (click)="mostrarModal()"><i class="fas fa-plus"></i> Agregar Contacto</button>
     </div>
 </div>
 <div class="section">
     <app-company></app-company>
 </div>
 <div class="section">
-    <app-list-Lawers></app-list-Lawers>
+    <app-list-Lawers (dataItemContact)="dataInfoTraslate($event)"></app-list-Lawers>
  
 </div>
