@@ -1,0 +1,177 @@
+
+/*titulo de cada info*/
+.title_description{
+	text-decoration: underline;
+	color:white;
+	font-size: xx-large;
+	margin-top:60px; 
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+/*contenedor de texto e imagen*/
+.container-all{
+	position: relative;
+	max-width: 100%;
+	width: 100%;
+	overflow: hidden;
+	background: #1F4D56;
+	
+}
+
+/*Para mantener la transicionen el div, contenedor de texto slide*/
+.container{
+	overflow: hidden;
+}
+/*tamaño y posicion de la images*/
+#image {
+  float:left;
+  width: 680px; height: 450px;
+}
+/*Contiene c que tenemos*/
+.slide{
+	/*Coloca los tres  en un fila*/
+	display: flex;
+	transform: translate3d(0,0,0);
+	transition: all 800ms;
+	animation-name:autoplay;
+	/*Duracion entre texto*/
+	animation-duration: 6.5s;
+	animation-direction: alternate;
+	/*animacion que comienza al principio*/
+	animation-fill-mode: forwards;
+	/*animacion infinita*/
+	animation-iteration-count: infinite;
+}
+/*Posicionar bien las imagenes*/
+.item-slide{
+	width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-shrink: 0;
+     
+}
+.item-slide :nth-child(2){
+    color: #fff;
+}
+
+.item-slide > div{
+width: 80%;
+}
+
+.item-slide p{
+    
+    text-align: justify;
+    font-family: "Trebuchet MS", sans-serif;
+  	color:white;
+  	font-size: large;
+}
+
+/*indica los botoncitos de abajo*/
+.pagination{
+	margin-top:40px;
+	bottom: 20px;
+	left:20px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+/*forma de botones de paginacion*/
+.pagination-item{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border:3px solid white;
+	width: 16px;
+	height: 16px;
+	border-radius: 15px;
+	overflow: hidden;
+	cursor: pointer;
+	background: white;
+	margin: 0 10px 30px 10px;
+	text-align: center;
+	transition: all 300ms;
+}
+/*cada uno de los cuadros a pasar con el cursos crecera*/
+.pagination-item:hover{
+	transform: scale(2);
+}
+
+
+.pagination-item img{
+	display: inline-block;
+	max-width: none;
+	height: 100%;
+	transform: scale(1);
+	opacity: 0;
+	transition: all 300ms;
+}
+.pagination-item:hover img{
+	transform: scale(1);
+}
+
+/*al precionar un boton ya no habra animacion*/
+input[id="1"]:checked ~ .slide{
+    animation: none;
+    transform: translate3d(0, 0, 0);
+}
+/*al pulsar donde estemos se quede en blanco*/
+input[id="1"]:checked ~ .pagination .pagination-item[for="1"]{
+    background: black;
+}
+/*al precionar un boton ya no habra animacion*/
+input[id="2"]:checked ~ .slide{
+    animation: none;
+    transform: translate3d(calc(-100% * 1), 0, 0);
+}
+/*al pulsar donde estemos se quede en blanco*/
+input[id="2"]:checked ~ .pagination .pagination-item[for="2"]{
+     background: black;
+}input[id="3"]:checked ~ .slide{
+    animation: none;
+    transform: translate3d(calc(-100% * 2), 0, 0);
+}
+
+input[id="3"]:checked ~ .pagination .pagination-item[for="3"]{
+     background: black;
+}
+
+/*Responsividad*/
+@keyframes autoplay{
+    33%{
+        transform: translate3d(calc(-100% * 0), 0, 0);
+    }
+    
+    66%{
+        transform: translate3d(calc(-100% * 1), 0, 0);
+    }
+    
+    100%{
+        transform: translate3d(calc(-100% * 2), 0, 0);
+    }
+}
+@media screen and (max-width:900px){
+    .item-slide > img{
+        width: 250px;
+    }
+
+    .item-slide > div{
+        width: 40%;
+    }
+
+    .item-slide h2{
+        font-size: 23px;
+    }
+}
+
+
+@media screen and (max-width:600px){
+    .item-slide{
+       flex-direction: column-reverse;
+    }
+
+    .item-slide > div{
+        width: 80%;
+    }
+
+}
