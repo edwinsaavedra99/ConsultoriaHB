@@ -1,8 +1,9 @@
 import { Component, OnInit , Input, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators, FormGroup} from '@angular/forms';
 import { UsersService} from '../../../../../services/users/users.service';
-import { User } from '../../../../../models/user'
-import { NotificationService } from '../../../../../services/notification/notification.service'
+import { User } from '../../../../../models/user';
+import { NotificationService } from '../../../../../services/notification/notification.service';
+import {Md5} from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-form',
@@ -14,11 +15,13 @@ export class FormComponent implements OnInit {
   @Output() close: EventEmitter<boolean> = new EventEmitter();
   dataForm: any;
   listUser: User[] = [];
-
+  md5:Md5;
   constructor(
     private formBuilder : FormBuilder,
     private userService: UsersService,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService) {
+      this.md5 = new Md5();
+    }
 
   ngOnInit() {
     this.dataForm = this.formBuilder.group({
@@ -36,7 +39,7 @@ export class FormComponent implements OnInit {
           Validators.required
         ]
       }],
-      password1:['', {
+      password:['', {
         validators: [
           Validators.pattern('^(.*[0-9].*)+$'),
           Validators.minLength(6),
@@ -67,7 +70,7 @@ export class FormComponent implements OnInit {
   }
 
   password1(){
-    return this.dataForm.get('password1')
+    return this.dataForm.get('password')
   }
 
   submit(){
@@ -76,7 +79,8 @@ export class FormComponent implements OnInit {
       alert('Los datos no son correctos');
     } else {
       if (this.getUser().$id == undefined){
-        this.addUser(this.getUser());
+        let pasword_no_encrypt:string = this.dataForm.value.password;
+        this.addUser(this.getUser(), pasword_no_encrypt);
       } else {
         this.updateUser(this.getUser());
       }
@@ -133,18 +137,20 @@ export class FormComponent implements OnInit {
       );
   }
 
-  addUser(data: User) {
+  addUser(data: User, password:string) {
     let subscribe = this.userService.getUserbyEmail(data.email).snapshotChanges()
     .subscribe(
       res =>{
         if (res.length==0){
           subscribe.unsubscribe()
+          this.getUser().password = this.md5.appendStr(password).end().toString();
           this.userService.addUser(data).then(
             result =>{
               this.notificationService.sucess("Proceso Exitoso", "Usuario registrado con exito.")
               this.closeModal();
             }).catch(
                err => {
+                this.getUser().password = password;
                  this.notificationService.error("Ocurrio un error", "No se pudo registrar el usuario.")
                 }
             );

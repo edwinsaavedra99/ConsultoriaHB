@@ -46,7 +46,7 @@
           <div class="form-group" [hidden]="getUser().$id != undefined" >
             <div class="form-input">
               <div class="input-label"><label for="password1">Contraseña: </label></div>
-              <input type="password" class="form-control" id="password1" formControlName="password1" [(ngModel)]="getUser().password">
+              <input type="password" class="form-control" id="password" formControlName="password" [(ngModel)]="getUser().password">
             </div>
             <div *ngIf="password1().invalid && (password1().dirty || password1().touched)" class="alert alert-danger">
               <div *ngIf="password1().errors.required">
