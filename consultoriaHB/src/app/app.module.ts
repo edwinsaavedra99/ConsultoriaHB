@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 /*FIREBASE SERVICES*/
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -73,10 +74,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
     DynamicModule,
     IndexModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   
   ],
-  providers: [],
+  providers: [ CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

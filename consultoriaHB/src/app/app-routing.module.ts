@@ -5,6 +5,8 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { DynamicComponent } from './components/admin/dynamic/dynamic.component';
 import { IndexComponent } from './components/client/dynamic/index/index.component';
 import { LoginComponent } from './components/admin/login/login.component'
+import { AuthGuard } from './guard/auth.guard'
+import { LoginGuard } from './guard/login.guard'
 const routes: Routes = [
   { path: '', component: IndexComponent },  
   {
@@ -14,10 +16,11 @@ const routes: Routes = [
         path: '',
         loadChildren: './components/admin/dynamic/dynamic.module#DynamicModule'
       }
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
   { path: 'index',   redirectTo: '', pathMatch: 'full' },
-  { path: 'login',   component: LoginComponent },
+  { path: 'login',   component: LoginComponent, canActivate:  [ LoginGuard ] },
   //{ path: '**', component: PageNotFound}
   //{ path: '**', component: PageNotFound}
 ];

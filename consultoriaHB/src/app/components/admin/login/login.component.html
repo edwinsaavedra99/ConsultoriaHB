@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <button [disabled]="dataForm.invalid">Iniciar Sesión</button>
+                    <button [disabled]="dataForm.invalid || isLogged">Iniciar Sesión</button>
                     <a href="">Recuperar Contraseña</a>
                 </div>
             </form>
