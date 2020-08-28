@@ -8,9 +8,9 @@
           {{header}}
         </th>
       </tr>
-      <tr *ngFor ="let area of list | paginate: { itemsPerPage: 7, currentPage: actualPage} ;let count=index">
+      <tr *ngFor ="let area of list | paginate: { itemsPerPage: 7, currentPage: actualPage} ;let count=index;">
         <td>
-          {{count+1}}
+          {{count+1+((actualPage-1)*7)}}
         </td>
         <td>
           {{area.titulo}}
