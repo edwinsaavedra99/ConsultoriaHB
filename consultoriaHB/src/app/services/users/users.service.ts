@@ -29,4 +29,11 @@ export class UsersService {
   updateUser(id: string, user: User): Promise<void> {
     return this.userRef.update(id, user);
   }
+
+  getUserbyEmail(email: string) {
+    this.userRef = this.db.list(this.dbPath, 
+    ref=> ref.orderByChild('email').equalTo(email)
+  ) as AngularFireList<User>;
+  return this.userRef;
+}
 }

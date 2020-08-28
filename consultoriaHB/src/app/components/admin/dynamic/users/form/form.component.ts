@@ -13,6 +13,8 @@ export class FormComponent implements OnInit {
   @Input() visible: boolean;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
   dataForm: any;
+  listUser: User[] = [];
+
   constructor(
     private formBuilder : FormBuilder,
     private userService: UsersService,
@@ -42,6 +44,18 @@ export class FormComponent implements OnInit {
         ]
       }]
     });
+    this.getUserList()
+  }
+
+  getUserList() {
+    this.userService.getUserList().snapshotChanges().subscribe(res =>{
+      this.listUser.length = 0;
+      res.forEach(t => {
+        const user = t.payload.toJSON();
+        user['$id'] = t.key;
+        this.listUser.push(user as User)
+      });
+    });
   }
 
   fullname(){
@@ -64,21 +78,9 @@ export class FormComponent implements OnInit {
       if (this.getUser().$id == undefined){
         this.addUser(this.getUser());
       } else {
-        if(confirm('¿Esta seguro de querer guardar su edición?')){
-          this.userService.updateUser(this.getUser().$id, this.dataForm.value)
-          .then(
-            result =>{
-              this.notificationService.sucess("Proceso Exitoso", "Usuario fue editado con exito.")
-            }
-          )
-          .catch(
-            err => {
-              this.notificationService.error("Ocurrio un error", "No se pudo editar el usuario.")
-            }
-          );
-        }
+        this.updateUser(this.getUser());
       }
-      this.closeModal()
+
     }
   }
 
@@ -92,19 +94,68 @@ export class FormComponent implements OnInit {
     this.dataForm.reset();
   }
 
-  addUser(data: User) {
-    this.userService
-      .addUser(data)
+  updateUser(user:User){
+    if(confirm('¿Esta seguro de querer guardar su edición?')){
+      let subscribe = this.userService.getUserbyEmail(user.email).snapshotChanges()
+      .subscribe(
+        res =>{
+          if (res.length==0){
+            subscribe.unsubscribe()
+            this.updateUserVerified(user);
+          } else if (res.length==1 && res[0].payload.key == user.$id){
+            subscribe.unsubscribe()
+            this.updateUserVerified(user)
+          } else{
+            subscribe.unsubscribe()
+            this.notificationService.error("Usuario duplicado", "El correo " + user.email + " ya esta en uso")
+          }
+        }
+      )
+    
+
+
+      
+    }
+  }
+
+  updateUserVerified(user:User){
+    this.userService.updateUser(user.$id, this.dataForm.value)
       .then(
         result =>{
-          this.notificationService.sucess("Proceso Exitoso", "Usuario registrado con exito.")
+          this.notificationService.sucess("Proceso Exitoso", "Usuario fue editado con exito.")
+          this.closeModal()
         }
       )
       .catch(
         err => {
-          this.notificationService.error("Ocurrio un error", "No se pudo registrar el usuario.")
+          this.notificationService.error("Ocurrio un error", "No se pudo editar el usuario.")
         }
       );
+  }
+
+  addUser(data: User) {
+    let subscribe = this.userService.getUserbyEmail(data.email).snapshotChanges()
+    .subscribe(
+      res =>{
+        if (res.length==0){
+          subscribe.unsubscribe()
+          this.userService.addUser(data).then(
+            result =>{
+              this.notificationService.sucess("Proceso Exitoso", "Usuario registrado con exito.")
+              this.closeModal();
+            }).catch(
+               err => {
+                 this.notificationService.error("Ocurrio un error", "No se pudo registrar el usuario.")
+                }
+            );
+          } else if (res.length>0) {
+            subscribe.unsubscribe()
+            this.notificationService.error("Usuario duplicado", "El correo " + data.email + " ya esta en uso")
+          }
+      }, error=>{
+        this.notificationService.error("Ocurrio un error", "No se pudo registrar el usuario.")
+      }
+    )
   }
 
   getUser(){
