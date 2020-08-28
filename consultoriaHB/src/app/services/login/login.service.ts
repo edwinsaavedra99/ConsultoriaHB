@@ -85,4 +85,8 @@ export class LoginService {
     this.cookieService.delete('login','/');
     this.sessionRef.remove(session_id);
   }
+
+  getUser(){
+    return this.user;
+  }
 }

@@ -23,6 +23,10 @@ export class MenuBarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  getUser(){
+    return this.loginService.user;
+  }
+
 
 
 }
