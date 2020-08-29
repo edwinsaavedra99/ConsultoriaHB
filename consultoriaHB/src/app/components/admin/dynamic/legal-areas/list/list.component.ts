@@ -4,6 +4,7 @@ import { AreaLegal} from '../../../../../models/areaLegal';
 import { map } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-list-areas',
@@ -22,7 +23,7 @@ export class ListComponent implements OnInit {
   listHeaders: String[] = ["#Nro","Título","Fecha","Hora","Acciones"];
   actualPage: number = 1;
   title:String;
-  constructor(private areaService: LegalAreasService) { }
+  constructor(private areaService: LegalAreasService, private storage:AngularFireStorage) { }
 
   ngOnInit() {
     this.getAreaList();
@@ -34,7 +35,8 @@ export class ListComponent implements OnInit {
     this.dataItemArea.emit(true);
     this.areaService.selectedAreaLegal = Object.assign({}, data);   
   }
-  deleteArea(id:string) {
+  deleteArea(id:string,imgUrl:string) {
+    this.deleteImgUrl(imgUrl);
     if (confirm("¿Esta seguro de quere eliminar a este elemento?")){
       this.areaService.deleteArea(id).catch(
         err => console.log(err)
@@ -62,5 +64,7 @@ Search(){
     return res.titulo.toLowerCase().match(this.title.toLocaleLowerCase());
   });
 }
-
+deleteImgUrl(downloadUrl:any){
+  return this.storage.storage.refFromURL(downloadUrl).delete();
+}
 }

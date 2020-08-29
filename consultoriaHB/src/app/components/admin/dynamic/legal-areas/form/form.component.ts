@@ -9,6 +9,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize} from "rxjs/operators"
 import { async } from '@angular/core/testing';
 import { observable, isObservable } from 'rxjs';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-form',
@@ -22,10 +23,11 @@ export class FormComponent implements OnInit {
   areaLegal : AreaLegal = new AreaLegal();
   today = new Date();
   tsToday = '';
-  imgSrc : string = '/assets/img/no_image.png';
-  imgUrl : string = '';
+  imgSrc : string = '/assets/img/no_image.png'; // defecto
+  imgUrl : string = this.imgSrc;
   selectedImage: any = null;
   isLoading : boolean= false;
+  toEraseImgUrl: string =  '';
 
 
 
@@ -38,21 +40,29 @@ export class FormComponent implements OnInit {
         if(this.areaLegal.titulo !=null){
           this.dataForm.patchValue({
             titulo: this.areaLegal.titulo,
-            contenido: this.areaLegal.contenido
+            contenido: this.areaLegal.contenido,
+            imgUrl: this.areaLegal.imagenUrl,
+            
           });
+          this.imgUrl = this.areaLegal.imagenUrl;
+          this.toEraseImgUrl = this.areaLegal.imagenUrl
         }else{
           this.refrescar();
         }        
       }
     }
+
   }
   get titulo(){
     return this.dataForm.get('titulo');
   }
   get contenido(){
     return this.dataForm.get('contenido');
-    
   }
+  get imagenUrl(){
+    return this.dataForm.get('imgUrl');
+  }
+
 
   dataForm = this.formBuilder.group({
     titulo : ['',{
@@ -70,10 +80,17 @@ export class FormComponent implements OnInit {
         Validators.maxLength(300),
         Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9., '-])*$")
       ]
+    }],
+    imgUrl : ['',{
+      validators:[
+        Validators.required
+      ]
     }]
+
   });
 
   ngOnInit() {
+
   }
 
   closeModal() {
@@ -95,7 +112,8 @@ export class FormComponent implements OnInit {
       titulo : data.titulo,
       contenido: data.contenido,
       fecha : data.fecha,
-      hora : data.hora
+      hora : data.hora,
+      imagenUrl : data.imagenUrl
     }
     this.areaLegalService
     .updateArea($id, aux)
@@ -117,7 +135,7 @@ export class FormComponent implements OnInit {
       this.areaLegal.titulo =this.titulo.value;
       this.areaLegal.fecha = formatDate(this.today,'dd/MM/yyyy','en-US');
       this.areaLegal.hora = formatDate(this.today,'hh:mm:ss','en-US');
-      this.areaLegal.imagenUrl = 'naniiii';
+      this.areaLegal.imagenUrl = 'algo salió mal';
       if(this.areaLegal.$id==null){
         this.isLoading = true; 
         var filePath = `areasLegales/${this.selectedImage.name}_${new Date().getTime()}`;
@@ -126,20 +144,30 @@ export class FormComponent implements OnInit {
           finalize(()=>{ 
             fileRef.getDownloadURL().subscribe((url)=> {
              this.areaLegal.imagenUrl = url;
-             this.imgUrl  = url;
-             console.log('first is -----------> '+this.areaLegal.imagenUrl);
-             console.log('second is -----------> '+this.imgUrl); 
              this.addAreaLegal(this.areaLegal);
              this.isLoading = false;
              this.closeModal();
             })
           })
         ).subscribe();
-      }else{      
+      }else{     
         if(confirm('¿Esta seguro de querer guardar su edición?')){
-          this.editAreaLegal(this.areaLegal.$id,this.areaLegal);
-          this.closeModal();
-        }        
+          this.isLoading = true;
+          var filePath = `areasLegales/${this.selectedImage.name}_${new Date().getTime()}`;
+          const fileRef = this.storage.ref(filePath);
+          this.deleteImgUrl(this.toEraseImgUrl);
+          this.storage.upload(filePath,this.selectedImage).snapshotChanges().pipe(
+          finalize(()=>{ 
+            fileRef.getDownloadURL().subscribe((url)=> {
+             this.areaLegal.imagenUrl = url;
+             this.editAreaLegal(this.areaLegal.$id,this.areaLegal);
+             this.isLoading = false;    
+             this.closeModal();
+            })
+          })
+        ).subscribe();
+
+        }         
       }
     }    
   }
@@ -147,14 +175,17 @@ export class FormComponent implements OnInit {
   refrescar(){
     this.dataForm.patchValue({
       titulo: '',
-      contenido: ''
+      contenido: '',
+      imagenUrl: '',
+      imgUrl : this.imgSrc
     });
     this.areaLegal = new AreaLegal();
     this.areaLegal.contenido ='';
     this.areaLegal.titulo ='';
     this.areaLegal.fecha = '';
     this.areaLegal.hora = '';
-    this.imgSrc = '/assets/img/no_image.png';
+    this.imgUrl = this.imgSrc;
+
     this.selectedImage = null;
 
     this.areaLegalService.selectedAreaLegal = new AreaLegal();
@@ -164,15 +195,19 @@ export class FormComponent implements OnInit {
     
     if(event.target.files && event.target.files[0]) {
       const reader = new FileReader();
-      reader.onload = (e:any) => this.imgSrc = e.target.result;
+      reader.onload = (e:any) => this.imgUrl = e.target.result;
       reader.readAsDataURL(event.target.files[0]);
       this.selectedImage = event.target.files[0];
       
     }
     else{
-      this.imgSrc = '/assets/img/no_image.png';
+      this.imgUrl = this.imgSrc;
       this.selectedImage = null;
     }
+  }
+
+  deleteImgUrl(downloadUrl:any){
+    return this.storage.storage.refFromURL(downloadUrl).delete();
   }
 
 
