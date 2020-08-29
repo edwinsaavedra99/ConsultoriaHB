@@ -4,7 +4,11 @@ import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 //import { titleValidation } from 'src/app/validations/title-validation.directive';
 import { LegalAreasService } from '../../../../../services/legal_areas/legal-areas.service';
 import { formatDate } from '@angular/common';
+import { AngularFireStorage } from '@angular/fire/storage';
 //import { NgModule } from '@angular/core';
+import { finalize} from "rxjs/operators"
+import { async } from '@angular/core/testing';
+import { observable, isObservable } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -18,8 +22,14 @@ export class FormComponent implements OnInit {
   areaLegal : AreaLegal = new AreaLegal();
   today = new Date();
   tsToday = '';
+  imgSrc : string = '/assets/img/no_image.png';
+  imgUrl : string = '';
+  selectedImage: any = null;
+  isLoading : boolean= false;
 
-  constructor(private formBuilder : FormBuilder,private areaLegalService: LegalAreasService) { }
+
+
+  constructor(private formBuilder : FormBuilder,private areaLegalService: LegalAreasService, private storage:AngularFireStorage) { }
 
   ngOnChanges(changes: any) {
     if (this.visible && changes.visible){
@@ -107,15 +117,31 @@ export class FormComponent implements OnInit {
       this.areaLegal.titulo =this.titulo.value;
       this.areaLegal.fecha = formatDate(this.today,'dd/MM/yyyy','en-US');
       this.areaLegal.hora = formatDate(this.today,'hh:mm:ss','en-US');
+      this.areaLegal.imagenUrl = 'naniiii';
       if(this.areaLegal.$id==null){
-        this.addAreaLegal(this.areaLegal);
+        this.isLoading = true; 
+        var filePath = `areasLegales/${this.selectedImage.name}_${new Date().getTime()}`;
+        const fileRef = this.storage.ref(filePath);
+        this.storage.upload(filePath,this.selectedImage).snapshotChanges().pipe(
+          finalize(()=>{ 
+            fileRef.getDownloadURL().subscribe((url)=> {
+             this.areaLegal.imagenUrl = url;
+             this.imgUrl  = url;
+             console.log('first is -----------> '+this.areaLegal.imagenUrl);
+             console.log('second is -----------> '+this.imgUrl); 
+             this.addAreaLegal(this.areaLegal);
+             this.isLoading = false;
+             this.closeModal();
+            })
+          })
+        ).subscribe();
       }else{      
         if(confirm('¿Esta seguro de querer guardar su edición?')){
           this.editAreaLegal(this.areaLegal.$id,this.areaLegal);
+          this.closeModal();
         }        
       }
     }    
-    this.closeModal();
   }
 
   refrescar(){
@@ -128,7 +154,26 @@ export class FormComponent implements OnInit {
     this.areaLegal.titulo ='';
     this.areaLegal.fecha = '';
     this.areaLegal.hora = '';
+    this.imgSrc = '/assets/img/no_image.png';
+    this.selectedImage = null;
+
     this.areaLegalService.selectedAreaLegal = new AreaLegal();
   }
+
+  showPreview(event:any){
+    
+    if(event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e:any) => this.imgSrc = e.target.result;
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedImage = event.target.files[0];
+      
+    }
+    else{
+      this.imgSrc = '/assets/img/no_image.png';
+      this.selectedImage = null;
+    }
+  }
+
 
 }
