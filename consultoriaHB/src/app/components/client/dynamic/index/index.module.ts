@@ -15,7 +15,10 @@ import { HeaderComponent } from '../../static/header/header.component';
 import { WriteUsComponent } from '../../static/write-us/write-us.component';
 
 import { IndexComponent } from './index.component';
+import { TarjetaComponent } from './legal-areas/tarjeta/tarjeta.component';
+import { PopupAreasComponent } from './legal-areas/popup-areas/popup-areas.component';
 //import { ClipboardModule } from 'ngx-clipboard';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   imports: [
@@ -23,8 +26,9 @@ import { IndexComponent } from './index.component';
     FormsModule,
     HttpClientModule,   
     //NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
       //ClipboardModule
+    CarouselModule
   ],declarations: [
     IndexComponent,
     InfoComponent,
@@ -34,7 +38,9 @@ import { IndexComponent } from './index.component';
     FooterComponent,
     RequestsFormComponent,
     HeaderComponent,
-    WriteUsComponent
+    WriteUsComponent,
+    TarjetaComponent,
+    PopupAreasComponent
     
   ],
   providers: []
