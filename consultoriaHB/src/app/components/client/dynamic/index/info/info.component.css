@@ -3,8 +3,8 @@
 .title_description{
 	text-decoration: underline;
 	color:white;
-	font-size: xx-large;
-	margin-top:60px; 
+	font-size: 2vw;
+	margin-top:10%; 
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 /*contenedor de texto e imagen*/
@@ -24,7 +24,7 @@
 /*tamaño y posicion de la images*/
 #image {
   float:left;
-  width: 680px; height: 450px;
+  width: 50%; height:50%;
 }
 /*Contiene c que tenemos*/
 .slide{
@@ -34,7 +34,7 @@
 	transition: all 800ms;
 	animation-name:autoplay;
 	/*Duracion entre texto*/
-	animation-duration: 6.5s;
+	animation-duration: 16.5s;
 	animation-direction: alternate;
 	/*animacion que comienza al principio*/
 	animation-fill-mode: forwards;
@@ -62,12 +62,10 @@ width: 80%;
     text-align: justify;
     font-family: "Trebuchet MS", sans-serif;
   	color:white;
-  	font-size: large;
+  	font-size: 1.2vw;
 }
-
-/*indica los botoncitos de abajo*/
 .pagination{
-	margin-top:40px;
+	margin-top:10%;
 	bottom: 20px;
 	left:20px;
 	display: flex;
@@ -90,7 +88,7 @@ width: 80%;
 	background: white;
 	margin: 0 10px 30px 10px;
 	text-align: center;
-	transition: all 300ms;
+	transition: all 700ms;
 }
 /*cada uno de los cuadros a pasar con el cursos crecera*/
 .pagination-item:hover{
@@ -104,7 +102,7 @@ width: 80%;
 	height: 100%;
 	transform: scale(1);
 	opacity: 0;
-	transition: all 300ms;
+	transition: all 700ms;
 }
 .pagination-item:hover img{
 	transform: scale(1);
@@ -135,43 +133,90 @@ input[id="2"]:checked ~ .pagination .pagination-item[for="2"]{
 input[id="3"]:checked ~ .pagination .pagination-item[for="3"]{
      background: black;
 }
+input[id="4"]:checked ~ .slide{
+    animation: none;
+    transform: translate3d(calc(-100% * 3), 0, 0);
+}
+
+input[id="4"]:checked ~ .pagination .pagination-item[for="4"]{
+     background: black;
+}
+
+input[id="5"]:checked ~ .slide{
+    animation: none;
+    transform: translate3d(calc(-100% * 4), 0, 0);
+}
+
+input[id="5"]:checked ~ .pagination .pagination-item[for="5"]{
+     background: black;
+}
+
 
 /*Responsividad*/
 @keyframes autoplay{
-    33%{
+    20%{
         transform: translate3d(calc(-100% * 0), 0, 0);
     }
     
-    66%{
+   40%{
         transform: translate3d(calc(-100% * 1), 0, 0);
     }
     
-    100%{
+    60%{
         transform: translate3d(calc(-100% * 2), 0, 0);
     }
-}
-@media screen and (max-width:900px){
-    .item-slide > img{
-        width: 250px;
+    80%{
+        transform: translate3d(calc(-100% * 3), 0, 0);
     }
-
-    .item-slide > div{
-        width: 40%;
-    }
-
-    .item-slide h2{
-        font-size: 23px;
+    100%{
+        transform: translate3d(calc(-100% * 4), 0, 0);
     }
 }
+@media only screen and (max-width:800px) {
+  /* For mobile phones: */
+ .container, .pagination {
+    width:100%;
+  }
+  #image {
+  float:left;
+  width: 100%; height:100%;
+}
+.pagination{
+	margin-top:2%;
+	bottom: 20px;
+	left:20px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+}
+@media only screen and (max-width:1000px) {
+  /* For mobile phones: */
 
-
-@media screen and (max-width:600px){
-    .item-slide{
-       flex-direction: column-reverse;
-    }
-
-    .item-slide > div{
-        width: 80%;
-    }
-
+.title_description{
+	text-decoration: underline;
+	color:white;
+	font-size: 100%;
+	margin-top:10%; 
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.item-slide p{
+    
+    text-align: justify;
+    font-family: "Trebuchet MS", sans-serif;
+  	color:white;
+  	font-size:80%;
+}
+.pagination{
+	margin-top:2%;
+	bottom: 20px;
+	left:20px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
 }

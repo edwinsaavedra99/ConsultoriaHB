@@ -1,34 +1,23 @@
 
 	<div class="container-all">
 		
-		<img id="image" src="./assets/img/img1.jpg" />
+		<img id="image" src="./assets/img/nuestroE.jpg" />
 
 		<div class="container">
 		<input type="radio" id="1" name="image-slide" hidden/>
 		<input type="radio" id="2" name="image-slide" hidden/>
 		<input type="radio" id="3" name="image-slide" hidden/>
+		<input type="radio" id="4" name="image-slide" hidden/>
+		<input type="radio" id="5" name="image-slide" hidden/>
 		<div class="slide">
-			<div class="item-slide">
+			<div class="item-slide" *ngFor="let info of list">
 			
 				  <div class="description">
-                    <h1 class="title_description">NUESTRO ESTUDIO</h1>
-                    <p>Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho. Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho. Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho.Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho
-                    Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho.Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho</p>
+                    <h1 class="title_description">{{info.titulo}}</h1>
+                    <p>{{info.contenido}}</p>
                 </div>
 			</div>
-			<div class="item-slide">
-				 <div class="description">
-                    <h1 class="title_description">NUESTRO ESTUDIO</h1>
-                    <p>Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho. Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho. Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho.Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho</p>
-                </div>
-			</div>
-			<div class="item-slide">
-				 <div class="description">
-                    <h1 class="title_description">NUESTRO ESTUDIO</h1>
-                    <p>Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho. Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho. Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho.Esta es una pagina que nos dira los distintos tipos de ramas en la carrera de derecho</p>
-                </div>
-			</div>
-
+		
 			
 		</div>
 		<div class="pagination">
@@ -40,6 +29,12 @@
 			</label>
 			<label class="pagination-item" for="3">
 				<img src="images/img3.jpg">
+			</label>
+			<label class="pagination-item" for="4">
+				<img src="images/img1.jpg">
+			</label>
+			<label class="pagination-item" for="5">
+				<img src="images/img2.jpg">
 			</label>
 		</div>
 	    </div>
