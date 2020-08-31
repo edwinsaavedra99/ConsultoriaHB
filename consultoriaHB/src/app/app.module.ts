@@ -32,11 +32,11 @@ import { InfoModule } from './components/admin/dynamic/info/info.module';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { OneNewComponent } from './components/client/dynamic/one-new/one-new.component';
 //import { ContentValidationDirective } from './validations/content-validation.directive';
-import { TitleValidationDirective } from './validations/title-validation.directive';
+//import { TitleValidationDirective } from './validations/title-validation.directive';
 import { NotificationComponent } from './components/notification/notification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
-
+import { DeviceDetectorService } from 'ngx-device-detector';
 @NgModule({
   declarations: [
     
@@ -45,7 +45,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     //MenuBarComponent,
     LoginComponent,
     //ContentValidationDirective,
-    TitleValidationDirective,
+    //TitleValidationDirective,
     NotificationComponent,
     //OneNewComponent,
     //FormComponent,
@@ -77,7 +77,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ReactiveFormsModule,
   
   ],
-  providers: [ CookieService ],
+  providers: [ CookieService ,DeviceDetectorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

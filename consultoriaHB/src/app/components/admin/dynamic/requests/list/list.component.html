@@ -5,6 +5,7 @@
     <tr>
         <td class="cell header number">#Nro</td>
         <td class="cell header">Correo</td>
+        <td class="cell header">Teléfono</td>
         <td class="cell header">Fecha</td>
         <td class="cell header">Hora</td>
         <td class="actions cell header">Acciones</td>
@@ -16,13 +17,17 @@
             {{request.correo}}
         </td>
         <td class="cell">
+            {{request.celular}}
+        </td>
+        <td class="cell">
             {{request.fecha}}
         </td>
         <td class="cell">
             {{request.hora}}
         </td>
         <td class="actions cell">
-            <i class="far fa-email action-icon" (click)='showForm(request)'>Email</i>
+            <i class="far fa-email action-icon" (click)='showForm(request,true)'>Chat</i>
+            <i class="far fa-email action-icon" (click)='showForm(request,false)'>Email</i>
             <i class="far fa-trash-alt action-icon" (click)='deleteRequest(request.$id)'></i>
         </td>
     </tr>  

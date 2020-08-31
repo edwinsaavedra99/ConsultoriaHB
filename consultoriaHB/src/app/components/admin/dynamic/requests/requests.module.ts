@@ -7,7 +7,7 @@ import { ListComponent } from './list/list.component'
 import { FormComponent} from './form/form.component';
 import { ReactiveFormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
-
+import { DeviceDetectorService } from 'ngx-device-detector';
 @NgModule({
   declarations: [
     RequestsComponent,
@@ -20,6 +20,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     RouterModule,
     NgxPaginationModule,
     ReactiveFormsModule
+    //DeviceDetectorService
   ],
   exports:[ RequestsComponent ],
   bootstrap: [ RequestsComponent ],

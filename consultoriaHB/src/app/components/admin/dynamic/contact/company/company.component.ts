@@ -25,7 +25,9 @@ export class CompanyComponent implements OnInit {
         this.dataForm.patchValue({
           direccion:  this.company.address,
           email:  this.company.email,
-          telefono: this.company.phone
+          telefono: this.company.phone,
+          fbLink: this.company.fbLink,
+          twLink:  this.company.twLink 
         });
       });
       
@@ -54,7 +56,17 @@ export class CompanyComponent implements OnInit {
           Validators.minLength(4),
           Validators.required
         ]
-      }]
+      }],
+      fbLink:[''/*, {
+        validators: [
+          Validators.required
+        ]
+      }*/],
+      twLink:[''/*, {
+        validators: [
+          Validators.required
+        ]
+      }*/]
     });
   }
   get direccion(){
@@ -67,6 +79,12 @@ export class CompanyComponent implements OnInit {
   get telefono(){
     return this.dataForm.get('telefono');    
   }
+  get fbLink(){
+    return this.dataForm.get('fbLink');    
+  }
+  get twLink(){
+    return this.dataForm.get('twLink');    
+  }
 
   submit(){
     if(!this.dataForm.valid){
@@ -76,6 +94,8 @@ export class CompanyComponent implements OnInit {
       this.company.address =this.direccion.value;
       this.company.email =this.email.value;
       this.company.phone = this.telefono.value;
+      this.company.fbLink = this.fbLink.value;
+      this.company.twLink = this.twLink.value;
       if(confirm('¿Esta seguro de querer guardar su edición?')){
         this.editCompany(this.company);
       } 

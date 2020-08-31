@@ -1,4 +1,4 @@
-<div class="modal" *ngIf="visible">
+<div class="modal" *ngIf="visible.event">
   <div class="container">
     <div>
       <div class="modalHeader">
@@ -11,23 +11,23 @@
 
           <div class="form-group">
             <div class="form-input">
-              <div class="input-label"><label for="email">Correo: </label></div>
-              <input type="email" class="form-control" id="email" formControlName="email" [(ngModel)]="getRequest().correo" disabled>
+              <div class="input-label"><label for="receptor">Correo: </label></div>
+              <input type="text" class="form-control" id="receptor" formControlName="receptor" [value]="getRequest()">
             </div>
-            <div *ngIf="email().invalid && (email().dirty || email().touched)" class="alert alert-danger">
-              <div *ngIf="email().errors.required">
+            <!--div *ngIf="receptor().invalid && (receptor().dirty || receptor().touched)" class="alert alert-danger">
+              <div *ngIf="receptor().errors.required">
                 El correo electronico es necesario.
               </div>
-              <div *ngIf="email().errors.email">
+              <div *ngIf="receptor().errors.receptor">
                 Correo electronico no valido.
               </div>
-            </div>
+            </div-->
           </div>
 
           <div class="form-group">
             <div class="form-input">
               <div class="input-label"><label for="message">Mensaje: </label></div>
-              <textarea type="text" class="form-control" formControlName="message">
+              <textarea type="text" class="form-control" id="message" formControlName="message" >
               </textarea>
             </div>
             <div *ngIf="message().invalid && (message().dirty || message().touched)" class="alert alert-danger">

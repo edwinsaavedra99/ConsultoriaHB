@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Request,deviceRequest } from '../../../../models/request';
 @Component({
   selector: 'app-requests',
   templateUrl: './requests.component.html',
@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestsComponent implements OnInit {
 
-  myModal = false;
+  myModal: deviceRequest = new deviceRequest();
+  //myModal = false;
   constructor() {
-   }
+    this.myModal.event = false;
+  }
 
   ngOnInit() {
   }

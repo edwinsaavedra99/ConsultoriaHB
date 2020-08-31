@@ -1,29 +1,31 @@
 import { Component, OnInit , Input, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators, FormGroup} from '@angular/forms';
 import { RequestsService} from '../../../../../services/requests/requests.service';
-import { Request } from '../../../../../models/request'
-
+import { Request,deviceRequest } from '../../../../../models/request';
+import { DeviceDetectorService } from 'ngx-device-detector';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['../../info/form/form.component.scss']
 })
 export class FormComponent implements OnInit {
-  @Input() visible: boolean;
+  @Input() visible: deviceRequest;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
   dataForm: any;
+  deviceInfo = null;
   constructor(
     private formBuilder : FormBuilder,
-    private requestsService: RequestsService) { }
+    private requestsService: RequestsService,
+    private deviceService: DeviceDetectorService) { }
 
   ngOnInit() {
     this.dataForm = this.formBuilder.group({      
-      email : ['', {
+      receptor : [''/*, {
         validators: [
-          Validators.email,
+          Validators.receptor,
           Validators.required
         ]
-      }],
+      }*/],
       message : ['',{
         validators:[
           Validators.required,
@@ -33,9 +35,10 @@ export class FormComponent implements OnInit {
         ]
       }]
     });
+    this.receptor.disable;
   }
-  email(){
-    return this.dataForm.get('email');
+  get receptor(){
+    return this.dataForm.get('receptor');
   }
   message(){
     return this.dataForm.get('message')
@@ -45,12 +48,20 @@ export class FormComponent implements OnInit {
     if(!this.dataForm.valid){
       alert('Los datos no son correctos');
     } else {
-      if (this.getRequest().$id == undefined){
+      if (this.getRequest() == undefined){
         console.log('El dato no fue cargado');
       } else {
-        if(confirm('¿Esta seguro de querer enviar este correo?')){
-          //enviar correo electronico
-        }
+        if(this.visible.device){
+          if(confirm('¿Esta seguro de querer enviar este mensaje de Whasap?')){
+            //enviar whsap
+            this.epicFunction(this.getRequest());
+          }
+        }else{
+          if(confirm('¿Esta seguro de querer enviar este correo?')){
+            //enviar correo electronico
+          }
+        } 
+        
       }
       this.closeModal()
     }
@@ -66,7 +77,35 @@ export class FormComponent implements OnInit {
     this.dataForm.reset();
   }  
 
+  bodyMessageWp():string{
+    var incognita = this.message().value;
+    var out = incognita.toString().replace(/\s/g, "%20").trim();
+    console.log(out);
+    return out;
+  }
+
+  epicFunction(data:string) {
+    this.deviceInfo = this.deviceService.getDeviceInfo();
+    const isMobile = this.deviceService.isMobile();
+    const isTablet = this.deviceService.isTablet();
+    const isDesktopDevice = this.deviceService.isDesktop();
+    if(isDesktopDevice || isTablet ){
+      //console.log("https://web.whatsapp.com/send?phone="+data+"&text="+this.bodyMessageWp());
+      window.open("https://web.whatsapp.com/send?phone="+data+"&text="+this.bodyMessageWp(), "_blank");
+      
+    }else if(isMobile){
+      window.open("https://whatsapp.com/send?phone="+data+"&text="+this.bodyMessageWp(), "_blank");
+    //  whatsapp://send?text=www.google.com
+    }
+
+     
+  }
+
   getRequest(){
-    return this.requestsService.selectedRequest;
+    if(this.visible.device){
+      return this.requestsService.selectedRequest.celular;
+    }else{
+      return this.requestsService.selectedRequest.correo;
+    }     
   }
 }

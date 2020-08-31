@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RequestsService } from '../../../../../services/requests/requests.service';
-import { Request } from '../../../../../models/request';
+import { Request,deviceRequest } from '../../../../../models/request';
 
 @Component({
   selector: 'app-list-requests',
@@ -9,15 +9,16 @@ import { Request } from '../../../../../models/request';
 })
 export class ListComponent implements OnInit {
 
-  @Output() openForm: EventEmitter<boolean> = new EventEmitter();
+ 
+  @Output() openForm: EventEmitter<deviceRequest> = new EventEmitter();
+
   listRequest: Request[] = [];
   list: Request[]=[];
   listHeaders: String[] = ["Nro","Email","Fecha","Hora","Acciones"];
   actualPage: number = 1;
   search_value:string;
   request: Request;
-
-
+  deviceRequest: deviceRequest;
   constructor(private requestService: RequestsService) { }
 
   ngOnInit() {
@@ -50,8 +51,11 @@ export class ListComponent implements OnInit {
     });
   }
 
-  showForm(request: Request){
-    this.openForm.emit(true);
+  showForm(request: Request, device: boolean ){
+    this.deviceRequest = new deviceRequest();
+    this.deviceRequest.device = device;
+    this.deviceRequest.event = true;
+    this.openForm.emit(this.deviceRequest);
     this.requestService.selectedRequest = Object.assign({}, request);
   }
 

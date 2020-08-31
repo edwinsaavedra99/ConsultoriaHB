@@ -43,7 +43,17 @@
                         La longitud mínima del telefono es de 4 caracteres
                       </div>
                     </div>
-                  </div>                
+                  </div>       
+                  <div class="form-group">
+                    <label for="fbLink">Facebook</label>
+                    <input type="text" class="form-control" formControlName="fbLink" name="TitleFormInfo" [value]="company.fbLink" >
+                    
+                  </div>  
+                  <div class="form-group">
+                    <label for="twLink">Twitter</label>
+                    <input type="text" class="form-control" formControlName="twLink" name="TitleFormInfo" [value]="company.twLink" >                    
+                  </div>        
                 <button type="submit" [disabled]="dataForm.invalid">Guardar</button>                
+                <!--button  (click)="editarCampos()" >Editar</button--> 
               </form>
           </div>

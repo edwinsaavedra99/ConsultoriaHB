@@ -88,6 +88,7 @@ export class FormComponent implements OnInit {
     }]
   });
   ngOnInit() {
+    this.email.disable;
   }
   closeModal() {
     this.close.emit(false);

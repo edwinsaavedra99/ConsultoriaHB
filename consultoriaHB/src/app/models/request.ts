@@ -8,3 +8,8 @@ export class Request {
     fecha: string;
     hora: string;
 }
+
+export class deviceRequest{
+    event: boolean;
+    device: boolean;
+}
