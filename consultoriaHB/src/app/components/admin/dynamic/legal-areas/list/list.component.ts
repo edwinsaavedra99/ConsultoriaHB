@@ -36,8 +36,9 @@ export class ListComponent implements OnInit {
     this.areaService.selectedAreaLegal = Object.assign({}, data);   
   }
   deleteArea(id:string,imgUrl:string) {
-    this.deleteImgUrl(imgUrl);
+    
     if (confirm("¿Esta seguro de quere eliminar a este elemento?")){
+      this.deleteImgUrl(imgUrl);  
       this.areaService.deleteArea(id).catch(
         err => console.log(err)
       );

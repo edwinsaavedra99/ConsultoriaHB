@@ -28,7 +28,7 @@ export class FormComponent implements OnInit {
   selectedImage: any = null;
   isLoading : boolean= false;
   toEraseImgUrl: string =  '';
-
+  NoImage :boolean = false;
 
 
   constructor(private formBuilder : FormBuilder,private areaLegalService: LegalAreasService, private storage:AngularFireStorage) { }
@@ -45,7 +45,7 @@ export class FormComponent implements OnInit {
             
           });
           this.imgUrl = this.areaLegal.imagenUrl;
-          this.toEraseImgUrl = this.areaLegal.imagenUrl
+          this.toEraseImgUrl = this.areaLegal.imagenUrl;
         }else{
           this.refrescar();
         }        
@@ -127,6 +127,7 @@ export class FormComponent implements OnInit {
 
 
   submit(){
+              
     if(!this.dataForm.valid){
       alert('Los datos no son correctos')
       return;
@@ -137,36 +138,50 @@ export class FormComponent implements OnInit {
       this.areaLegal.hora = formatDate(this.today,'hh:mm:ss','en-US');
       this.areaLegal.imagenUrl = 'algo salió mal';
       if(this.areaLegal.$id==null){
-        this.isLoading = true; 
-        var filePath = `areasLegales/${this.selectedImage.name}_${new Date().getTime()}`;
-        const fileRef = this.storage.ref(filePath);
-        this.storage.upload(filePath,this.selectedImage).snapshotChanges().pipe(
-          finalize(()=>{ 
-            fileRef.getDownloadURL().subscribe((url)=> {
-             this.areaLegal.imagenUrl = url;
-             this.addAreaLegal(this.areaLegal);
-             this.isLoading = false;
-             this.closeModal();
-            })
-          })
-        ).subscribe();
-      }else{     
-        if(confirm('¿Esta seguro de querer guardar su edición?')){
-          this.isLoading = true;
+        if(this.imgUrl === this.imgSrc){
+          alert('Ingrese una imagen')
+        }
+        else{
+          this.isLoading = true; 
           var filePath = `areasLegales/${this.selectedImage.name}_${new Date().getTime()}`;
           const fileRef = this.storage.ref(filePath);
-          this.deleteImgUrl(this.toEraseImgUrl);
           this.storage.upload(filePath,this.selectedImage).snapshotChanges().pipe(
-          finalize(()=>{ 
-            fileRef.getDownloadURL().subscribe((url)=> {
-             this.areaLegal.imagenUrl = url;
-             this.editAreaLegal(this.areaLegal.$id,this.areaLegal);
-             this.isLoading = false;    
-             this.closeModal();
+            finalize(()=>{ 
+              fileRef.getDownloadURL().subscribe((url)=> {
+               this.areaLegal.imagenUrl = url;
+               this.addAreaLegal(this.areaLegal);
+               this.isLoading = false;
+               this.closeModal();
+              })
             })
-          })
-        ).subscribe();
+          ).subscribe();
+        }
+      }else{     
+        if(confirm('¿Esta seguro de querer guardar su edición?')){
 
+          this.isLoading = true;
+          if( this.toEraseImgUrl === this.imgUrl){
+            this.areaLegal.imagenUrl = this.imgUrl;
+            this.editAreaLegal(this.areaLegal.$id,this.areaLegal);
+            this.isLoading = false;
+            this.closeModal();
+          }
+          else{
+            var filePath = `areasLegales/${this.selectedImage.name}_${new Date().getTime()}`;
+            const fileRef = this.storage.ref(filePath);
+  
+            this.deleteImgUrl(this.toEraseImgUrl);
+            this.storage.upload(filePath,this.selectedImage).snapshotChanges().pipe(
+            finalize(()=>{ 
+              fileRef.getDownloadURL().subscribe((url)=> {
+               this.areaLegal.imagenUrl = url;
+               this.editAreaLegal(this.areaLegal.$id,this.areaLegal);
+               this.isLoading = false;    
+               this.closeModal();
+              })
+            })
+          ).subscribe();
+          }
         }         
       }
     }    

@@ -60,7 +60,13 @@
                   <img [src]="imgUrl" width="130px" height="130px" (click)="fileUploader.click()">
                   <input type="file" accept="image/*" #fileUploader (change)="showPreview($event)">
                   <input type="hidden" name="fileHidden" formControlName="imgUrl"/> 
-                </div>       
+                </div>
+                <div class="alert alert-danger">
+                  <div *ngIf="noImage">
+                    Necesita colocar una imagen
+                  </div>
+                </div>
+
                 <button type="button" (click)="closeModal()">Cancelar</button>
                 <button type="submit" [disabled]="dataForm.invalid || isLoading">Publicar</button>                
               </form>
