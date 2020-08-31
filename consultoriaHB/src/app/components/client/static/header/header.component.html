@@ -1,1 +1,22 @@
-<p>header works!</p>
+<header class="header" [ngClass]="{secundario: estaCheckeado}">
+    <a href="/" class="logo" >CONSULTORIA HOFFMAN & BAUER</a><a href="/" class="logo2">CONSULTORIA  H & B</a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" (change)="estaCheckeado = !estaCheckeado " />
+    <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
+    <ul class="menu">
+        <li><a href="#bane">Inicio</a></li>
+        <li><a href="#contenido">Areas legales</a></li>
+        <li><a href="#do">Contacto</a></li>
+        <li><a href="#forget">Noticias</a></li>
+        <li><a href="#forget"><img src="./assets/img/espanol.png" id="iconEspan">Español</a></li>
+        
+    </ul>
+</header>
+<section class="banner">
+<div class="banner-content">
+<h1> NORA Y ASOCIADOS</h1>
+<h1> BRINDAMOS CONSULTORIA EN UNA VARIEDAD DE ÁREAS LEGALES</h1>
+<a href="#">Ver Video</a>
+</div>
+
+</section>
+
