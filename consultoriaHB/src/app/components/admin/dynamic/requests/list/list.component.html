@@ -1,1 +1,35 @@
-<p>list works!</p>
+<div class="search">
+    <label class="label_buscar">Buscar</label>  <input class="input" type="text" [(ngModel)]="search_value" (input)="search()" placeholder="Ingrese su búsqueda"/>
+</div>
+<table id="table" class="table">
+    <tr>
+        <td class="cell header number">#Nro</td>
+        <td class="cell header">Correo</td>
+        <td class="cell header">Fecha</td>
+        <td class="cell header">Hora</td>
+        <td class="actions cell header">Acciones</td>
+    </tr>
+
+    <tr class="body" *ngFor ="let request of list | paginate: { itemsPerPage: 10, currentPage: actualPage}; let count=index">
+        <td class="cell number">{{ count+1 }}</td>
+        <td class="cell">
+            {{request.correo}}
+        </td>
+        <td class="cell">
+            {{request.fecha}}
+        </td>
+        <td class="cell">
+            {{request.hora}}
+        </td>
+        <td class="actions cell">
+            <i class="far fa-email action-icon" (click)='showForm(request)'>Email</i>
+            <i class="far fa-trash-alt action-icon" (click)='deleteRequest(request.$id)'></i>
+        </td>
+    </tr>  
+</table>
+<div class="paginaton_position">
+    <pagination-controls class="pagination" (pageChange)="actualPage = $event" previousLabel="" nextLabel="">
+    
+    </pagination-controls>
+</div>
+

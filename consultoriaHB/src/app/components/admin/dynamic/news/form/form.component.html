@@ -1,1 +1,68 @@
-<p>form works!</p>
+<div class="modal" *ngIf="visible">
+    <div class="container">
+      <div>
+        <div>
+          <div class="modalHeader">
+            <ng-content select="h2"></ng-content>
+            <span (click)="closeModal()">x</span>
+          </div>
+          <div class="modalContent">
+              <!--ng-content select=".contenido"></ng-content-->
+              <!--div class="contenido"></div-->
+              <form (submit)="submit()" [formGroup]="dataForm">
+                <div class="form-group">
+                  <label for="titulo">Titulo</label>
+                  <input type="text" class="form-control" formControlName="titulo" name="TitleFormAreaLegal" [value]="newData.titulo">
+                  <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="alert alert-danger">
+                    <div *ngIf="titulo.errors.required">
+                      El titulo es requerido
+                    </div>
+                    <div *ngIf="titulo.errors.minlength">
+                      La longitud mínima del titulo es 3 caracteres
+                    </div>
+                    <div *ngIf="titulo.errors.maxlength">
+                      La longitud máxima del titulo es 30 caracteres
+                    </div>
+                    <div *ngIf="titulo.errors.pattern">
+                      El titulo contiene caracteres no alfanumericos
+                    </div>
+              
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="contenido">Contenido</label>
+                  <textarea type="text" class="form-control" formControlName="contenido" [value]="newData.contenido">
+                  </textarea>
+                  <div *ngIf="contenido.invalid && (contenido.dirty || contenido.touched)" class="alert alert-danger">
+                    <div *ngIf="contenido.errors.required">
+                      El contenido es requerido
+                    </div>
+                    <div *ngIf="contenido.errors.minlength">
+                      La longitud mínima del contenido es 10 caracteres
+                    </div>
+                    <div *ngIf="contenido.errors.maxlength">
+                      La longitud máxima del contenido es 5000 caracteres
+                    </div>
+                    <div *ngIf="contenido.errors.pattern">
+                      El contenido contiene caracteres no alfanumericos
+                    </div>
+              
+                  </div>
+                </div>      
+                <br> <br><br>  
+                <div class=form-group>
+                  <label for="imagen" >Imagen</label>
+                </div>
+                <div class=form-group>
+                  <img [src]="imgUrl" width="130px" height="130px" (click)="fileUploader.click()">
+                  <input type="file" accept="image/*" #fileUploader (change)="showPreview($event)">
+                  <input type="hidden" name="fileHidden" formControlName="imgUrl"/> 
+                </div>       
+                <button type="button" (click)="closeModal()">Cancelar</button>
+                <button type="submit" [disabled]="dataForm.invalid || isLoading">Publicar</button>                
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 

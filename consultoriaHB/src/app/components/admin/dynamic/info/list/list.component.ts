@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { InfoService } from '../../../../../services/info/info.service';
 import { Info } from '../../../../../models/info';
 import { map } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { NotificationService } from '../../../../../services/notification/notification.service'
 
 @Component({
   selector: 'app-list-info',
@@ -11,6 +12,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list.component.css']
 })
 export class ListComponentInfo implements OnInit {
+
+  @Output() dataItemInfo = new EventEmitter<boolean>();
+
   i = 1;
   listInfo: Info[] = [];
   list: Info[]=[];//We are using this variable for showing data instead of calling FireBase database again
@@ -20,26 +24,37 @@ export class ListComponentInfo implements OnInit {
   actualPage: number = 1;
   title:String;
 
-  constructor(private infoService: InfoService) {   }
+  constructor(private infoService: InfoService, private notificationService: NotificationService) {   }
  
   ngOnInit() {
-    this.getInfoList();
+    this.getInfoList();    
     this.list=this.listInfo;
   }
 
-  updateInfo(id:string,data: Info) {
-    /*this.infoService
-      .updateInfo(id, data)
-      .catch(err => console.log(err));
-      
-      */
+  successAlert(result){
+    this.notificationService.sucess("Proceso Exitoso", "Body");
+  }
+  
+  openFormEdit(data: Info) {
+    this.dataItemInfo.emit(true);
+    this.infoService.selectedInfo = Object.assign({}, data);   
   }
  
   deleteInfo(id:string) {
-    console.log(id);
-    this.infoService.deleteInfo(id).catch(
-      err => console.log(err)
-    );
+    if (confirm("¿Esta seguro de quere eliminar a este elemento?")){
+      this.infoService.deleteInfo(id)
+      .then(
+        result =>{
+          this.notificationService.sucess("Proceso Exitoso", "Elemento eliminado con exito.")
+        }
+      )
+      .catch(
+        err => {
+          this.notificationService.error("Ocurrio un error", "No se pudo eliminar el elemento.")
+        }
+      );
+    }
+    
   }
 
   getInfoList() {
@@ -48,13 +63,11 @@ export class ListComponentInfo implements OnInit {
         res.forEach( t=>{
           const info = t.payload.toJSON();
           info['$id'] = t.key;
-          console.log(info)
           this.listInfo.push(info as Info)
-
         })
       });
   }
-  Search(){
+   Search(){
     this.list = this.listInfo.filter(res=>{
       return res.titulo.toLowerCase().match(this.title.toLocaleLowerCase());
     });

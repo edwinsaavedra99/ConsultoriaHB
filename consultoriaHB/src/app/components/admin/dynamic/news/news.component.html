@@ -1,10 +1,15 @@
+<div class="modal">
+    <app-form  [visible]="myModal" (close)="cerrarModal($event)">
+    </app-form>
+</div>
+
+
 <div class="title_content section">
     <span class="title_section content">Noticias</span>
     <div class="button content">
-        <button><i class="fas fa-plus"></i> Agregar</button>
+        <button (click)="mostrarModal()"><i class="fas fa-plus"></i> Agregar</button>
     </div>
 </div>
 <div class="section">
-    <app-list-news></app-list-news>
- 
+    <app-list-news (dataItemNew)="dataNewTraslate($event)" ></app-list-news>
 </div>

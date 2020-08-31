@@ -8,9 +8,9 @@
           {{header}}
         </th>
       </tr>
-      <tr *ngFor ="let area of list | paginate: { itemsPerPage: 7, currentPage: actualPage} ;let count=index">
+      <tr *ngFor ="let area of list | paginate: { itemsPerPage: 7, currentPage: actualPage} ;let count=index;">
         <td>
-          {{count+1}}
+          {{count+1+((actualPage-1)*7)}}
         </td>
         <td>
           {{area.titulo}}
@@ -22,8 +22,8 @@
           {{area.hora}}
         </td>
         <td>
-          <span class="button is-small btn-danger" (click)='deleteInfo(info.$id)'>Delete</span>
-          <span class="button is-small btn-danger" (click)='updateInfo()'>Update</span>
+          <i class="far fa-edit action-icon" (click)='openFormEdit(area)'></i>
+          <i class="far fa-trash-alt action-icon" (click)='deleteArea(area.$id,area.imagenUrl)'></i>
         </td>
       </tr>
     </table>

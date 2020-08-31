@@ -8,7 +8,10 @@ import { Info } from '../../models/info'
 })
 export class InfoService {
   private dbPath = '/info';
+
   infoRef: AngularFireList<Info> = null;
+  selectedInfo: Info = new Info();
+
   constructor(private db: AngularFireDatabase) {
   	this.infoRef = db.list(this.dbPath);
   }

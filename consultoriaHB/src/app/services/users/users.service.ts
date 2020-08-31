@@ -8,6 +8,7 @@ import { User } from '../../models/user'
 export class UsersService {
   private dbPath = '/user';
   userRef: AngularFireList<User> = null;
+  userSelected: User = new User();
   constructor(private db: AngularFireDatabase) {
   	this.userRef = db.list(this.dbPath);
   }
@@ -24,4 +25,15 @@ export class UsersService {
   deleteUser(id: string): Promise<void> {
     return this.userRef.remove(id);
   }
+
+  updateUser(id: string, user: User): Promise<void> {
+    return this.userRef.update(id, user);
+  }
+
+  getUserbyEmail(email: string) {
+    this.userRef = this.db.list(this.dbPath, 
+    ref=> ref.orderByChild('email').equalTo(email)
+  ) as AngularFireList<User>;
+  return this.userRef;
+}
 }

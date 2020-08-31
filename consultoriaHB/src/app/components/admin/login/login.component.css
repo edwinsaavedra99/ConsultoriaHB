@@ -1,0 +1,120 @@
+*{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.body{
+    position: absolute;
+    background-color: #f0f0f0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+}
+.content{
+    background-color: white;
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    left: 10%;
+    top: 10%;
+    border: #6a6a6a 1px solid;
+    border-radius: 20px ;
+}
+.content .image{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+.content .image img{
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+}
+.content .login_form{
+    width: 50%;
+    position: relative;
+    float: right;
+    top: -100%;
+    padding: 2em;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+form{
+    width: 100%;
+}
+.form-group{
+    width: 100%;
+    padding: 1em 1em;;
+    box-sizing: border-box;
+    align-items: center;
+}
+.form-input{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+.input-label{
+    width: 25%;
+}
+input, textarea{
+    float: right;
+    width: 75%;
+    padding: 0.5em;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-left: 5px;
+    color: #6a6a6a;
+    background-color: #FBFBFB;
+}
+
+.buttons{
+    text-align: right;
+}
+
+button{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1em;
+    margin: 1em;
+    width: 25%;
+    align-self: flex-end;
+    background-color: #AB2A3E;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid #AB2A3E;
+    min-width: 100px;
+}
+
+button:hover{
+    background-color: white;
+    color: #AB2A3E;
+    border-radius: 10px;
+    border: 1px solid #AB2A3E;
+    cursor:   pointer  ;
+    
+}
+button:disabled{
+    background-color:#DA8895;
+    border: 1px solid #DA8895;
+}
+
+
+button:disabled:hover{
+    color: white;
+}
+.alert-danger{
+    font-size: 0.8em;
+    color: red;
+    text-align: justify;
+}
+a{
+    text-decoration: none;
+    color: #AB2A3E;
+}
+.title{
+    margin: 1em;
+}

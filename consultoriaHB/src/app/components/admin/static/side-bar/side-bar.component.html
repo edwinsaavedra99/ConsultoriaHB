@@ -1,8 +1,8 @@
 <div class="user_info">
     <h3>ADMIN <span class="special_text">H&B</span></h3>
     <img class=".user_profile" src="./assets/img/user.png" alt="Perfil de Usuario">
-    <h4>User Full Name</h4>
-    <h4 class="special_text">User Role</h4>
+    <h4>{{ getUser().fullname }}</h4>
+    <h5 class="special_text">{{ getUser().email }}</h5>
 </div>
 
 <div class="menu">

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { LegalAreasService} from '../../../../../services/legal_areas/legal-areas.service';
 import { AreaLegal} from '../../../../../models/areaLegal';
 import { map } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-list-areas',
@@ -11,6 +12,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+
+  @Output() dataItemArea = new EventEmitter<boolean>();
+
   i = 1;
   listArea: AreaLegal[] = [];
   list: AreaLegal[]=[];//We are using this variable for showing data instead of calling FireBase database again
@@ -19,25 +23,28 @@ export class ListComponent implements OnInit {
   listHeaders: String[] = ["#Nro","Título","Fecha","Hora","Acciones"];
   actualPage: number = 1;
   title:String;
-  constructor(private areaService: LegalAreasService) { }
+  constructor(private areaService: LegalAreasService, private storage:AngularFireStorage) { }
 
   ngOnInit() {
     this.getAreaList();
   //  this.listArea[0] = {$id:"a",titulo:"sda",contenido:"asd",fecha:"asd",hora:"asd"};
     this.list=this.listArea;
   }
-  updateArea(id:string,data: AreaLegal) {
-    /*this.infoService
-      .updateInfo(id, data)
-      .catch(err => console.log(err));
-      
-      */
+
+  openFormEdit(data: AreaLegal) {
+    this.dataItemArea.emit(true);
+    this.areaService.selectedAreaLegal = Object.assign({}, data);   
   }
-  deleteArea(id:string) {
-    console.log(id);
-    this.areaService.deleteArea(id).catch(
-      err => console.log(err)
-    );
+  deleteArea(id:string,imgUrl:string) {
+    this.deleteImgUrl(imgUrl);
+    if (confirm("¿Esta seguro de quere eliminar a este elemento?")){
+      this.areaService.deleteArea(id).catch(
+        err => console.log(err)
+      );
+    }
+   // this.areaService.deleteArea(id).catch(
+   //   err => console.log(err)
+   // );
   }
 
   getAreaList() {
@@ -57,5 +64,7 @@ Search(){
     return res.titulo.toLowerCase().match(this.title.toLocaleLowerCase());
   });
 }
-
+deleteImgUrl(downloadUrl:any){
+  return this.storage.storage.refFromURL(downloadUrl).delete();
+}
 }

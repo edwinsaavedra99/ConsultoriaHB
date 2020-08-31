@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestsComponent implements OnInit {
 
-  constructor() { }
+  myModal = false;
+  constructor() {
+   }
 
   ngOnInit() {
   }
 
+  mostrarModal(e) {
+    this.myModal = e;
+  }
+
+  cerrarModal(e) {
+    this.myModal = e;
+  }
 }

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 /*FIREBASE SERVICES*/
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -32,6 +33,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { OneNewComponent } from './components/client/dynamic/one-new/one-new.component';
 //import { ContentValidationDirective } from './validations/content-validation.directive';
 import { TitleValidationDirective } from './validations/title-validation.directive';
+import { NotificationComponent } from './components/notification/notification.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,7 @@ import { TitleValidationDirective } from './validations/title-validation.directi
     LoginComponent,
     //ContentValidationDirective,
     TitleValidationDirective,
+    NotificationComponent,
     //OneNewComponent,
     //FormComponent,
     //ListComponent,
@@ -67,10 +72,12 @@ import { TitleValidationDirective } from './validations/title-validation.directi
     AppRoutingModule,    
     BrowserAnimationsModule, 
     DynamicModule,
-    IndexModule
+    IndexModule,
+    FormsModule,
+    ReactiveFormsModule,
   
   ],
-  providers: [],
+  providers: [ CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
