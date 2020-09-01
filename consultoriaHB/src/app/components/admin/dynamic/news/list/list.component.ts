@@ -34,8 +34,8 @@ export class ListComponent implements OnInit {
     this.newService.selectedNew = Object.assign({}, data);   
   }
   deletenewData(id:string,imgUrl:string) {
-    this.deleteImgUrl(imgUrl);
     if (confirm("¿Esta seguro de quere eliminar a este elemento?")){
+      this.deleteImgUrl(imgUrl);
       this.newService.deleteNew(id).then(
         result =>{
           this.notificationService.sucess("Proceso Exitoso", "Noticia eliminada con exito.")
