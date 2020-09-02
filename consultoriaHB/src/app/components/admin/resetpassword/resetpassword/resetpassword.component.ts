@@ -47,7 +47,7 @@ export class ResetpasswordComponent implements OnInit {
                     this.user.$id = res.key;
                   } else {
                     this.notificactionService.error("Usuario incorrecot", "El usuario al que quiere cambiar contraseña no existe.")
-                    this.loginService.deleteRequestResetPassword(request_key);
+                    this.loginService.deleteRequestResetPassword(this.request_key);
                   }
                 }, error=>{
                   this.notificactionService.error("Error obteniendo datos", "No se pudieron acceder a los datos de usuario. Por favor intente mas tarde.")
