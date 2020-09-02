@@ -4,38 +4,61 @@
             <img src="assets/img/login.jpg" alt="login-picture">
         </div>
         <div class="login_form">
-            <form [formGroup]="dataForm" (submit)="submit()">
-                <h3 class="title">Inicio de Sesión</h3>
-                <div class="form-group">
-                    <div class="form-input">
-                        <div class="input-label"><label for="email">Correo Electronico:</label></div>
-                        <input  class="form-control" type="email" id="email" formControlName="email" [(ngModel)]="email_value">
-                    </div>
-                    <div *ngIf="email().invalid && (email().dirty || email().touched)"  class="alert alert-danger">
-                        <div *ngIf="email().errors.required">
-                            Por favor, ingrese su correo electronico.
+            <div class="login_form_items">
+                <form [formGroup]="dataForm" (submit)="submit()">
+                    <h3 class="title">Inicio de Sesión</h3>
+                    <div class="form-group">
+                        <div class="form-input">
+                            <div class="input-label"><label for="email">Correo Electronico:</label></div>
+                            <input  class="form-control" type="email" id="email" formControlName="email" [(ngModel)]="email_value">
                         </div>
-                        <div *ngIf="email().errors.email">
-                            Correo electronico no valido.
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-input">
-                        <div class="input-label"><label for="pasword">Contraseña:</label></div>
-                        <input type="password" id="password" formControlName="password" [(ngModel)]="password_value">
-                    </div>
-                    <div *ngIf="password().invalid && (password().dirty || password().touched)" class="alert alert-danger">
-                        <div *ngIf="password().errors.required">
-                          Por favor, ingrese su contraseña.
+                        <div *ngIf="email().invalid && (email().dirty || email().touched)"  class="alert alert-danger">
+                            <div *ngIf="email().errors.required">
+                                Por favor, ingrese su correo electronico.
+                            </div>
+                            <div *ngIf="email().errors.email">
+                                Correo electronico no valido.
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="buttons">
-                    <button [disabled]="dataForm.invalid || isLogged">Iniciar Sesión</button>
-                    <a href="">Recuperar Contraseña</a>
-                </div>
-            </form>
+                    <div class="form-group">
+                        <div class="form-input">
+                            <div class="input-label"><label for="pasword">Contraseña:</label></div>
+                            <input type="password" id="password" formControlName="password" [(ngModel)]="password_value">
+                        </div>
+                        <div *ngIf="password().invalid && (password().dirty || password().touched)" class="alert alert-danger">
+                            <div *ngIf="password().errors.required">
+                              Por favor, ingrese su contraseña.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button [disabled]="dataForm.invalid || isLogged">Iniciar Sesión</button>
+                        <a (click)="reset_password=true">Recuperar Contraseña</a>
+                    </div>
+                </form>
+                <br>
+                <form *ngIf="reset_password" [formGroup]="reset_password_form" (submit)="reset_password_action()">
+                    <h3 class="title">Cambio de Contraseña</h3>
+                    <div class="form-group">
+                        <div class="form-input">
+                            <div class="input-label"><label for="email2">Correo Electronico</label></div>
+                            <input type="email" class="form-control" id="email2" formControlName="email">
+                        </div>
+                        <div *ngIf="emailpassword().invalid && (emailpassword().dirty || emailpassword().touched)"  class="alert alert-danger">
+                            <div *ngIf="emailpassword().errors.required">
+                                Por favor, ingrese su correo electronico.
+                            </div>
+                            <div *ngIf="emailpassword().errors.email">
+                                Correo electronico no valido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button [disabled]="reset_password_form.invalid">Cambiar contraseña</button>
+                    </div>
+                </form>    
+            </div>
         </div>
     </div>
 </div>

@@ -7,6 +7,8 @@ import { IndexComponent } from './components/client/dynamic/index/index.componen
 import { LoginComponent } from './components/admin/login/login.component'
 import { AuthGuard } from './guard/auth.guard'
 import { LoginGuard } from './guard/login.guard'
+import { ResetpasswordComponent } from './components/admin/resetpassword/resetpassword/resetpassword.component'
+
 const routes: Routes = [
   { path: '', component: IndexComponent },  
   {
@@ -21,6 +23,7 @@ const routes: Routes = [
   },
   { path: 'index',   redirectTo: '', pathMatch: 'full' },
   { path: 'login',   component: LoginComponent, canActivate:  [ LoginGuard ] },
+  { path: 'login/:request',   component: ResetpasswordComponent, canActivate:  [ LoginGuard ] },
   //{ path: '**', component: PageNotFound}
   //{ path: '**', component: PageNotFound}
 ];

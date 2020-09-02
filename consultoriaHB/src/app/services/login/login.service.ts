@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 import { User } from '../../models/user'
 import { Session } from '../../models/session'
+import { ResetPasswordRequest } from '../../models/request'
 import { CookieService } from 'ngx-cookie-service'
 import { NotificationService } from '../../services/notification/notification.service'
 
@@ -16,12 +17,15 @@ export class LoginService {
   sessionRef: AngularFireList<Session> = null;
   user:User;
   session:string;
+  resetPasswordRef: AngularFireList<ResetPasswordRequest> = null;
+  resetPasswordPath = '/reset_password_request'
   constructor(private db: AngularFireDatabase, 
     private cookieService: CookieService, 
     private notifiactionService: 
     NotificationService) {
     this.userRef = db.list(this.dbPath);
     this.sessionRef = db.list(this.path);
+    this.resetPasswordRef = db.list(this.resetPasswordPath);
 
   if (this.cookieService.check('login')){
       this.user = new User();
@@ -88,5 +92,14 @@ export class LoginService {
 
   getUser(){
     return this.user;
+  }
+
+  requestResetPassword(user: User){
+    let request:ResetPasswordRequest = new ResetPasswordRequest();
+    let date:Date = new Date();
+    request.user_key = user.$id;
+    request.date = date.getDate() +"/" + (date.getMonth()+1) + "/" + date.getFullYear();
+    request.time = date.getHours()+":" + date.getMinutes() + ":" + date.getSeconds();
+    return this.resetPasswordRef.push(request);
   }
 }

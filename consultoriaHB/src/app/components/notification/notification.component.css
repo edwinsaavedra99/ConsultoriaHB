@@ -11,6 +11,7 @@
     margin: 1em;
     width: 75%;
     height: auto;
+    text-align: justify;
 }
 
 .notification .content .title_notification{

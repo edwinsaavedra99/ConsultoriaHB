@@ -7,7 +7,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router, ActivatedRoute } from '@angular/router'
 import {Md5} from 'ts-md5/dist/md5';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,6 +19,8 @@ export class LoginComponent implements OnInit {
   user: User;
   isLogged:boolean = false;
   md5:Md5;
+  reset_password:boolean=false;
+  reset_password_form:any;
 
   constructor(
     private formBuilder : FormBuilder,
@@ -46,6 +47,18 @@ export class LoginComponent implements OnInit {
         ]
       }]
     });
+    this.reset_password_form = this.formBuilder.group({
+      email : [ '', {
+        validators: [
+          Validators.email,
+          Validators.required
+        ]  
+      }]
+    });
+  }
+
+  emailpassword(){
+    return this.reset_password_form.get('email');
   }
 
   email(){
@@ -91,6 +104,32 @@ export class LoginComponent implements OnInit {
             this.isLogged = false;
             this.notificationService.error("Credenciales Invalidas", "Usuario o contraseña incorrecto.")
           }
+        }
+      }
+    )
+  }
+
+  reset_password_action(){
+    this.userService.getUserbyEmail(this.reset_password_form.value.email).snapshotChanges().subscribe(  
+      res =>{
+        if (res.length==0){
+          this.isLogged = false;
+          this.notificationService.error("Correo no registrado", "Este correo no ha sido regitrado previamente por un Administrador, por favor solicite a uno que le otorgue acceso mediante un registro.")
+        } else{
+          let response = res[0];
+          let  user_json = response.payload.toJSON();
+          user_json['$id'] = response.key;
+          let user:User = user_json as User;
+          this.userService.requestResetPassword(user)
+          .then( res =>{
+            this.notificationService.sucess("Solicitud enviada", "Por favor revisa tu correo.")
+            window.location.href = window.location.href +"/"+res.key;
+//            console.log(window.location.href +"/"+res.key)
+          }).catch(
+            error=>{
+              this.notificationService.error("Error", "No se pudo crear la solicitud.")
+            }
+          )
         }
       }
     )

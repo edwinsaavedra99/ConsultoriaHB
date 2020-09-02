@@ -13,3 +13,10 @@ export class deviceRequest{
     event: boolean;
     device: boolean;
 }
+
+export class ResetPasswordRequest{
+    $id?:string;
+    date:string;
+    time:string;
+    user_key: string; 
+}

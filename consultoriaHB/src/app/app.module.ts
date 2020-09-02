@@ -37,6 +37,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { ResetpasswordComponent } from './components/admin/resetpassword/resetpassword/resetpassword.component';
 @NgModule({
   declarations: [
     
@@ -47,6 +48,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
     //ContentValidationDirective,
     //TitleValidationDirective,
     NotificationComponent,
+    ResetpasswordComponent,
     //OneNewComponent,
     //FormComponent,
     //ListComponent,
