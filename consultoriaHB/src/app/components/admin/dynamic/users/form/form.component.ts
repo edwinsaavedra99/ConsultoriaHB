@@ -20,7 +20,6 @@ export class FormComponent implements OnInit {
     private formBuilder : FormBuilder,
     private userService: UsersService,
     private notificationService: NotificationService) {
-      this.md5 = new Md5();
     }
 
   ngOnInit() {
@@ -143,6 +142,7 @@ export class FormComponent implements OnInit {
       res =>{
         if (res.length==0){
           subscribe.unsubscribe()
+          this.md5 = new Md5();
           this.getUser().password = this.md5.appendStr(password).end().toString();
           this.userService.addUser(data).then(
             result =>{

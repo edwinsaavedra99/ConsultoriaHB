@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute 
     ) { 
-      this.md5 = new Md5();
      }
 
   ngOnInit() {
@@ -77,7 +76,9 @@ export class LoginComponent implements OnInit {
           this.isLogged = false;
           this.notificationService.error("Credenciales Invalidas", "Usuario o contraseña incorrecto.")
         } else{
+          this.md5 = new Md5();
           let password_encrypted:string = this.md5.appendStr(this.password_value).end().toString();
+          console.log(password_encrypted)
           //let password_encrypted:string = this.password_value;
           let response = res[0];
           let  user = response.payload.toJSON();

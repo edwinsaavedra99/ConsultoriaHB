@@ -102,4 +102,11 @@ export class LoginService {
     request.time = date.getHours()+":" + date.getMinutes() + ":" + date.getSeconds();
     return this.resetPasswordRef.push(request);
   }
+
+  getRequestResetPassword(key: string){
+    return this.db.object<ResetPasswordRequest>(this.resetPasswordPath+'/'+key)
+  }
+  deleteRequestResetPassword(id: string): Promise<void> {
+    return this.resetPasswordRef.remove(id);
+  }
 }

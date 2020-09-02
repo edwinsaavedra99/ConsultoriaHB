@@ -32,8 +32,11 @@ export class UsersService {
 
   getUserbyEmail(email: string) {
     this.userRef = this.db.list(this.dbPath, 
-    ref=> ref.orderByChild('email').equalTo(email)
-  ) as AngularFireList<User>;
-  return this.userRef;
-}
+    ref=> ref.orderByChild('email').equalTo(email)) as AngularFireList<User>;
+    return this.userRef;
+  }
+
+  getUserByKey(key:string){
+    return this.db.object<User>(this.dbPath+'/'+key)
+  }
 }
