@@ -8,9 +8,8 @@
   <h2> Aprenda mas sobre las areas que practicamos y los servicios que ofrecemos</h2>
   <owl-carousel-o [options]="customOptions">
   
-    <ng-template carouselSlide *ngFor="let area of listArea">
-      <app-tarjeta [area]="area" (salida)='recibirData($event)' ></app-tarjeta>
-      
+    <ng-template carouselSlide *ngFor="let area of list">
+      <app-tarjeta [area]="area" (salida)='recibirData($event)'></app-tarjeta>  
     </ng-template>  
     
   </owl-carousel-o>

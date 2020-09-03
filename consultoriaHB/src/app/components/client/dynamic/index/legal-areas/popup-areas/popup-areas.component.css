@@ -14,12 +14,12 @@
 .popup{
     visibility: visible;
     width: 90%;
-    max-width: 600px;
+    max-width: 720px;
     max-height: 400px;
     position: relative;
     display: flex;
     background: #AB2A3E;
-    top: 25%;
+    top: 10%;
     left: 50%;
     transform: rotate(0deg) translate(-50%, 20%);
     transition: all 900ms;
@@ -27,7 +27,7 @@
 }
 
 img{
-    width: 40%;
+    width: 50%;
     background-size: cover;
     background-position: center;
 }
@@ -38,13 +38,13 @@ img{
 }
 .container-text h1{
     text-align : center;
-    font-size: 38px;
+    font-size: 32px;
     color:white;
 }
 .container-text p{
     text-align : justify;
     margin-top: 20px;
-    font-size: 25px;
+    font-size: 21px;
     color:white;
 }
 .btn-close-popup{
