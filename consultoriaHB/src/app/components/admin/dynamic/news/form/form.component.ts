@@ -79,7 +79,7 @@ export class FormComponent implements OnInit {
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(5000),
-        Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9., '-])*$")
+        Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9:()., '-])*$")
       ]
     }],
     imgUrl : ['',{
@@ -163,6 +163,7 @@ export class FormComponent implements OnInit {
     }else{
       this.newData.contenido =this.contenido.value;
       this.newData.titulo =this.titulo.value;
+      this.today = new Date();
       this.newData.fecha = formatDate(this.today,'dd/MM/yyyy','en-US');
       this.newData.hora = formatDate(this.today,'hh:mm:ss','en-US');
       //this.newData.imagenUrl = 'algo salió mal';

@@ -119,6 +119,7 @@ export class FormComponent implements OnInit {
     }else{
       this.info.contenido =this.contenido.value;
       this.info.titulo =this.titulo.value;
+      this.today = new Date();
       this.info.fecha = formatDate(this.today,'dd/MM/yyyy','en-US');
       this.info.hora = formatDate(this.today,'hh:mm:ss','en-US');
       if(this.info.$id==null){

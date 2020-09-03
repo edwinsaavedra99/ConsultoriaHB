@@ -134,6 +134,7 @@ export class FormComponent implements OnInit {
     }else{
       this.areaLegal.contenido =this.contenido.value;
       this.areaLegal.titulo =this.titulo.value;
+      this.today = new Date();
       this.areaLegal.fecha = formatDate(this.today,'dd/MM/yyyy','en-US');
       this.areaLegal.hora = formatDate(this.today,'hh:mm:ss','en-US');
       this.areaLegal.imagenUrl = 'algo salió mal';

@@ -55,7 +55,12 @@
                     background-color: #FBFBFB;
                 }
 
-                
+                textarea{
+                    resize: vertical;
+                    min-height: 60px;
+                    max-height: 600px;
+                }
+            
                 
             }
 
