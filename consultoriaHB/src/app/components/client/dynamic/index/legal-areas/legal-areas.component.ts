@@ -59,23 +59,23 @@ export class LegalAreasComponent implements OnInit {
         items: 6,
    
       },
-      1800: {
+      1780: {
         items: 5,
 
       },
       1300: {
-        items: 3,
+        items: 4,
   
       },
       1150: {
         items: 3,
     
       },
-      980: {
+      740: {
         items: 2,
 
       },
-      740: {
+      620: {
         items: 1,
    
       },
