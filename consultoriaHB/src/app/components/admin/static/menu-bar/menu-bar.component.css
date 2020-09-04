@@ -41,4 +41,12 @@ button:focus{
     display: flex;
     align-items: center;
 
+
+}
+.menu{
+    display: none;
+}
+.menu-bar{
+
+    display: none;
 }

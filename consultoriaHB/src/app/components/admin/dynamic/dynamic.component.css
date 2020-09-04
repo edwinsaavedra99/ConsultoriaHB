@@ -17,7 +17,6 @@ body{
 
 .side_bar{
     position: fixed;
-    width: 33.3333%;
     width: 17em;
     height: 100%;
     top: 0;
@@ -38,8 +37,7 @@ body{
 }
 .content{
     margin-left: 17em;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
     
 }
 .element{
@@ -50,4 +48,24 @@ body{
     margin: 0.5em;
     top: 1em;
 
+}
+
+@media (max-width:1300px){
+    .side_bar{
+        width: 5em;
+    }
+    .content{
+        margin-left: 13%;
+        
+    }
+
+}
+@media (max-width:850px){
+    .side_bar{
+        width: 0px;
+    }
+    .content{
+        margin-left: 4%;
+        
+    }
 }
