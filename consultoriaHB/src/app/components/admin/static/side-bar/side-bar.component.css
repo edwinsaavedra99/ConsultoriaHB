@@ -89,8 +89,3 @@ img{
     }
 }
 
-@media (max-width:860px){
-    .menu{
-        display:none;
-    }
-}

@@ -1,0 +1,55 @@
+<div *ngIf="visible" class="container-all modal">   
+    <div class="menu container">
+        <div class="modalHeader">
+            <ng-content select="h2"></ng-content>
+            <span (click)="closeMenu()">x</span>
+          </div>
+        <div class="modalContent"> 
+            <ul class="nav flex-column mb-0">
+                <li class="">
+                    <a (click)="closeMenu()" [routerLink]="['info']" class="nav-item nav-link text-light bg-red" routerLinkActive="active">
+                        <span ><i class="fas fa-file left_float"></i><span>Información</span><i class="fas fa-angle-right rigth_float "></i></span>
+                    </a>
+                </li>
+        
+                <li class="">
+                    <a (click)="closeMenu()" [routerLink]="['users']" class="nav-item nav-link text-light bg-red" routerLinkActive="active">
+                        <span><i class="fas fa-user-alt left_float"></i><span>Cuentas de Usuario</span><i class="fas fa-angle-right rigth_float "></i></span>
+                    </a>
+                </li>
+        
+                <li class="">
+                    <a (click)="closeMenu()" [routerLink]="['legal-areas']" class="nav-item nav-link text-light bg-red" routerLinkActive="active">
+                        <span><i class="fas fa-book-open left_float"></i><span>Areas Legales</span><i class="fas fa-angle-right rigth_float "></i></span>
+                    </a>
+                </li>
+        
+                <li class="">
+                    <a (click)="closeMenu()" [routerLink]="['requests']" class="nav-item nav-link text-light bg-red" routerLinkActive="active">
+                        <span><i class="fas fa-clipboard-list	 left_float"></i><span>Solicitudes</span><i class="fas fa-angle-right rigth_float "></i></span>
+                    </a>
+                </li>
+        
+                <li class="">
+                    <a (click)="closeMenu()" [routerLink]="['news']" class="nav-item nav-link text-light bg-red" routerLinkActive="active">
+                        <span><i class="fas fa-book	 left_float"></i><span>Noticias</span><i class="fas fa-angle-right rigth_float "></i></span>
+                    </a>
+                </li>
+        
+                <li class="">
+                    <a (click)="closeMenu()" [routerLink]="['contact']" class="nav-item nav-link text-light bg-red" routerLinkActive="active">
+                        <span><i class="fas fa-phone-alt left_float"></i><span>Contacto</span><i class="fas fa-angle-right rigth_float "></i></span>
+                    </a>
+                </li>
+        
+                <li class="">
+                    <a (click)="closeMenu()" href="https://analytics.google.com/analytics/web/" target="_blank" class="nav-item nav-link text-light bg-red" routerLinkActive="active">
+                        <span><i class="fas fa-chart-line left_float"></i><span>Google Analytics</span><i class="fas fa-angle-right rigth_float "></i></span>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    </div>

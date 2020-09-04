@@ -50,3 +50,9 @@ button:focus{
 
     display: none;
 }
+@media (max-width:850px){
+    .menu-bar{
+
+        display: block;
+    }
+}

@@ -49,6 +49,14 @@ body{
     top: 1em;
 
 }
+.openMenu{
+    display: none;    
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+.collapse{
+    display: none;
+}
 
 @media (max-width:1300px){
     .side_bar{
@@ -63,9 +71,19 @@ body{
 @media (max-width:850px){
     .side_bar{
         width: 0px;
+        display: none;
     }
     .content{
         margin-left: 4%;
         
     }
+    .openMenu{
+        display: block;
+        
+    }
+    .collapse{
+        display: block;
+    }
+    
+    
 }

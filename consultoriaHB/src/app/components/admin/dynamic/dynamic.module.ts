@@ -14,6 +14,7 @@ import { DynamicComponent } from './dynamic.component';
 //import { UsersComponent } from './info/info.component';
 import { MenuBarComponent } from '../static/menu-bar/menu-bar.component';
 import { SideBarComponent } from '../static/side-bar/side-bar.component';
+import { CollapseBarComponent } from '../static/collapse-bar/collapse-bar.component';
 import { InfoModule } from './info/info.module';
 import { UsersComponent } from './users/users.component';
 import { UsersModule } from './users/users.module';
@@ -46,6 +47,7 @@ import { LegalAreasComponent } from './legal-areas/legal-areas.component';
     DynamicComponent,
     MenuBarComponent,
     SideBarComponent,
+    CollapseBarComponent
     //LegalAreasComponent,
     //ContactComponent,
     //NewsComponent,

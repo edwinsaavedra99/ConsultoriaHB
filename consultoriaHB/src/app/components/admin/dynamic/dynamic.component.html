@@ -1,18 +1,24 @@
-
-<div class="side_bar">
-    <app-side-bar></app-side-bar>
-</div>
-<div class="content">
-    <div class="header">
-        <div class="menu_bar">
-            <app-menu-bar></app-menu-bar>
-        </div>
-        <span class="site_name"></span>
+<app-collapse-bar class="collapse" [visible]="myMenu" (close)="cerrarMenu($event)"></app-collapse-bar>
+<div *ngIf="!myMenu">
+    <div class="side_bar">    
+        <app-side-bar></app-side-bar>
+    </div>
+    <label for="menu" class="menu-bar">
         
-        <div><br><br></div>
-    </div>
-    <div class="site_content element">
-        <router-outlet></router-outlet>
-    </div>
+        <button class="openMenu" (click)="mostrarMenu()"><i class="fa fa-bars"></i></button>
+    </label>
+    <div class="content">
+        <div class="header">
+            <div class="menu_bar">
+                <app-menu-bar></app-menu-bar>
+            </div>
+            <span class="site_name"></span>
+            
+            <div><br><br></div>
+        </div>
+        <div class="site_content element">
+            <router-outlet></router-outlet>
+        </div>
+    </div>   
 </div>
-
+<div>

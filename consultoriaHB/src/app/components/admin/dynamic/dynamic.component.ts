@@ -15,23 +15,22 @@ var navbarHeight = 0;
 export class DynamicComponent implements OnInit, OnDestroy {
   test: Date = new Date();
   public isCollapsed = true;
-
+  myMenu = false;
   constructor(private router: Router) { }
 
   ngOnInit() {
-    //var html = document.getElementsByTagName("html")[0];
-    //html.classList.add("dynamic");
-    //var body = document.getElementsByTagName("body")[0];
-    //  body.classList.add("bg-default");
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
 
   }
   ngOnDestroy() {
-    //var html = document.getElementsByTagName("html")[0];
-    //html.classList.remove("dynamic");
-    //var body = document.getElementsByTagName("body")[0];
-   // body.classList.remove("bg-default");
+  }
+
+  mostrarMenu() {
+    this.myMenu = true;
+  }
+  cerrarMenu(e) {
+    this.myMenu = e;
   }
 }
