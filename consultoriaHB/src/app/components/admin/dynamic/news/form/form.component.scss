@@ -54,6 +54,13 @@
                     color: #6a6a6a;
                     background-color: #FBFBFB;
                 }
+                .imagenFile{
+                    float: right;
+                    padding: 0.5em;
+                    box-sizing: border-box;
+                    border-radius: 10px;
+                    margin-left: 5px;
+                }
 
                 textarea{
                     resize: vertical;
