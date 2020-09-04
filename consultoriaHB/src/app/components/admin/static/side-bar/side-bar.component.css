@@ -69,3 +69,28 @@ img{
 .menu ul .nav-item{
     padding-top: 10px;
 }
+
+@media (max-width:1300px){
+    .menu ul li a span span {
+        display: none;
+    }
+    .user_info{
+        display: none;
+    }
+    .container-all{
+        width: 50px;
+    }
+    .menu ul{
+        font-size: 2ch;
+        width: 100px;
+    }
+    .menu{
+        padding-top: 35px;
+    }
+}
+
+@media (max-width:860px){
+    .menu{
+        display:none;
+    }
+}
