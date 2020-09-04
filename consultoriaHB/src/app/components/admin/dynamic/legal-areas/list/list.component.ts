@@ -5,6 +5,8 @@ import { map } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { NotificationService } from '../../../../../services/notification/notification.service'
+
 
 @Component({
   selector: 'app-list-areas',
@@ -23,7 +25,7 @@ export class ListComponent implements OnInit {
   listHeaders: String[] = ["#Nro","Título","Fecha","Hora","Acciones"];
   actualPage: number = 1;
   title:String;
-  constructor(private areaService: LegalAreasService, private storage:AngularFireStorage) { }
+  constructor(private areaService: LegalAreasService, private storage:AngularFireStorage,  private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.getAreaList();
@@ -39,13 +41,18 @@ export class ListComponent implements OnInit {
     
     if (confirm("¿Esta seguro de quere eliminar a este elemento?")){
       this.deleteImgUrl(imgUrl);  
-      this.areaService.deleteArea(id).catch(
-        err => console.log(err)
+      this.areaService.deleteArea(id)
+      .then(
+        result =>{
+          this.notificationService.sucess("Proceso Exitoso", "Elemento eliminado con exito.")
+        }
+      )
+      .catch(
+        err => {
+          this.notificationService.error("Ocurrio un error", "No se pudo eliminar el elemento.")
+        }
       );
     }
-   // this.areaService.deleteArea(id).catch(
-   //   err => console.log(err)
-   // );
   }
 
   getAreaList() {

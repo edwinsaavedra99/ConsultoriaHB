@@ -10,6 +10,8 @@ import { finalize} from "rxjs/operators"
 import { async } from '@angular/core/testing';
 import { observable, isObservable } from 'rxjs';
 import * as firebase from 'firebase';
+import { NotificationService } from '../../../../../services/notification/notification.service'
+
 
 @Component({
   selector: 'app-form',
@@ -31,7 +33,8 @@ export class FormComponent implements OnInit {
   NoImage :boolean = false;
 
 
-  constructor(private formBuilder : FormBuilder,private areaLegalService: LegalAreasService, private storage:AngularFireStorage) { }
+  constructor(private formBuilder : FormBuilder,private areaLegalService: LegalAreasService, private storage:AngularFireStorage,
+    private notificationService: NotificationService) { }
 
   ngOnChanges(changes: any) {
     if (this.visible && changes.visible){
@@ -101,12 +104,18 @@ export class FormComponent implements OnInit {
   addAreaLegal(data: AreaLegal) {
     this.areaLegalService
       .addArea(data)
-      .catch(err => {
-        console.log(err);
-        alert('Error')
-      });
+      .then(
+        result =>{
+          this.notificationService.sucess("Proceso Exitoso", "Elemento registrado con exito.")
+        }
+      )
+      .catch(
+        err => {
+          this.notificationService.error("Ocurrio un error", "No se pudo registrar el elemento.")
+        }
+      );
   }
-
+ 
   editAreaLegal($id: string, data:AreaLegal){
     const aux = {
       titulo : data.titulo,
@@ -117,12 +126,16 @@ export class FormComponent implements OnInit {
     }
     this.areaLegalService
     .updateArea($id, aux)
-    .then(function (result){
-      console.log(result);
-      
-    }).catch(function(error){
-      console.log(error);
-    });     
+    .then(
+      result =>{
+        this.notificationService.sucess("Proceso Exitoso", "Elemento fue editado con exito.")
+      }
+    )
+    .catch(
+      err => {
+        this.notificationService.error("Ocurrio un error", "No se pudo editar el elemento.")
+      }
+    );    
   }
 
 
