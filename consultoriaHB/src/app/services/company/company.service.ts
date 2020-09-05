@@ -12,6 +12,7 @@ export class CompanyService {
   companyRef: AngularFireList<Company> = null;
   companyObject : AngularFireObject<Company>;
   selectedCompany: Company = new Company();
+  company:Company;
 
   constructor(private db: AngularFireDatabase) {
     this.companyRef = db.list(this.dbPath);
@@ -24,5 +25,8 @@ export class CompanyService {
 
   getCompanyItem(): any {
     return this.companyObject;
+  }
+  getCompany(){
+  return this.company;
   }
 }
