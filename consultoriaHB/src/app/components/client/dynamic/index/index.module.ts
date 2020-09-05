@@ -15,6 +15,7 @@ import { HeaderComponent } from '../../static/header/header.component';
 import { WriteUsComponent } from '../../static/write-us/write-us.component';
 
 import { IndexComponent } from './index.component';
+import { OneNewComponent } from '../one-new/one-new.component'
 import { TarjetaComponent } from './legal-areas/tarjeta/tarjeta.component';
 import { PopupAreasComponent } from './legal-areas/popup-areas/popup-areas.component';
 //import { ClipboardModule } from 'ngx-clipboard';
@@ -40,7 +41,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     HeaderComponent,
     WriteUsComponent,
     TarjetaComponent,
-    PopupAreasComponent
+    PopupAreasComponent,
+    OneNewComponent
     
   ],
   providers: []
