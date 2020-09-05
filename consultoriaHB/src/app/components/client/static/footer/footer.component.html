@@ -23,22 +23,24 @@
  			<span style="color: #AB2A3E">BAUER</span>
  			</strong>
 		</p>
+
 		<p class="direction">
-			Lima, Direccion de la Consultoria u otro Local
+			{{company.address}}
 		</p>
-		<p>Telefonos:</p>
-		<p>999999999 - 999999999</p>
-		<p>Correos Electrónicos:</p>
-		<p>admin1@gmail.com  admin2@gmail.com</p>
+
+		<p>Telefono:</p>
+		<p>{{company.phone}}</p>
+		<p>Correo Electrónico:</p>
+		<p>{{company.email}}</p>
 	    </div>
-	    <div class="social">
-	    	<a href="http://www.facebook.com">enlace</a>
-	    	<a href="http://www.twitter.com">enlace</a>
-	    	<a href="http://www.whatsapp.com">enlace</a>
-	    	
+	   <div class="social">
+	    	<a href="{{company.fbLink}}" class="fa fa-facebook" target="_blank"></a>
+	    	<a href="{{company.twLink}}" class="fa fa-twitter" target="_blank"></a>
+	    	<a href="http://www.whatsapp.com" class="fa fa-whatsapp" target="_blank"></a>
+	    	 
 	    </div>
-	    <div class="rights">
+	   <div class="rights">
 	    	<h2>© 2020 Hoffman y Bauer. Todos los derechos reservados | Allforone | Gestión</h2>
 	    </div>
-	
+	    
 	</div>
