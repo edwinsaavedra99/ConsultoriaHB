@@ -70,7 +70,13 @@
 	line-height: 1.8;
 	color: #6a6a6a;
 	font-size: 16px;
-	margin-bottom: 5px;
+    margin-bottom: 5px;
+    /*Disminuir texto de la tarjeta*/
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	overflow: hidden;
 }
 .card .contenido-card a{
 	display: inline-block;
