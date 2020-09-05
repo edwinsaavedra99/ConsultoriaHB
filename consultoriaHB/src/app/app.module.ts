@@ -56,7 +56,7 @@ import { ResetpasswordComponent } from './components/admin/resetpassword/resetpa
     //FooterComponent,
     //HeaderComponent,
     //ContacComponent,
-    //NewsComponent,
+    NewsComponent,
     //IndexComponent,
     //HomeComponent,
     //ListComponentInfo,
@@ -77,6 +77,7 @@ import { ResetpasswordComponent } from './components/admin/resetpassword/resetpa
     IndexModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   
   ],
   providers: [ CookieService ,DeviceDetectorService],
