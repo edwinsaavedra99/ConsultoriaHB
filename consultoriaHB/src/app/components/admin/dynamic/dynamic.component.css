@@ -30,15 +30,38 @@ body{
 }
 
 .menu_bar{
-    float: right;
+    /*float: right;*/
+    align-items: stretch;
     position: relative;
-    text-align: right;
-    width: 37%;
+    display: flex;
+    /*right: 0;
+    text-align: right;    
+    display: table-cell;*/
+    width: 100%;
+    /*padding-right: 4rem;*/
+    display: block;
 }
-.content{
+.hijo{
+    /*display: block;*/
+    /*height: 4em;*/
+    /*margin-left: auto;*/
+    margin-top: 1rem;
+}
+
+.site_content{
+    padding-top: 1.5rem;
+    margin-top:1rem;
+    /*background-color: #ECECEC;*/
     margin-left: 17em;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
     
+}
+.header{
+    /*background-color: #ffffff;*/
+    margin-left: 17em;
+    margin-right: 4%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+ 
 }
 .element{
     display: block;
@@ -50,7 +73,7 @@ body{
 
 }
 .openMenu{
-    display: none;    
+    visibility: hidden;   
     margin-top: 1rem;
     margin-left: 1rem;
 }
@@ -62,9 +85,13 @@ body{
     .side_bar{
         width: 5em;
     }
-    .content{
-        margin-left: 13%;
+    .site_content{
+        margin-left: 10%;
         
+    }
+    .header{
+        margin-left: 10%;
+        margin-right: 5%;
     }
 
 }
@@ -73,12 +100,16 @@ body{
         width: 0px;
         display: none;
     }
-    .content{
+    .site_content{
         margin-left: 4%;
         
     }
+    .header{
+        margin-left: 4%;
+        margin-right: 4%;
+    }
     .openMenu{
-        display: block;
+        visibility: visible;
         
     }
     .collapse{

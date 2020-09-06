@@ -1,15 +1,15 @@
-<div class="modal">
+<div class="modal" >
     <app-form  [visible]="myModal" (close)="cerrarModal($event)">
     </app-form>
 </div>
 
 
-<div class="title_content section">
+<div class="title_content section" *ngIf="!myModal">
     <span class="title_section content">Noticias</span>
     <div class="button content">
         <button (click)="mostrarModal()"><i class="fas fa-plus"></i> Agregar</button>
     </div>
 </div>
-<div class="section">
+<div class="section" *ngIf="!myModal">
     <app-list-news (dataItemNew)="dataNewTraslate($event)" ></app-list-news>
 </div>

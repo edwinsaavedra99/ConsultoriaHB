@@ -6,6 +6,8 @@
     font-size: 1.75ch;
     display: flex;
     align-items: center;
+    float: right;
+    /*margin-right: 4rem;*/
 }
 button{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -14,6 +16,7 @@ button{
     background-color: white;
     border: 1px solid #AB2A3E;
     padding: 0.75em 0.75em;
+    /*width: 50%;*/
     font-size: 1.5ch;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -28,31 +31,22 @@ button:focus{
 }
 
 .line {
-    display: inline;
+    display: inline;    
     margin: 1%;
 }
 .user_info img{
     height: 20px;
-    border-radius: 50%;;
+    border-radius: 50%;
     border: 1px solid black;
-    margin: 5px;;
+    margin: 5px;
 }
 .user_info{
     display: flex;
     align-items: center;
 
+}
+.nombre{
+    text-align: center;
+}
 
-}
-.menu{
-    display: none;
-}
-.menu-bar{
 
-    display: none;
-}
-@media (max-width:850px){
-    .menu-bar{
-
-        display: block;
-    }
-}
