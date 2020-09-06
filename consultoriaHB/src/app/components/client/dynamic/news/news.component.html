@@ -1,1 +1,25 @@
-<p>news works!</p>
+<div class="title-cards">
+    <h2>Seccion de Noticias</h2>
+</div>
+<div class="container-card">
+
+    <div *ngFor="let noticia of noticias | paginate: { id: 'listening_pagination',
+        itemsPerPage: 6, currentPage: page, totalItems: totalRecords} " class="card">
+        <figure>
+            <img src={{noticia.imagenUrl}}>
+        </figure>
+        <div class="contenido-card">
+            <h3>{{ noticia.titulo }}</h3>
+            <time>Davila, N°14, 31 de Agosto 2020 </time>
+            <p>{{ noticia.contenido }}</p>
+            <a href='news/noticia.$id?'>Leer Noticia</a>
+        </div>
+    </div>
+</div>
+<div class="control-paginacion">
+    <pagination-controls class="paginacion" id="listening_pagination"
+                      maxSize="50"
+                      directionLinks="true"
+                      (pageChange)="page = $event">
+    </pagination-controls>
+</div>

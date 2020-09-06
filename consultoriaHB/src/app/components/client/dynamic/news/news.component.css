@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Trebuchet MS;
+}
+/*Cards*/
+.container-card{
+    display: grid;
+	width: 100%;
+    margin: auto;
+    margin-bottom: 5%;
+    grid-template-columns: repeat(3,33.3%);
+    padding: 0% 10%;
+}
+.title-cards{
+	width: 100%;
+    max-width: 1080px;
+	margin: auto;
+	padding: 20px;
+	margin-top: 20px;
+	text-align: center;
+    color: #AB2A3E;
+}
+.title-cards h2{
+    font-size: 45px;
+    text-decoration: underline;
+}
+.card{
+    display: block;
+    position: relative;
+    float: left;
+    width: 480px;
+    height: 440px;
+    margin-top: 10%;
+    margin-left: 10%;
+	border-radius: 6px;
+	overflow: hidden;
+	background:#fff;
+	box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+	transition: all 400ms ease-out;
+	cursor: default;
+}
+.card:hover{
+    box-shadow: 5px 5px 20px rgba(59, 6, 6, 0.4);
+    transform: translate(1%,-3%);
+    
+}
+.card img{
+	width: 100%;
+	height: 190px;
+}
+.card .contenido-card{
+	padding: 15px;
+	text-align: center;
+}
+.card .contenido-card h3{
+    font-size: 28px;
+	margin-bottom: 10px;
+    color: #AB2A3E;
+    text-decoration: underline;
+}
+.card .contenido-card time{
+    font-size: 16px;
+    color: #AB2A3E;
+    font-style: italic;
+}
+.card .contenido-card p{
+	line-height: 1.8;
+	color: #6a6a6a;
+	font-size: 16px;
+    margin-bottom: 5px;
+    /*Disminuir texto de la tarjeta*/
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	overflow: hidden;
+}
+.card .contenido-card a{
+	display: inline-block;
+	padding: 10px;
+    margin-top: 15px;
+    width: 40%;
+	text-decoration: none;
+	color: #AB2A3E;
+	border: 1px solid #AB2A3E;;
+	border-radius: 50px;
+	transition: all 400ms ease;
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+.card .contenido-card a:hover{
+	background: #AB2A3E;;
+	color: #fff;
+}
+.control-paginacion{
+    position: relative;
+    display: inline-block;
+    left: 40%;
+    margin: 2% 0%;
+}
+
+.paginacion /deep/ .ngx-pagination .current {
+    background: #AB2A3E;
+}
+.paginacion /deep/{
+    font-size: 20px;
+}
+@media screen and (max-width:1880px){
+    .container-card{
+        grid-template-columns: repeat(3,33.3%);
+        padding: 0% 4%;
+    }
+    .card{
+        margin-left: 5%;
+        width: 450px;
+    }
+}
+@media screen and (max-width:1680px){
+    .container-card{
+        grid-template-columns: repeat(3,33.3%);
+    }
+    .card{
+        margin-left: 5%;
+    }
+}
+
+@media screen and (max-width:1500px){
+    .container-card{
+        grid-template-columns: repeat(2,50%);
+    }
+}
+@media screen and (max-width:1200px){
+    .container-card{
+        grid-template-columns: repeat(2,50%);
+        padding: 0% 9%;
+    }
+    .card{
+        width: 350px;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width:850px){
+    .container-card{
+        grid-template-columns: repeat(1,100%);
+        padding: 0% 9%;
+    }
+    .card{
+        width: 400px;
+        margin-left: 7%;
+    }
+}
