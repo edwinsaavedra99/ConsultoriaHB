@@ -6,10 +6,11 @@ import { formatDate } from '@angular/common';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize} from "rxjs/operators"
 import { async } from '@angular/core/testing';
-import { observable, isObservable } from 'rxjs';
+import { observable, isObservable, from } from 'rxjs';
 import * as firebase from 'firebase';
 import { NotificationService } from '../../../../../services/notification/notification.service'
-
+//import { CKEditorComponent} from 'ng2-ckeditor';
+import * as Editor from 'ng2-ckeditor'
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -19,6 +20,7 @@ export class FormComponent implements OnInit {
 
   @Input() visible: boolean;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
+  
   newData : New = new New();
   today = new Date();
   tsToday = '';
@@ -27,12 +29,16 @@ export class FormComponent implements OnInit {
   selectedImage: any = null;
   isLoading : boolean= false;
   toEraseImgUrl: string =  '';
-
+  ckeditorContent : string = '';
 
 
   constructor(private formBuilder : FormBuilder,private newDataService: NewsService, 
     private storage:AngularFireStorage,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService) {
+
+
+
+  }
 
   ngOnChanges(changes: any) {
     if (this.visible && changes.visible){
@@ -79,7 +85,7 @@ export class FormComponent implements OnInit {
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(5000),
-        Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9:()., '-])*$")
+        //Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9:()., '-])*$")
       ]
     }],
     imgUrl : ['',{

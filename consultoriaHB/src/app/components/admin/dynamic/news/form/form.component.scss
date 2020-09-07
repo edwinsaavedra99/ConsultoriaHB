@@ -65,7 +65,7 @@
                     }
                 }
                 
-                input, textarea{
+                input, ckeditor{
                     float: right;
                     width: 72%;
                     padding: 0.5em;
@@ -81,6 +81,8 @@
                     box-sizing: border-box;
                     border-radius: 10px;
                     margin-left: 5px;
+                    border-style: dashed;
+                    border-color: black;
                 }
 
                 textarea{

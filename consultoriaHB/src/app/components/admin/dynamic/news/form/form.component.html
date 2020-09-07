@@ -4,12 +4,16 @@
         <div>
           <!--div class="modalHeader">
             <ng-content select="h2"></ng-content>
-            <span (click)="closeModal()">x</span>
+            <button type="button" (click)="closeModal()">Cancelar</button>
           </div-->
           <div class="modalContent">
               <!--ng-content select=".contenido"></ng-content-->
               <!--div class="contenido"></div-->
               <form (submit)="submit()" [formGroup]="dataForm">
+                <div class="botonesForm">
+                  <button type="button" (click)="closeModal()">Cancelar</button>
+                  <button type="submit" [disabled]="dataForm.invalid || isLoading">Publicar</button> 
+                </div>
                 <div class="form-group">
                   <label for="titulo">Titulo</label>
                   <input type="text" class="form-control" formControlName="titulo" name="TitleFormAreaLegal" [value]="newData.titulo">
@@ -31,8 +35,13 @@
                 </div>
                 <div class="form-group">
                   <label for="contenido">Contenido</label>
-                  <textarea type="text" class="form-control" formControlName="contenido" [value]="newData.contenido">
-                  </textarea>
+                  <!--textarea type="text" class="form-control" formControlName="contenido" [value]="newData.contenido">
+                  </textarea-->
+                  <ckeditor
+                    formControlName="contenido" [value]="newData.contenido"
+                    [config]="{ toolbar: [ [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-','NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-','Link', 'Unlink','FontSize'] ] }"
+                    [readonly]="false">
+                  </ckeditor>
                   <div *ngIf="contenido.invalid && (contenido.dirty || contenido.touched)" class="alert alert-danger">
                     <div *ngIf="contenido.errors.required">
                       El contenido es requerido
@@ -43,13 +52,13 @@
                     <div *ngIf="contenido.errors.maxlength">
                       La longitud máxima del contenido es 5000 caracteres
                     </div>
-                    <div *ngIf="contenido.errors.pattern">
+                    <!--div *ngIf="contenido.errors.pattern">
                       El contenido contiene caracteres no alfanumericos
-                    </div>
+                    </div-->
               
                   </div>
                 </div>      
-                <br> <br><br>  
+                <br> <br><br>      <br> <br><br>      <br> <br><br>      <br> <br><br>  
                 <div class=form-group>
                   <label for="imagen" >Imagen</label>
                 </div>
@@ -57,9 +66,7 @@
                   <input type="file" accept="image/*" #fileUploader (change)="showPreview($event)">
                   <input type="hidden" name="fileHidden" formControlName="imgUrl"/> 
                   <img [src]="imgUrl" width="130px" height="130px" (click)="fileUploader.click()">
-                </div>       
-                <button type="button" (click)="closeModal()">Cancelar</button>
-                <button type="submit" [disabled]="dataForm.invalid || isLoading">Publicar</button>                
+                </div>                      
               </form>
           </div>
         </div>
