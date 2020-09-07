@@ -2,32 +2,38 @@
   <label class="label_buscar">Buscar</label>  <input class="input" type="text" [(ngModel)]="title" (input)="Search()" placeholder="Ingrese su búsqueda"/>
 </div>
 <div class="table_size">
-  <table id="table">
-    <tr>
-      <th *ngFor = "let header of listHeaders">
-        {{header}}
-      </th>
-    </tr>
-    <tr *ngFor ="let info of list | paginate: { itemsPerPage: 7, currentPage: actualPage} ;let count=index">
-      <td>
-        {{count+1+((actualPage-1)*7)}}
-      </td>
-      <td>
-        {{info.titulo}}
-      </td>
-      <td>
-        {{info.fecha}}
-      </td>
-      <td>
-        {{info.hora}}
-      </td>
-      <td>
-        <i class="far fa-edit action-icon" (click)='openFormEdit(info)'></i>
-        <i class="far fa-trash-alt action-icon" (click)='deleteInfo(info.$id)'></i>
-      </td>
-    </tr>
+  <table id="table" class="table">
+    <thead>
+      <tr>
+        <th class="cell header number">#Nro</th>
+        <th class="cell header">Título</th>
+        <th class="cell header">Fecha</th>
+        <th class="cell header">Hora</th>
+        <th class="actions cell header">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="body" *ngFor ="let info of list | paginate: { itemsPerPage: 7, currentPage: actualPage} ;let count=index">
+        <td class="cell number" data-label="#Nro">
+          {{count+1+((actualPage-1)*7)}}
+        </td>
+        <td class="cell" data-label="Título">
+          {{info.titulo}}
+        </td>
+        <td class="cell" data-label="Fecha">
+          {{info.fecha}}
+        </td>
+        <td class="cell" data-label="Hora">
+          {{info.hora}}
+        </td>
+        <td class="actions cell " data-label="Acciones">
+          <i class="far fa-edit action-icon" (click)='openFormEdit(info)'></i>
+          <i class="far fa-trash-alt action-icon" (click)='deleteInfo(info.$id)'></i>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>
-<div class="pagination_control">
-  <pagination-controls class="pagination" (pageChange)="actualPage = $event"></pagination-controls>
+<div class="paginaton_position">
+  <pagination-controls class="pagination" (pageChange)="actualPage = $event" previousLabel="" nextLabel=""></pagination-controls>
 </div>

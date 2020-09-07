@@ -2,31 +2,40 @@
     <label class="label_buscar">Buscar</label>  <input class="input" type="text" [(ngModel)]="search_value" (input)="search()" placeholder="Ingrese su búsqueda"/>
 </div>
 <table id="table" class="table">
-    <tr>
-        <td class="cell header number"  >#Nro</td>
-        <td class="cell header" *ngFor = "let header of listHeaders">{{header}}</td>        
-        <td class="actions cell header">Acciones</td>
-    </tr>
+    <thead>
+        <tr>
+            <th class="cell header number">#Nro</th>
+            <th class="cell header"> Nombre</th>
+            <th class="cell header"> Correo</th>
+            <th class="cell header"> Teléfono</th>
+            <th class="cell header"> Especialidad</th>
+            <th class="actions cell header">Acciones</th>
+        </tr>
+    </thead>
 
-    <tr class="body" *ngFor ="let contact of list | paginate: { itemsPerPage: 10, currentPage: actualPage}; let count=index">
-        <td class="cell number">{{ count+1 }}</td>
-        <td class="cell">
-            {{contact.nombre}}
-        </td>
-        <td class="cell">
-            {{contact.email}}
-        </td>
-        <td class="cell">
-            {{contact.phone}}
-        </td>
-        <td class="cell">
-            {{contact.especialidad}}
-        </td>
-        <td class="actions cell">
-            <i class="far fa-edit action-icon" (click)='openFormEdit(contact)'></i>
-            <i class="far fa-trash-alt action-icon" (click)='deleteContact(contact.$id)'></i>
-        </td>
-    </tr>  
+    <tbody>
+        <tr class="body" *ngFor ="let contact of list | paginate: { itemsPerPage: 7, currentPage: actualPage}; let count=index">
+            <td class="cell number" data-label="#Nro">{{count+1+((actualPage-1)*7)}}</td>
+            <td class="cell" data-label="Nombre">
+                {{contact.nombre}}
+            </td>
+            <td class="cell" data-label="Correo">
+                {{contact.email}}
+            </td>
+            <td class="cell" data-label="Teléfono">
+                {{contact.phone}}
+            </td>
+            <td class="cell" data-label="Especialidad">
+                {{contact.especialidad}}
+            </td>
+            <td class="actions cell" data-label="Acciones">
+                <i class="far fa-edit action-icon" (click)='openFormEdit(contact)'></i>
+                <i class="far fa-trash-alt action-icon" (click)='deleteContact(contact.$id)'></i>
+            </td>
+        </tr>  
+    </tbody>
+
+
 </table>
 <div class="paginaton_position">
     <pagination-controls class="pagination" (pageChange)="actualPage = $event" previousLabel="" nextLabel="">

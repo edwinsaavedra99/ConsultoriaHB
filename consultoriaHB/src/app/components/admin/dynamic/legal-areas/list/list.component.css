@@ -1,49 +1,107 @@
+.table{
+  width: 100%;
+  position: relative;
+  border-collapse: collapse;
+  font-size: 1.62ch;
+}
+
+.actions{
+  width: 8em;
+  text-align: center;
+}
+.cell{
+  border: 1px solid #ABABAB;
+  padding: 0.65em;
+  box-sizing: border-box;
+}
+
+.header{
+  font-weight: bolder;
+}
+
+.body:hover{
+  background-color: #EEEEEE;
+}
+.number{
+  width: 1em;
+  text-align: center;
+}
+.action-icon{
+  margin: 0.4em;
+  cursor: pointer;
+}
+.action-icon:hover{
+  color: #AB2A3E;
+}
+.paginaton_position{
+  text-align: right;
+}
+.pagination{
+  position: relative;
+  font-size: 0.65em;
+}
+.current, .btn-info {
+  background:black !important;
+  border: transparent !important;
+  border-radius: 20px !important;
+}
+.pagination /deep/ .ngx-pagination .current {
+  background: #AB2A3E;
+}
 .search{
-    text-align: end;
-    padding-bottom: 10px;
+  text-align: end;
+  padding-bottom: 1em;
+}
+.label_buscar{
+  padding-right: 1em;
+  font-size: 1.75ch;
+}
+.input{
+  border-radius: 30px;
+  font-size: 1.75ch;
+  padding: 0.5em;
+  border: 1px solid #ABABAB;
+  width: 35%;
+  min-width: 150px;
+}
+.table_size{
+  height: 340px;
+}
+
+.table th{
+  text-align: left;
+}
+
+
+@media screen and (max-width: 600px) {
+  .table thead{
+		display: none;
+	}
+
+  .table, .table tbody, .table tr, .table td{
+		display: block;
+		width: 100%;
   }
-  .label_buscar{
-    padding-right: 15px;
-    font-size: 20px;
+  .table tr{
+		margin-bottom:15px;
   }
-  .input{
-    border-radius: 30px;
-    width: 300px;
-    height: 30px;
-    font-size: 20px;
-    padding-left: 10px;
+  .table td{
+		text-align: right;
+		padding-left: 50%;
+		text-align: right;
+		position: relative;
   }
-  #table {
-      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-  
-    #table td, #table th {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-    
-    #table tr:nth-child(even){background-color: #f2f2f2;}
-    
-    #table tr:hover {background-color: #ddd;}
-    
-    #table th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: #AB2A3E;
-      color: white;
-    }
-    .pagination_control{
-      text-align: end;
-      padding-top: 10px;
-  
-    }
-  
-  .pagination /deep/ .ngx-pagination .current {
-      background: #AB2A3E;
+  .table td::before{
+		content: attr(data-label);
+		position: absolute;
+		left:0;
+		width: 50%;
+		padding-left:15px;
+		font-size:15px;
+		font-weight: bold;
+		text-align: left;
   }
   .table_size{
-    height: 300px;
+    height: auto;
   }
+}
