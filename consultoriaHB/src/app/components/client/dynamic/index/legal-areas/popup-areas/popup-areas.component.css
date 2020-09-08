@@ -1,7 +1,7 @@
 .container-all{
     transition: all 900ms;
     width: 100%;
-    height: 130vh;
+    height: 100%;
     position: absolute;
     padding: 40px;
     transition: all 600ms;
@@ -15,11 +15,11 @@
     visibility: visible;
     width: 90%;
     max-width: 720px;
-    max-height: 400px;
+    max-height: 40%;
     position: relative;
     display: flex;
     background: #AB2A3E;
-    top: 10%;
+    top: 30%;
     left: 50%;
     transform: rotate(0deg) translate(-50%, 20%);
     transition: all 900ms;
@@ -27,7 +27,9 @@
 }
 
 img{
-    width: 50%;
+    margin: 12% 5%;
+    width: 30%;
+    height: 30%;
     background-size: cover;
     background-position: center;
 }
@@ -38,13 +40,13 @@ img{
 }
 .container-text h1{
     text-align : center;
-    font-size: 32px;
+    font-size: 30px;
     color:white;
 }
 .container-text p{
     text-align : justify;
     margin-top: 20px;
-    font-size: 21px;
+    font-size: 20px;
     color:white;
 }
 .btn-close-popup{
@@ -68,11 +70,28 @@ img{
     color: white;
 }
 
+@media (max-width:600px){
+    img{
+        margin: 30% 0%;
+    }
+    .btn-close-popup{
+        padding: 15px;
+    }
+    .popup{
+        top: 20%;
+        max-height: 50%;
+    }
+    .container-all{
+        max-height: 90%;
+    }
+}
+
 @media (max-width:1400px){
     .btn-close-popup{
         width: 80px;
         height: 38px;
         font-size: 20px;
+        
     }
     .container-text p{
         margin-top: 13px;
@@ -84,8 +103,10 @@ img{
     }
     .popup{
         left: 43%;
+        max-height: 50%;
     }
     .container-all{
-        height: 170vh;
+        max-height: 90%;
     }
 }
+
