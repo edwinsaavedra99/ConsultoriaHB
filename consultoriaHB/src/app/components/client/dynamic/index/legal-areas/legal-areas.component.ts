@@ -11,7 +11,7 @@ import { LegalAreasService } from '../../../../../services/legal_areas/legal-are
 })
 export class LegalAreasComponent implements OnInit {
 
-  @Input() area:any;
+  @Input() area:AreaLegal;
   listArea: AreaLegal[]=[];
   list: AreaLegal[];
 
