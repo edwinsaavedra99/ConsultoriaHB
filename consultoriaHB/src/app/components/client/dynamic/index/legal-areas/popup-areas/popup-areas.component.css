@@ -87,10 +87,17 @@ img{
         font-size: 26px;
 
     }
+    img{
+        margin: 10% 5%;
+        width: 30%;
+        height: 40%;
+        background-size: cover;
+        background-position: center;
+    }
     .popup{
         left: 50%;
         top: 35%;
-        height: 45%;
+        height: 50%;
         
     }
 }
@@ -110,9 +117,9 @@ img{
 
     }
     .popup{
-        max-height: 40%;
-        top: 35%;
         left: 50%;
+        top: 35%;
+        height: 50%;
     }
 }
 
