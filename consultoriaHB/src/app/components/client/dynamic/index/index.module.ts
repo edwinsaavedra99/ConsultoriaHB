@@ -42,7 +42,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     WriteUsComponent,
     TarjetaComponent,
     PopupAreasComponent,
-    OneNewComponent
+    OneNewComponent,
     
   ],
   providers: []

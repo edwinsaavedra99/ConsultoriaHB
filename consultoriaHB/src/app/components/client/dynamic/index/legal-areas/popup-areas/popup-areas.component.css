@@ -1,13 +1,13 @@
 .container-all{
     transition: all 900ms;
-    position: absolute
-    top= -200px;
     width: 100%;
-    height: 100vh;
+    height: 520%;
     padding: 40px;
+    position: absolute;
+    top: -100px;
     transition: all 600ms;
     z-index:4;
-    background: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.8);
     visibility: visible;
     opacity: 1;
     
@@ -20,7 +20,7 @@
     position: relative;
     display: flex;
     background: #AB2A3E;
-    top: 30%;
+    top: 40%;
     left: 50%;
     transform: rotate(0deg) translate(-50%, 20%);
     transition: all 900ms;
@@ -70,20 +70,28 @@ img{
     background: #AB2A3E;;
     color: white;
 }
-
-@media (max-width:600px){
-    img{
-        margin: 30% 0%;
-    }
+@media (max-width:1600px){
     .btn-close-popup{
-        padding: 15px;
+        width: 80px;
+        height: 38px;
+        font-size: 20px;
+        
+    }
+    .container-text p{
+        margin-top: 13px;
+        font-size: 18px;
+    }
+    .container-text h1{
+        font-size: 26px;
+
     }
     .popup{
-        top: 20%;
+        left: 43%;
         max-height: 50%;
+        top: 46%;
     }
     .container-all{
-        max-height: 90%;
+        max-height: 320%;
     }
 }
 
@@ -104,10 +112,86 @@ img{
     }
     .popup{
         left: 43%;
-        max-height: 50%;
+        max-height: 20%;
+        top: 46%;
     }
     .container-all{
-        max-height: 100%;
+        height: 275%;
     }
 }
+@media (max-width:1024px){
+    .btn-close-popup{
+        width: 80px;
+        height: 38px;
+        font-size: 20px;
+        
+    }
+    .container-text p{
+        margin-top: 13px;
+        font-size: 18px;
+    }
+    .container-text h1{
+        font-size: 26px;
+
+    }
+    .popup{
+        left: 43%;
+        max-height: 20%;
+        top: 46%;
+    }
+    .container-all{
+        height: 275%;
+    }
+}
+@media (max-width:768px){
+    .btn-close-popup{
+        width: 80px;
+        height: 38px;
+        font-size: 20px;
+        
+    }
+    .container-text p{
+        margin-top: 13px;
+        font-size: 18px;
+    }
+    .container-text h1{
+        font-size: 26px;
+
+    }
+    .popup{
+        left: 43%;
+        max-height: 20%;
+        top: 46%;
+    }
+    .container-all{
+        height: 295%;
+    }
+}
+@media (max-width:425px){
+    .btn-close-popup{
+        width: 80px;
+        height: 38px;
+        font-size: 20px;
+        
+    }
+    .container-text p{
+        margin-top: 13px;
+        font-size: 18px;
+    }
+    .container-text h1{
+        font-size: 26px;
+
+    }
+    .popup{
+        left: 43%;
+        max-height: 20%;
+        top: 60%;
+    }
+    .container-all{
+        height: 255%;
+    }
+}
+
+
+
 

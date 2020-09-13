@@ -9,3 +9,10 @@ body{
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;}
+.pantalla-emergente{
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    z-index:4;
+}

@@ -41,7 +41,6 @@ export class LegalAreasComponent implements OnInit {
     recibirData(dato){
       this.activar=true;
       this.area=dato;
-      
     }
     apagarEmergente(apagar){
       this.activar=false;
