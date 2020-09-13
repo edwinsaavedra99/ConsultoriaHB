@@ -20,7 +20,7 @@
     max-width: 720px;
     max-height: 40%;
     position: fixed;
-    top: 40%;
+    top: 35%;
     left: 50%;
     display: flex;
     background: #AB2A3E;
@@ -89,8 +89,9 @@ img{
     }
     .popup{
         left: 50%;
+        top: 35%;
         height: 45%;
-        top: 46%;
+        
     }
 }
 @media (max-width:940px){
@@ -110,7 +111,7 @@ img{
     }
     .popup{
         max-height: 40%;
-        top: 45%;
+        top: 35%;
         left: 50%;
     }
 }
