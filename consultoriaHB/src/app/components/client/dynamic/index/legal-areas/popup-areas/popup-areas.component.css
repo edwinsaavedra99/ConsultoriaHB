@@ -3,14 +3,15 @@
     width: 100%;
     height: 520%;
     padding: 40px;
-    position: absolute;
+    position: fixed;
     top: -100px;
+    bottom: 0;
     transition: all 600ms;
     z-index:4;
     background-color: rgba(0,0,0,0.8);
     visibility: visible;
     opacity: 1;
-    bottom: end;
+    
     
 }
 .popup{
@@ -18,11 +19,11 @@
     width: 90%;
     max-width: 720px;
     max-height: 40%;
-    position: relative;
-    display: flex;
-    background: #AB2A3E;
+    position: fixed;
     top: 40%;
     left: 50%;
+    display: flex;
+    background: #AB2A3E;
     transform: rotate(0deg) translate(-50%, 20%);
     transition: all 900ms;
     z-index:5;
@@ -71,29 +72,6 @@ img{
     background: #AB2A3E;;
     color: white;
 }
-@media (max-width:1600px){
-    .btn-close-popup{
-        width: 80px;
-        height: 38px;
-        font-size: 20px;
-        
-    }
-    .container-text p{
-        margin-top: 13px;
-        font-size: 18px;
-    }
-    .container-text h1{
-        font-size: 26px;
-
-    }
-    .popup{
-        left: 43%;
-        max-height: 50%;
-        top: 46%;
-    }
-
-}
-
 @media (max-width:1400px){
     .btn-close-popup{
         width: 80px;
@@ -111,39 +89,11 @@ img{
     }
     .popup{
         left: 43%;
-        max-height: 20%;
+        height: 50%;
         top: 46%;
     }
-
 }
-/**@media (max-width:1024px){
-    .btn-close-popup{
-        width: 80px;
-        height: 38px;
-        font-size: 20px;
-        
-    }
-    .container-text p{
-        margin-top: 13px;
-        font-size: 18px;
-    }
-    .container-text h1{
-        font-size: 26px;
-        
-    }
-    .popup{
-        left: 43%;
-        max-height: 20%;
-        top: 46%;
-    }
-    .container-all{
-        height: auto;
-        bottom: 0px;
-        margin-bottom: 0px;
-        background-attachment: fixed;
-    }
-}
-@media (max-width:768px){
+@media (max-width:940px){
     .btn-close-popup{
         width: 80px;
         height: 38px;
@@ -159,41 +109,11 @@ img{
 
     }
     .popup{
-        left: 43%;
-        max-height: 20%;
+        max-height: 40%;
         top: 46%;
-    }
-    .container-all{
-        height: 295%;
-        bottom: end;
+        left: 50%;
     }
 }
-@media (max-width:425px){
-    .btn-close-popup{
-        width: 80px;
-        height: 38px;
-        font-size: 20px;
-        
-        
-    }
-    .container-text p{
-        margin-top: 13px;
-        font-size: 18px;
-    }
-    .container-text h1{
-        font-size: 26px;
-
-    }
-    .popup{
-        left: 43%;
-        max-height: 20%;
-        top: 60%;
-    }
-    .container-all{
-        height: 255%;
-        bottom: end;
-    }
-}**/
 
 
 
