@@ -133,3 +133,63 @@ a{
     font-size: 1.5ch;
     text-align: justify;
 }
+@media  screen and (max-width: 1024px) {
+    .content .login_form{
+        padding-left: 0.0em;
+    }
+}
+
+@media  screen and (max-width: 900px) {
+    .content .login_form{
+        padding-left: 2em;
+        width: 75%;
+    }
+    .content .image {
+        width: 25%;
+    }
+}
+
+@media  screen and (max-width: 700px) {
+    .content .login_form{
+        padding-left: 0em;
+    }
+}
+
+@media  screen and (max-width: 600px) {
+    .content .login_form{
+        padding-left: 2em;
+        width: 100%;
+    }
+    .content .image {
+        width: 0%;
+    }
+}
+
+@media  screen and (max-width: 500px) {
+    .content .login_form{
+        padding-left: 0em;
+    }
+}
+
+@media  screen and (max-width: 450px) {
+    .content .login_form{
+        padding-left: 2em;
+    }
+
+    .content{
+        background-color: white;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0%;
+        top: 0%;
+        border: #6a6a6a 0px solid;
+        border-radius: 0px ;
+    }
+}
+@media  screen and (max-width: 400px) {
+    .content .login_form{
+        padding-left: 0em;
+        padding-right: 0em;
+    }
+}
