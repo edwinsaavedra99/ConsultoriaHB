@@ -1,7 +1,26 @@
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(119, 118, 118); 
+  }
 :host {
     .modal {
         position: fixed;
         display: table;
+      
         width: 100%;
         height: 100%;
         z-index: 100;
@@ -20,14 +39,34 @@
             box-shadow: 0 0 40px rgba(0, 0, 0, .4);;
             box-sizing: border-box;
         }
+       
     }
+    @media (max-width:800px){
+        .container {
+            display: table-cell;
+            & > div {
+                font-family: 'Roboto', sans-serif;
+                width: 87%;
+                height: auto;
+                background-color: #fff;
+                padding: 1rem;
+                margin-left: 3%;
+                box-shadow: 0 0 3000px rgba(0, 0, 0, 1);;
+                box-sizing: border-box;
+            }
+           
+        }
+    }
+    
     .modalContent {
-        padding-top: 1rem;
+        padding-top: 2rem;
         width: 100%;
 
         form{
             width: 100%;
-            
+            max-height:450px;
+            overflow:auto;
+            /*overflow: scroll;*/
             .form-group{
                 width: 100%;
                 padding: 1em 1em;;
@@ -54,7 +93,14 @@
                     color: #6a6a6a;
                     background-color: #FBFBFB;
                 }
-
+                @media (max-width:800px){
+                    input, textarea{
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                        width: 100%;
+                    }
+                    
+                }
                 
                 
             }
@@ -74,6 +120,32 @@
                 border-radius: 10px;
                 border: 1px solid #AB2A3E;
                 min-width: 100px;
+            }
+            @media (max-width:650px){
+                button{
+                    padding: 1em;
+                    margin: 1em;
+                    width: 95%;
+                }
+            
+            }
+
+            @media (max-width:550px){
+                button{
+                    padding: 1em;
+                    margin: 1em;
+                    width: 93%;
+                }
+            
+            }
+
+            @media (max-width:450px){
+                button{
+                    padding: 1em;
+                    margin: 1em;
+                    width: 90%;
+                }
+            
             }
 
             button:hover{
@@ -107,7 +179,7 @@
             cursor: pointer;
             font-size: 1.3rem;
             &:hover {
-                color: orange;
+                color: #AB2A3E;
             }
         }
     }

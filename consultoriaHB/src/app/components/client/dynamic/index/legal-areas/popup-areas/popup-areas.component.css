@@ -1,14 +1,17 @@
 .container-all{
     transition: all 900ms;
     width: 100%;
-    height: 100%;
-    position: absolute;
+    height: 520%;
     padding: 40px;
+    position: fixed;
+    top: -100px;
+    bottom: 0;
     transition: all 600ms;
     z-index:4;
-    background: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.8);
     visibility: visible;
     opacity: 1;
+    
     
 }
 .popup{
@@ -16,11 +19,11 @@
     width: 90%;
     max-width: 720px;
     max-height: 40%;
-    position: relative;
+    position: fixed;
+    top: 35%;
+    left: 50%;
     display: flex;
     background: #AB2A3E;
-    top: 30%;
-    left: 50%;
     transform: rotate(0deg) translate(-50%, 20%);
     transition: all 900ms;
     z-index:5;
@@ -69,23 +72,6 @@ img{
     background: #AB2A3E;;
     color: white;
 }
-
-@media (max-width:600px){
-    img{
-        margin: 30% 0%;
-    }
-    .btn-close-popup{
-        padding: 15px;
-    }
-    .popup{
-        top: 20%;
-        max-height: 50%;
-    }
-    .container-all{
-        max-height: 90%;
-    }
-}
-
 @media (max-width:1400px){
     .btn-close-popup{
         width: 80px;
@@ -101,12 +87,42 @@ img{
         font-size: 26px;
 
     }
-    .popup{
-        left: 43%;
-        max-height: 50%;
+    img{
+        margin: 10% 5%;
+        width: 30%;
+        height: 40%;
+        background-size: cover;
+        background-position: center;
     }
-    .container-all{
-        max-height: 90%;
+    .popup{
+        left: 50%;
+        top: 35%;
+        height: 50%;
+        
     }
 }
+@media (max-width:940px){
+    .btn-close-popup{
+        width: 80px;
+        height: 38px;
+        font-size: 20px;
+        
+    }
+    .container-text p{
+        margin-top: 13px;
+        font-size: 18px;
+    }
+    .container-text h1{
+        font-size: 26px;
+
+    }
+    .popup{
+        left: 50%;
+        top: 35%;
+        height: 50%;
+    }
+}
+
+
+
 

@@ -11,7 +11,7 @@ import { LegalAreasService } from '../../../../../services/legal_areas/legal-are
 })
 export class LegalAreasComponent implements OnInit {
 
-  @Input() area:any;
+  @Input() area:AreaLegal;
   listArea: AreaLegal[]=[];
   list: AreaLegal[];
 
@@ -41,7 +41,6 @@ export class LegalAreasComponent implements OnInit {
     recibirData(dato){
       this.activar=true;
       this.area=dato;
-      
     }
     apagarEmergente(apagar){
       this.activar=false;
