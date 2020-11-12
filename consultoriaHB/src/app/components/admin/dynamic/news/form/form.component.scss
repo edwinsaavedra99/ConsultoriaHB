@@ -1,114 +1,117 @@
 :host {
     .modal {
-        /*position: fixed;*/
-        /**display: table;*/
-        //margin-right: 100rem;
-        /*margin-right: 10%;*/
-        /*margin-top: 1rem;*/
         border-top: 1px groove #6a6a6a3a;
         width: 100%;
         height: 100%;
         float: center;
-        //height: 100%;
         z-index: 100;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         background-color: rgba(255, 255, 255, .1);
     }
     .container {
-        /*display: table-cell;*/
-        //& > div {
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            //width: 40%;
             height: 100%;
             padding-top: 1.5rem;
             padding-left: 1rem;
             padding-right: 2rem;
             background-color: #fff;
-            //padding: 1rem;
-            //margin-left: 12%;
-            /*box-shadow: 0 0 1px rgba(0, 0, 0);*/
             box-sizing: border-box;
-            /*border-bottom-style: none;
-            border-top-style: groove;
-            border-top-color: #6a6a6a;*/
-        //}
     }
     @media (max-width:1300px){
         .container {
             padding-left: 0rem;
+            padding-right: 1rem;
             border-top: none;
+        }
+    
+    }
+    @media (max-width:900px){
+        .container {
+            padding-right: 1rem;
         }
     
     }
     
     .modalContent {
-        //padding-top: 1rem;
-        //width: 100%;
-        //height: 100%;
-
-        form{
-          //  width: 100%;
-            
+        form{            
             .form-group{
-                //width: 100%;
                 padding: 1em 1em ;
                 box-sizing: border-box;
-                align-items: center;
-
-                .form-input{
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 0.5em;
-
-                    .input-label{
-                        width: 25%;
-                    }
-                }
-                
-                input, ckeditor{
-                    float: right;
-                    width: 72%;
-                    padding: 0.5em;
-                    box-sizing: border-box;
-                    border-radius: 10px;
-                    margin-left: 5px;
-                    color: #6a6a6a;
-                    background-color: #FBFBFB;
-                }
-                .imagenFile{
-                    float: right;
-                    padding: 0.5em;
-                    box-sizing: border-box;
-                    border-radius: 10px;
-                    margin-left: 5px;
-                    border-style: dashed;
-                    border-color: black;
-                }
-
-                textarea{
-                    resize: vertical;
-                    min-height: 60px;
-                    max-height: 600px;
-                }
-            
-                
+                display: flex;
             }
-
-            .buttons{
-                text-align: right;
+            .derecha{
+                padding: 1em 1em ;
+                display: flex;
+                flex-direction: row-reverse;
             }
-
+            label{
+                flex-grow: 1;
+            }
+            .imagenDragDrop{
+                float: right;
+                width: 80%;
+                padding: 1em;
+                box-sizing: border-box;
+                margin-left: 5px;
+                border: 2px dashed #ccc;
+                color: black;
+                -webkit-transition: 0.3s;
+                transition: 0.3s;
+                outline: none;  
+                text-align: center;
+            }
+            .imagenDragDrop:hover{
+                border: 2px dashed #ab2a3dbd;
+            }
+            .inputItem, .ckeditor{
+                float: right;
+                width: 80%;
+                padding: 0.5em;
+                box-sizing: border-box;
+                margin-left: 5px;
+                border: 2px solid #ccc;
+                color: black;
+                -webkit-transition: 0.3s;
+                transition: 0.3s;
+                outline: none;
+            }
+            .inputItem[type=text]:hover{
+                border: 3px solid #ab2a3dbd;
+            }
+            .inputItem[type=text]:focus{
+                border: 3px solid #ab2a3dbd;
+            }
+            .inputItemCKeditor{
+                box-sizing: border-box;
+                margin-bottom: 1rem;
+                border: 1px solid #ccc;
+                float: right;
+                width: 80%;
+                margin-left: 5px;
+                -webkit-transition: 0.3s;
+                transition: 0.3s;
+                outline: none;
+            }
+            .inputItemCKeditor:hover{
+                border: 3px solid #ab2a3dbd;
+            }
+            textarea{
+                resize: vertical;
+                min-height: 60px;
+                max-height: 600px;
+            }
             button{
                 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
                 padding: 1em;
-                margin: 1em;
+                margin-left: 1em;
+                //margin-top: 1em;
                 width: 15%;
-                align-self: flex-end;
                 background-color: #AB2A3E;
                 color: white;
                 border-radius: 10px;
                 border: 1px solid #AB2A3E;
                 min-width: 100px;
+                cursor:pointer;
             }
 
             button:hover{
@@ -127,22 +130,51 @@
             button:disabled:hover{
                 color: white;
             }
-
+            @media (max-width:800px){
+                .form-group{
+                    display: block;
+                }
+                .inputItem, .ckeditor{
+                    width: 100%;
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                }
+                .inputItemCKeditor{
+                    width: 100%;
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                }
+                .imagenDragDrop{
+                    width: 100%;
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                }
+            }
+            @media (max-width:600px){
+                .derecha{
+                    display: block;
+                    
+                }
+                button{
+                    width: 100%;
+                    margin-bottom: 1rem;
+                    padding: 1em;
+                    margin-left: 0em;
+                }
+            }
+            
         }
     }
     .modalHeader {
         position: relative;
-        h2 {
-            margin: 0;
+        h2,h5 {
+            margin: 1rem;
         }
         span {
-            position: absolute;
-            top: 0;
-            right: 0;
-            cursor: pointer;
-            font-size: 1.3rem;
+            
             &:hover {
                 color: #AB2A3E;
+                cursor:pointer;
             }
         }
     }
@@ -150,6 +182,9 @@
     .alert-danger{
         font-size: 0.8em;
         color: red;
+        padding-right: 1em;
+        display: flex;
+        flex-direction: row-reverse;
         text-align: justify;
     }
 }

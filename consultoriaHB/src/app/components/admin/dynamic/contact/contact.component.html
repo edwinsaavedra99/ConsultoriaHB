@@ -2,16 +2,16 @@
     <app-form  [visible]="myModal" (close)="cerrarModal($event)">
     </app-form>
 </div>
-<div class="title_content section">
+<div class="title_content section" *ngIf="!myModal">
     <span class="title_section content">Contacto: Compañia y Abogados</span>
     <div class="button content">
         <button (click)="mostrarModal()"><i class="fas fa-plus"></i> Agregar Contacto</button>
     </div>
 </div>
-<div class="section">
+<div class="section" *ngIf="!myModal">
     <app-company></app-company>
 </div>
-<div class="section">
+<div class="section" *ngIf="!myModal">
     <app-list-Lawers (dataItemContact)="dataInfoTraslate($event)"></app-list-Lawers>
  
 </div>

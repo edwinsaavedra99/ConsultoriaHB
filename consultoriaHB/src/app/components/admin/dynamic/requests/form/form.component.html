@@ -2,18 +2,14 @@
   <div class="container">
     <div>
       <div class="modalHeader">
-        <ng-content select="h2"></ng-content>
-        <span (click)="closeModal()"><i class="fas fa-times	"></i></span>
+        <h2>Envio de Mensaje a Solicitante</h2>
+        <h5> <span  (click)="closeModal()">Solicitudes</span> / Envio de Mensaje a Solicitante</h5>
       </div>
       <div class="modalContent">
         <form [formGroup]="dataForm" (submit)="submit()">
-         
-
-          <div class="form-group">
-            <div class="form-input">
-              <div class="input-label"><label for="receptor">Correo: </label></div>
-              <input type="text" class="form-control" id="receptor" formControlName="receptor" [value]="getRequest()">
-            </div>
+          <div class="form-group">            
+             <label for="receptor">Correo: </label>
+              <input type="text" class="inputItem form-control" id="receptor" formControlName="receptor" [value]="getRequest()">           
             <!--div *ngIf="receptor().invalid && (receptor().dirty || receptor().touched)" class="alert alert-danger">
               <div *ngIf="receptor().errors.required">
                 El correo electronico es necesario.
@@ -25,21 +21,22 @@
           </div>
 
           <div class="form-group">
-            <div class="form-input">
-              <div class="input-label"><label for="message">Mensaje: </label></div>
-              <textarea type="text" class="form-control" id="message" formControlName="message" >
+              <label for="message">Mensaje: </label>
+              <textarea style="min-height:300px;" type="text" class="inputItem form-control" id="message" formControlName="message" >
               </textarea>
-            </div>
-            <div *ngIf="message().invalid && (message().dirty || message().touched)" class="alert alert-danger">
-              <div *ngIf="message().errors.required">
-                El campo es necesario.
-              </div>
-            </div>
           </div>
-          <div class="buttons">
-            <button type="button" (click)="closeModal()" >Cancelar</button>
-            <button type="submit" [disabled]="dataForm.invalid" >Enviar</button>
-          </div>      
+          <div *ngIf="message().invalid && (message().dirty || message().touched)" class="alert alert-danger">
+            <div *ngIf="message().errors.required">
+              El campo es necesario.
+            </div>
+          </div> 
+          <div class="derecha">
+            <div class="botonesForm">
+              <button type="button" (click)="closeModal()">Cancelar</button>
+              <button type="submit" [disabled]="dataForm.invalid">Enviar</button> 
+            </div> 
+          <br><br><br>
+         </div>   
         </form>
       </div>
     </div>

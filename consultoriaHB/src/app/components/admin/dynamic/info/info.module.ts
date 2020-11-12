@@ -9,15 +9,17 @@ import { ListComponentInfo } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import { FormInfoModule } from './form/form.module';
 @NgModule({
   declarations: [
     InfoComponent,
-    FormComponent,
+    //FormComponent,
     ListComponentInfo
   ],
   imports: [
     CommonModule,
     FormsModule,
+    FormInfoModule,
     RouterModule,
     ReactiveFormsModule,
     NgxPaginationModule

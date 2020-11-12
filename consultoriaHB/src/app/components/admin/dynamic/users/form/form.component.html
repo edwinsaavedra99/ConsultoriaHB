@@ -2,68 +2,65 @@
   <div class="container">
     <div>
       <div class="modalHeader">
-        <ng-content select="h2"></ng-content>
-        <span (click)="closeModal()"><i class="fas fa-times	"></i></span>
+        <h2>Registro de Usuario</h2>
+        <h5> <span  (click)="closeModal()">Cuentas de Usuario</span> / Registro de Usuario</h5>
       </div>
       <div class="modalContent">
         <form [formGroup]="dataForm" (submit)="submit()">
           <div class="form-group">
-            <div class="form-input">
-              <div class="input-label"><label for="fullname">Nombre Completo: </label></div>
-              <input type="text" id="fullname" class="form-control" formControlName="fullname" [(ngModel)]="getUser().fullname">
-            </div>
-            <div *ngIf="fullname().invalid && (fullname().dirty || fullname().touched)" class="alert alert-danger">
-              <div *ngIf="fullname().errors.required">
-                Por favor, ingrese su Nombre.
-              </div>
-              <div *ngIf="fullname().errors.minlength">
-                Su nombre debe tener por lo menos 10 caracteres.
-              </div>
-              <div *ngIf="fullname().errors.maxlength">
-                Su nombre no debe exceder los 60 caracteres.
-              </div>
-              <div *ngIf="fullname().errors.pattern">
-                Su nombre no debe contener simbolos.
-              </div>
-            </div>
+              <label for="fullname">Nombre Completo: </label>
+              <input type="text" id="fullname" maxlength="60" class="inputItem form-control" formControlName="fullname" [(ngModel)]="getUser().fullname">           
           </div>
-
+          <div *ngIf="fullname().invalid && (fullname().dirty || fullname().touched)" class="alert alert-danger">
+            )
+            <div *ngIf="fullname().errors.required">
+              Por favor, ingrese su Nombre . 
+            </div>
+            <div *ngIf="fullname().errors.minlength">
+              Su nombre debe tener por lo menos 10 caracteres . 
+            </div>
+            <div *ngIf="fullname().errors.maxlength">
+              Su nombre no debe exceder los 60 caracteres . 
+            </div>
+            <div *ngIf="fullname().errors.pattern">
+              Su nombre no debe contener simbolos . 
+            </div>
+            (
+          </div>
           <div class="form-group">
-            <div class="form-input">
-              <div class="input-label"><label for="email">Correo: </label></div>
-              <input type="email" class="form-control" id="email" formControlName="email" [(ngModel)]="getUser().email">
+              <label for="email">Correo: </label>
+              <input type="text" class="inputItem form-control" id="email" formControlName="email" [(ngModel)]="getUser().email">
+          </div>
+          <div *ngIf="email().invalid && (email().dirty || email().touched)" class="alert alert-danger">
+            <div *ngIf="email().errors.required">
+              Por favor, ingrese su correo electronico.
             </div>
-            <div *ngIf="email().invalid && (email().dirty || email().touched)" class="alert alert-danger">
-              <div *ngIf="email().errors.required">
-                Por favor, ingrese su correo electronico.
-              </div>
-              <div *ngIf="email().errors.email">
-                Correo electronico no valido.
-              </div>
+            <div *ngIf="email().errors.email">
+              Correo electronico no valido.
             </div>
           </div>
-
-          <div class="form-group" [hidden]="getUser().$id != undefined" >
-            <div class="form-input">
-              <div class="input-label"><label for="password1">Contraseña: </label></div>
-              <input type="password" class="form-control" id="password" formControlName="password" [(ngModel)]="getUser().password">
+          <div class="form-group" [hidden]="getUser().$id != undefined" >            
+              <label for="password1">Contraseña: </label>
+              <input type="password" class="inputItem form-control" id="password" formControlName="password" [(ngModel)]="getUser().password">
+          </div>
+          <div *ngIf="password1().invalid && (password1().dirty || password1().touched)" class="alert alert-danger">
+            <div *ngIf="password1().errors.required">
+              Por favor, ingrese una Contraseña.
             </div>
-            <div *ngIf="password1().invalid && (password1().dirty || password1().touched)" class="alert alert-danger">
-              <div *ngIf="password1().errors.required">
-                Por favor, ingrese una Contraseña.
-              </div>
-              <div *ngIf="password1().errors.pattern">
-                Su Contraseña debe tener al menos un digito.
-              </div>
-              <div *ngIf="password1().errors.minlength">
-                Su Contraseña debe tener al menos 6 caracteres.
-              </div>
+            <!--div *ngIf="password1().errors.pattern">
+              Su Contraseña debe tener al menos un digito.
+            </div-->
+            <div *ngIf="password1().errors.minlength">
+              Su Contraseña debe tener al menos 6 caracteres.
             </div>
           </div>
-          <div class="buttons">
-            <button type="button" (click)="closeModal()" >Cancelar</button>
-            <button type="submit" [disabled]="dataForm.invalid" >Publicar</button>
-          </div>      
+          <div class="derecha">
+            <div class="botonesForm">
+              <button type="button" (click)="closeModal()">Cancelar</button>
+              <button type="submit" [disabled]="dataForm.invalid || isLoading">Publicar</button> 
+            </div> 
+          <br><br><br>
+         </div>        
         </form>
       </div>
     </div>

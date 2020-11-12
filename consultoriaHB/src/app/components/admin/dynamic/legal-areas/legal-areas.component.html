@@ -3,12 +3,12 @@
     </app-form>
 </div>
 
-<div class="title_content section">
+<div class="title_content section" *ngIf="!myModal">
     <span class="title_section content">Areas Legales</span>
     <div class="button content">
         <button (click)="mostrarModal()"><i class="fas fa-plus"></i> Agregar</button>
     </div>
 </div>
-<div class="section">
+<div class="section" *ngIf="!myModal">
     <app-list-areas (dataItemArea)="dataAreaTraslate($event)" ></app-list-areas>
 </div>

@@ -4,12 +4,12 @@
 </div>
 
 
-<div class="title_content section">
+<div class="title_content section" *ngIf="!myModal">
     <span class="title_section content">Información de la Pagina Web</span>
     <div class="button content">
         <button (click)="mostrarModal()"><i class="fas fa-plus"></i> Agregar</button>
     </div>
 </div>
-<div class="section">
+<div class="section" *ngIf="!myModal">
     <app-list-info  (dataItemInfo)="dataInfoTraslate($event)"  ></app-list-info>
 </div>

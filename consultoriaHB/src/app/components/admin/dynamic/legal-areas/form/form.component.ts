@@ -12,11 +12,12 @@ import { observable, isObservable } from 'rxjs';
 import * as firebase from 'firebase';
 import { NotificationService } from '../../../../../services/notification/notification.service'
 
+import * as Editor from 'ng2-ckeditor'
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['../../info/form/form.component.scss']
+  styleUrls: ['../../news/form/form.component.scss']
 })
 export class FormComponent implements OnInit {
 
@@ -29,6 +30,7 @@ export class FormComponent implements OnInit {
   imgUrl : string = this.imgSrc;
   selectedImage: any = null;
   isLoading : boolean= false;
+  ckeditorContent : string = '';
   toEraseImgUrl: string =  '';
   NoImage :boolean = false;
 
@@ -71,17 +73,17 @@ export class FormComponent implements OnInit {
     titulo : ['',{
       validators:[
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(30),
+        //Validators.minLength(3),
+        Validators.maxLength(60),
         Validators.pattern("^[a-zA-ZÀ-ÿ\u00f1\u00d10-9 ]*$")
       ]
     }],
     contenido : ['',{
       validators:[
         Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(300),
-        Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9., '-])*$")
+        //Validators.minLength(10),
+        Validators.maxLength(1000),
+        //Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9., '-])*$")
       ]
     }],
     imgUrl : ['',{

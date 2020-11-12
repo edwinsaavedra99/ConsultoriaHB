@@ -78,7 +78,7 @@ body{
     margin-left: 1rem;
 }
 .collapse{
-    display: none;
+    display: block;
 }
 
 @media (max-width:1300px){
@@ -110,11 +110,15 @@ body{
     }
     .openMenu{
         visibility: visible;
-        
+        background: white;
+        border-radius: 8px;
     }
     .collapse{
         display: block;
     }
-    
+    .iconoo{
+        padding: 0.5em;
+    }
+
     
 }

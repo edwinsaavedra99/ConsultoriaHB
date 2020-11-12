@@ -3,72 +3,78 @@
       <div>
         <div>
           <div class="modalHeader">
-            <ng-content select="h2"></ng-content>
-            <span (click)="closeModal()">x</span>
+            <h2>Registro de Area Legal</h2>
+            <h5> <span  (click)="closeModal()">Areas Legales</span> / Registro de Area Legal</h5>
           </div>
           <div class="modalContent">
-              <!--ng-content select=".contenido"></ng-content-->
-              <!--div class="contenido"></div-->
               <form (submit)="submit()" [formGroup]="dataForm">
                 <div class="form-group">
                   <label for="titulo">Titulo</label>
-                  <input type="text" class="form-control" formControlName="titulo" name="TitleFormAreaLegal" [value]="areaLegal.titulo">
-                  <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="alert alert-danger">
-                    <div *ngIf="titulo.errors.required">
-                      El titulo es requerido
-                    </div>
-                    <div *ngIf="titulo.errors.minlength">
-                      La longitud mínima del titulo es 3 caracteres
-                    </div>
-                    <div *ngIf="titulo.errors.maxlength">
-                      La longitud máxima del titulo es 30 caracteres
-                    </div>
-                    <div *ngIf="titulo.errors.pattern">
-                      El titulo contiene caracteres no alfanumericos
-                    </div>
-                    <!--div *ngIf="titulo.errors.tituloUnico">
-                      Este titulo ya está en uso
-                    </div-->
-              
+                  <input maxlength="60"  type="text" class="inputItem form-control" formControlName="titulo" name="TitleFormAreaLegal" [value]="areaLegal.titulo">                  
+                </div>
+                <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="alert alert-danger">
+                  )
+                  <div *ngIf="titulo.errors.required">
+                    El titulo es requerido . 
                   </div>
+                  <!--div *ngIf="titulo.errors.minlength">
+                    La longitud mínima del titulo es 3 caracteres
+                  </div-->
+                  <div *ngIf="titulo.errors.maxlength">
+                    La longitud máxima del titulo es 60 caracteres . 
+                  </div>
+                  <div *ngIf="titulo.errors.pattern">
+                    El titulo contiene caracteres no alfanumericos . 
+                  </div>
+                  <!--div *ngIf="titulo.errors.tituloUnico">
+                    Este titulo ya está en uso
+                  </div-->
+                  (
                 </div>
                 <div class="form-group">
                   <label for="contenido">Contenido</label>
-                  <textarea type="text" class="form-control" formControlName="contenido" [value]="areaLegal.contenido">
-                  </textarea>
-                  <div *ngIf="contenido.invalid && (contenido.dirty || contenido.touched)" class="alert alert-danger">
-                    <div *ngIf="contenido.errors.required">
-                      El contenido es requerido
-                    </div>
-                    <div *ngIf="contenido.errors.minlength">
-                      La longitud mínima del contenido es 10 caracteres
-                    </div>
-                    <div *ngIf="contenido.errors.maxlength">
-                      La longitud máxima del contenido es 300 caracteres
-                    </div>
-                    <div *ngIf="contenido.errors.pattern">
-                      El contenido contiene caracteres no alfanumericos
-                    </div>
-              
-                  </div>
+                  <ckeditor class="inputItemCKeditor"
+                    formControlName="contenido" [value]="areaLegal.contenido"
+                    [config]="{ toolbar: [ [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-','NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-','Link', 'Unlink','FontSize'] ] }"
+                    [readonly]="false">
+                  </ckeditor>
+                  
                 </div>      
-                <br> <br><br>  
+                <div *ngIf="contenido.invalid && (contenido.dirty || contenido.touched)" class="alert alert-danger">
+                  <div *ngIf="contenido.errors.required">
+                    El contenido es requerido
+                  </div>
+                  <!--div *ngIf="contenido.errors.minlength">
+                    La longitud mínima del contenido es 10 caracteres
+                  </div-->
+                  <div *ngIf="contenido.errors.maxlength">
+                    La longitud máxima del contenido es 1000 caracteres
+                  </div>
+                  <div *ngIf="contenido.errors.pattern">
+                    El contenido contiene caracteres no alfanumericos
+                  </div>            
+                </div> 
                 <div class=form-group>
                   <label for="imagen" >Imagen</label>
-                </div>
-                <div class=form-group>
-                  <img [src]="imgUrl" width="130px" height="130px" (click)="fileUploader.click()">
-                  <input type="file" accept="image/*" #fileUploader (change)="showPreview($event)">
-                  <input type="hidden" name="fileHidden" formControlName="imgUrl"/> 
-                </div>
+                  <div class="imagenDragDrop" >
+                    <img class="styleImage"  [src]="imgUrl" width="auto" height="130px" (click)="fileUploader.click()">                 
+                    <br>
+                    <input style="cursor:pointer;" type="file" accept="image/*" #fileUploader (change)="showPreview($event)">
+                    <input  type="hidden" name="fileHidden" formControlName="imgUrl"/>                   
+                   </div> 
+                </div>                
                 <div class="alert alert-danger">
                   <div *ngIf="noImage">
                     Necesita colocar una imagen
                   </div>
                 </div>
-
-                <button type="button" (click)="closeModal()">Cancelar</button>
-                <button type="submit" [disabled]="dataForm.invalid || isLoading">Publicar</button>                
+                <div class="derecha">
+                  <div class="botonesForm">
+                    <button type="button" (click)="closeModal()">Cancelar</button>
+                    <button type="submit" [disabled]="dataForm.invalid || isLoading">Publicar</button> 
+                  </div> 
+                <br><br><br>
+               </div>                
               </form>
           </div>
         </div>

@@ -6,7 +6,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['../../info/form/form.component.scss']
+  styleUrls: ['../../news/form/form.component.scss']
 })
 export class FormComponent implements OnInit {
   @Input() visible: deviceRequest;

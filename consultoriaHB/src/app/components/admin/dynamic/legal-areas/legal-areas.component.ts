@@ -4,7 +4,7 @@ import { AreaLegal} from '../../../../models/areaLegal';
 @Component({
   selector: 'app-legal-areas',
   templateUrl: './legal-areas.component.html',
-  styleUrls: ['../info/info.component.css']
+  styleUrls: ['../news/news.component.css']
 })
 export class LegalAreasComponent implements OnInit {
 

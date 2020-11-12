@@ -57,12 +57,15 @@
   font-size: 1.75ch;
 }
 .input{
-  border-radius: 30px;
+  border-radius: 10px;
   font-size: 1.75ch;
   padding: 0.5em;
   border: 1px solid #ABABAB;
   width: 35%;
   min-width: 150px;
+}
+.input:focus{
+  border: 0px;
 }
 .table_size{
   height: 340px;

@@ -1,58 +1,67 @@
           <div class="modalContent">
               <form (submit)="submit()" [formGroup]="dataForm">
                 <div class="form-group">
-                  <label for="direccion">Dirección</label>
-                  <input type="text" class="form-control" formControlName="direccion" name="TitleFormInfo" [value]="company.address" >
-                  <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="alert alert-danger">
-                    <div *ngIf="direccion.errors.required">
-                      El direccion es requerido
-                    </div>
-                    <div *ngIf="direccion.errors.minlength">
-                      La longitud mínima del direccion es 5 caracteres
-                    </div>
-                    <div *ngIf="direccion.errors.maxlength">
-                      La longitud máxima del direccion es 300 caracteres
-                    </div>
+                  <label for="direccion">Dirección: </label>
+                  <input type="text" class="inputItem form-control"  formControlName="direccion" name="TitleFormInfo" [value]="company.address" >                  
+                </div>
+                <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="alert alert-danger">
+                  )
+                  <div *ngIf="direccion.errors.required">
+                    El direccion es requerido . 
                   </div>
+                  <div *ngIf="direccion.errors.minlength">
+                    La longitud mínima del direccion es 5 caracteres . 
+                  </div>
+                  <div *ngIf="direccion.errors.maxlength">
+                    La longitud máxima del direccion es 300 caracteres . 
+                  </div>
+                  (
                 </div>
                 <div class="form-group">
-                      <label for="email">Correo: </label><br>
-                      <input type="email" class="form-control" id="email" formControlName="email" [value]="company.email">
-                  
-                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-                      <div *ngIf="email.errors.required">
-                        Por favor, ingrese su correo electronico.
-                      </div>
-                      <div *ngIf="email.errors.email">
-                        Correo electronico no valido.
-                      </div>
+                  <label for="email">Correo: </label>
+                  <input type="text" class="inputItem form-control"  formControlName="email" [value]="company.email">
+                </div>   
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                  )
+                    <div *ngIf="email.errors.required">
+                      Por favor, ingrese su correo electronico . 
                     </div>
-                  </div>   
+                    <div *ngIf="email.errors.email">
+                      Correo electronico no valido . 
+                    </div>
+                  (
+                  </div>
                   <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="text" class="form-control" formControlName="telefono" name="TitleFormInfo" [value]="company.phone" >
-                    <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="alert alert-danger">
-                      <div *ngIf="telefono.errors.required">
-                        El direccion es requerido
-                      </div>
-                      <div *ngIf="telefono.errors.pattern">
-                        El telefono no cuenta con el formato aceptado
-                      </div>                      
-                      <div *ngIf="telefono.errors.minlength">
-                        La longitud mínima del telefono es de 4 caracteres
-                      </div>
-                    </div>
+                    <label for="telefono">Teléfono: </label>
+                    <input type="text" class="inputItem form-control" formControlName="telefono" name="TitleFormInfo" [value]="company.phone" >                    
                   </div>       
+                  <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="alert alert-danger">
+                    )
+                    <div *ngIf="telefono.errors.required">
+                      El direccion es requerido . 
+                    </div>
+                    <div *ngIf="telefono.errors.pattern">
+                      El telefono no cuenta con el formato aceptado . 
+                    </div>                      
+                    <div *ngIf="telefono.errors.minlength">
+                      La longitud mínima del telefono es de 4 caracteres . 
+                    </div>
+                    (
+                  </div>
                   <div class="form-group">
-                    <label for="fbLink">Facebook</label>
-                    <input type="text" class="form-control" formControlName="fbLink" name="TitleFormInfo" [value]="company.fbLink" >
-                    
+                    <label for="fbLink">Facebook: </label>
+                    <input type="text" class="inputItem form-control" formControlName="fbLink" name="TitleFormInfo" [value]="company.fbLink" >                    
                   </div>  
                   <div class="form-group">
-                    <label for="twLink">Twitter</label>
-                    <input type="text" class="form-control" formControlName="twLink" name="TitleFormInfo" [value]="company.twLink" >                    
-                  </div>        
-                <button type="submit" [disabled]="dataForm.invalid">Guardar</button>                
+                    <label for="twLink">Twitter: </label>
+                    <input type="text" class="inputItem form-control" formControlName="twLink" name="TitleFormInfo" [value]="company.twLink" >                    
+                  </div>                       
                 <!--button  (click)="editarCampos()" >Editar</button--> 
+                <div class="derecha">
+                  <div class="botonesForm">
+                    <button type="submit" [disabled]="dataForm.invalid">Guardar</button> 
+                  </div> 
+               
+               </div>
               </form>
           </div>

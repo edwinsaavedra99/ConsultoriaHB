@@ -3,7 +3,7 @@ import { Info } from '../../../../models/info';
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
-  styleUrls: ['./info.component.css']
+  styleUrls: ['../news/news.component.css']
 })
 export class InfoComponent implements OnInit {
  

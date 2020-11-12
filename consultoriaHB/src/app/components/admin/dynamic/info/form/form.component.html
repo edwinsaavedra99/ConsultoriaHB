@@ -3,8 +3,8 @@
       <div>
         <div>
           <div class="modalHeader">
-            <ng-content select="h2"></ng-content>
-            <span (click)="closeModal()">x</span>
+            <h2>Registro de Informacion de la Página</h2>
+            <h5> <span  (click)="closeModal()">Información</span> / Registro de Información</h5>
           </div>
           <div class="modalContent">
               <!--ng-content select=".contenido"></ng-content-->
@@ -12,48 +12,58 @@
               <form (submit)="submit()" [formGroup]="dataForm">
                 <div class="form-group">
                   <label for="titulo">Titulo</label>
-                  <input type="text" class="form-control" formControlName="titulo" name="TitleFormInfo" [value]="info.titulo">
-                  <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="alert alert-danger">
-                    <div *ngIf="titulo.errors.required">
-                      El titulo es requerido
-                    </div>
-                    <div *ngIf="titulo.errors.minlength">
-                      La longitud mínima del titulo es 3 caracteres
-                    </div>
-                    <div *ngIf="titulo.errors.maxlength">
-                      La longitud máxima del titulo es 30 caracteres
-                    </div>
-                    <div *ngIf="titulo.errors.pattern">
-                      El titulo contiene caracteres no alfanumericos
-                    </div>
-                    <!--div *ngIf="titulo.errors.tituloUnico">
-                      Este titulo ya está en uso
-                    </div-->
-              
-                  </div>
+                  <input maxlength="60" class="inputItem form-control"  type="text" formControlName="titulo" name="TitleFormInfo" [value]="info.titulo">
+                  
                 </div>
-                <div class="form-group">
-                  <label for="contenido">Contenido</label>
-                  <textarea  style="height:200px;" type="text" class="form-control" formControlName="contenido" [value]="info.contenido">
-                  </textarea>
-                  <div *ngIf="contenido.invalid && (contenido.dirty || contenido.touched)" class="alert alert-danger">
-                    <div *ngIf="contenido.errors.required">
-                      El contenido es requerido
-                    </div>
-                    <div *ngIf="contenido.errors.minlength">
-                      La longitud mínima del contenido es 10 caracteres
-                    </div>
-                    <div *ngIf="contenido.errors.maxlength">
-                      La longitud máxima del contenido es 300 caracteres
-                    </div>
-                    <div *ngIf="contenido.errors.pattern">
-                      El contenido contiene caracteres no alfanumericos
-                    </div>
-              
+                <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="alert alert-danger">
+                  )
+                  <div *ngIf="titulo.errors.required">
+                    El titulo es requerido . 
                   </div>
-                </div>                   
-                <button type="button" (click)="closeModal()">Cancelar</button>
-                <button type="submit" [disabled]="dataForm.invalid">Publicar</button>                
+                  <!--div *ngIf="titulo.errors.minlength">
+                    La longitud mínima del titulo es 3 caracteres
+                  </div-->
+                  <div *ngIf="titulo.errors.maxlength">
+                    La longitud máxima del titulo es 60 caracteres . 
+                  </div>
+                  <div *ngIf="titulo.errors.pattern">
+                    El titulo contiene caracteres no alfanumericos . 
+                  </div>
+                  (
+                  <!--div *ngIf="titulo.errors.tituloUnico">
+                    Este titulo ya está en uso
+                  </div-->
+                </div>
+                <div class="form-group" >
+                  <label for="contenido">Contenido</label>
+                  <ckeditor class="inputItemCKeditor"
+                    formControlName="contenido" [value]="info.contenido"
+                    [config]="{ toolbar: [ [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-','NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-','Link', 'Unlink','FontSize'] ] }"
+                    [readonly]="false">
+                  </ckeditor>
+                  
+                </div>                 
+                <div *ngIf="contenido.invalid && (contenido.dirty || contenido.touched)" class="alert alert-danger">
+                  )
+                  <div *ngIf="contenido.errors.required">
+                    El contenido es requerido . 
+                  </div>
+                  <!--div *ngIf="contenido.errors.minlength">
+                    La longitud mínima del contenido es 10 caracteres
+                  </div-->
+                  <div *ngIf="contenido.errors.maxlength">
+                    La longitud máxima del contenido es 500 caracteres . 
+                  </div>
+                  (
+                </div>
+                <div class="derecha">
+                  <br> 
+                  <div class="botonesForm">
+                    <button type="button" (click)="closeModal()">Cancelar</button>
+                    <button type="submit" [disabled]="dataForm.invalid || isLoading">Publicar</button> 
+                  </div> 
+                <br><br><br><br>  
+               </div>            
               </form>
           </div>
         </div>

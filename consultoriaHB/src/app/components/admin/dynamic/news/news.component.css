@@ -21,14 +21,16 @@
 }
 
 button{
+    font-weight: normal!important;
+    font-size: 1.4ch!important;
     float: right;
     background-color: #AB2A3E;
     border: none;
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.5ch;
-    padding: 0.5em 0.5em;
-    border-radius: 20px;
+    padding: 0.7em 0.7em;
+    border-radius: 10px;
     border: 1px #AB2A3E solid;
 }
 .button{

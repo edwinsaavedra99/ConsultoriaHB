@@ -11,7 +11,7 @@ import { NotificationService } from '../../../../../services/notification/notifi
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
-  styleUrls: ['../../info/form/form.component.scss']
+  styleUrls: ['../../news/form/form.component.scss']
 })
 export class CompanyComponent implements OnInit {
 

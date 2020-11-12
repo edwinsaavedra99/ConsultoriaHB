@@ -11,6 +11,8 @@ import * as firebase from 'firebase';
 import { NotificationService } from '../../../../../services/notification/notification.service'
 //import { CKEditorComponent} from 'ng2-ckeditor';
 import * as Editor from 'ng2-ckeditor'
+//import 'custom.css';
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -32,13 +34,11 @@ export class FormComponent implements OnInit {
   ckeditorContent : string = '';
 
 
-  constructor(private formBuilder : FormBuilder,private newDataService: NewsService, 
+  constructor(
+    private formBuilder : FormBuilder,
+    private newDataService: NewsService, 
     private storage:AngularFireStorage,
-    private notificationService: NotificationService) {
-
-
-
-  }
+    private notificationService: NotificationService) { }
 
   ngOnChanges(changes: any) {
     if (this.visible && changes.visible){
@@ -48,18 +48,17 @@ export class FormComponent implements OnInit {
           this.dataForm.patchValue({
             titulo: this.newData.titulo,
             contenido: this.newData.contenido,
-            imgUrl: this.newData.imagenUrl,
-            
+            imgUrl: this.newData.imagenUrl,            
           });
           this.imgUrl = this.newData.imagenUrl;
           this.toEraseImgUrl = this.newData.imagenUrl
         }else{
           this.refrescar();
-        }        
+        }
       }
     }
-
   }
+  
   get titulo(){
     return this.dataForm.get('titulo');
   }
@@ -75,15 +74,15 @@ export class FormComponent implements OnInit {
     titulo : ['',{
       validators:[
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(30),
+        //Validators.minLength(3),
+        Validators.maxLength(60),
         Validators.pattern("^[a-zA-ZÀ-ÿ\u00f1\u00d10-9 ]*$")
       ]
     }],
     contenido : ['',{
       validators:[
         Validators.required,
-        Validators.minLength(10),
+        //Validators.minLength(10),
         Validators.maxLength(5000),
         //Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9:()., '-])*$")
       ]
@@ -174,7 +173,11 @@ export class FormComponent implements OnInit {
       this.newData.hora = formatDate(this.today,'hh:mm:ss','en-US');
       //this.newData.imagenUrl = 'algo salió mal';
       if(this.newData.$id==null){
-        this.cargarImagen(true);
+        if(this.imgUrl === this.imgSrc){
+          alert('Ingrese una imagen')
+        }else{
+          this.cargarImagen(true);
+        }
       }else{     
         if(confirm('¿Esta seguro de querer guardar su edición?')){
           if(this.selectedImage==null){

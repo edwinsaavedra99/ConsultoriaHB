@@ -11,15 +11,17 @@ import { ListComponent } from './list/list.component'
 import { FormComponent } from './form/form.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import { FormLegalAreasModule } from './form/form.module';
 
 @NgModule({
   declarations: [
     LegalAreasComponent,
-    FormComponent,
+    //FormComponent,
     ListComponent
   ],
   imports: [
     CommonModule,
+    FormLegalAreasModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,

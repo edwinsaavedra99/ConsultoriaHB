@@ -8,7 +8,7 @@ import {Md5} from 'ts-md5/dist/md5';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['../../info/form/form.component.scss']
+  styleUrls: ['../../news/form/form.component.scss']
 })
 export class FormComponent implements OnInit {
   @Input() visible: boolean;
@@ -40,7 +40,7 @@ export class FormComponent implements OnInit {
       }],
       password:['', {
         validators: [
-          Validators.pattern('^(.*[0-9].*)+$'),
+          //Validators.pattern('^(.*[0-9].*)+$'),
           Validators.minLength(6),
           Validators.required
         ]

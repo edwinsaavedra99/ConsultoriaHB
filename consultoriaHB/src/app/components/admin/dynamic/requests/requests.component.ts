@@ -3,12 +3,12 @@ import { Request,deviceRequest } from '../../../../models/request';
 @Component({
   selector: 'app-requests',
   templateUrl: './requests.component.html',
-  styleUrls: ['../info/info.component.css']
+  styleUrls: ['../news/news.component.css']
 })
 export class RequestsComponent implements OnInit {
 
   myModal: deviceRequest = new deviceRequest();
-  //myModal = false;
+  myModal1 = true;
   constructor() {
     this.myModal.event = false;
   }
@@ -18,9 +18,11 @@ export class RequestsComponent implements OnInit {
 
   mostrarModal(e) {
     this.myModal = e;
+    this.myModal1 = false;
   }
 
   cerrarModal(e) {
     this.myModal = e;
+    this.myModal1 = true;
   }
 }

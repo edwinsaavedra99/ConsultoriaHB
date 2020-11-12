@@ -4,13 +4,14 @@ import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 //import { titleValidation } from 'src/app/validations/title-validation.directive';
 import { InfoService } from '../../../../../services/info/info.service';
 import { formatDate } from '@angular/common';
+import * as Editor from 'ng2-ckeditor'
 //import { NgModule } from '@angular/core';
 
 import { NotificationService } from '../../../../../services/notification/notification.service'
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['../../news/form/form.component.scss']
 })
 export class FormComponent implements OnInit {
 
@@ -19,6 +20,7 @@ export class FormComponent implements OnInit {
   info : Info = new Info();
   today = new Date();
   tsToday = '';
+  ckeditorContent : string = '';
 
   constructor(
     private formBuilder : FormBuilder,
@@ -52,17 +54,17 @@ export class FormComponent implements OnInit {
     titulo : ['',{
       validators:[
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(30),
+        //Validators.minLength(3),
+        Validators.maxLength(60),
         Validators.pattern("^[a-zA-ZÀ-ÿ\u00f1\u00d10-9 ]*$")
       ]
     }],
     contenido : ['',{
       validators:[
         Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(300),
-        Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9., '-])*$")
+        //Validators.minLength(10),
+        Validators.maxLength(500),
+        //Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9., '-])*$")
       ]
     }]
   });
