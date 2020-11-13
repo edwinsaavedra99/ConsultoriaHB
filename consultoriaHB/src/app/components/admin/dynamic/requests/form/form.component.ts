@@ -3,6 +3,10 @@ import {FormBuilder, ReactiveFormsModule, Validators, FormGroup} from '@angular/
 import { RequestsService} from '../../../../../services/requests/requests.service';
 import { Request,deviceRequest } from '../../../../../models/request';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import {MessageService} from '../../../../../services/message_email/message_email.service'
+import { NotificationService } from '../../../../../services/notification/notification.service'
+
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -13,10 +17,13 @@ export class FormComponent implements OnInit {
   @Output() close: EventEmitter<boolean> = new EventEmitter();
   dataForm: any;
   deviceInfo = null;
+  
   constructor(
     private formBuilder : FormBuilder,
     private requestsService: RequestsService,
-    private deviceService: DeviceDetectorService) { }
+    private notificationService: NotificationService,
+    private deviceService: DeviceDetectorService,
+    private messageService: MessageService) { }
 
   ngOnInit() {
     this.dataForm = this.formBuilder.group({      
@@ -52,13 +59,19 @@ export class FormComponent implements OnInit {
         console.log('El dato no fue cargado');
       } else {
         if(this.visible.device){
-          if(confirm('¿Esta seguro de querer enviar este mensaje de Whasap?')){
+          if(confirm('¿Esta seguro de querer enviar este mensaje de WhatsApp?')){
             //enviar whsap
             this.epicFunction(this.getRequest());
           }
         }else{
           if(confirm('¿Esta seguro de querer enviar este correo?')){
             //enviar correo electronico
+            //this.sendEmail();
+            /*if (*/this.messageService.messageAdminToClient(this.getRequest(),this.message().value)/*){*/
+              //this.notificationService.sucess("Proceso Exitoso", "El mensaje fue enviado.")
+            //}else{
+              //this.notificationService.error("Ocurrio un error", "Error al enviar.")
+            //}
           }
         } 
         
@@ -67,6 +80,7 @@ export class FormComponent implements OnInit {
     }
   }
 
+  
   closeModal() {
     this.close.emit(false);
     this.requestsService.selectedRequest = new Request();

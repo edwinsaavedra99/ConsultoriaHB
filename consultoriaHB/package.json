@@ -22,6 +22,7 @@
     "@angular/router": "~8.2.11",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "acorn": "^8.0.1",
+    "emailjs-com": "^2.6.3",
     "firebase": "^7.18.0",
     "firebase-admin": "^9.1.1",
     "ng2-ckeditor": "^1.2.9",
