@@ -13,6 +13,7 @@
   border: 1px solid #ABABAB;
   padding: 0.65em;
   box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .header{
@@ -68,7 +69,7 @@
   border: 0px;
 }
 .table_size{
-  height: 340px;
+  height: 100%;
 }
 .table th{
   text-align: left;

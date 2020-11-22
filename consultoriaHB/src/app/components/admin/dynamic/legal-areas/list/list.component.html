@@ -13,9 +13,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="body" *ngFor ="let area of list | paginate: { itemsPerPage: 7, currentPage: actualPage} ;let count=index;">
+        <tr class="body" *ngFor ="let area of list | paginate: { itemsPerPage: 10, currentPage: actualPage} ;let count=index;">
           <td class="cell number" data-label="#Nro">
-            {{count+1+((actualPage-1)*7)}}
+            {{count+1+((actualPage-1)*10)}}
           </td>
           <td class="cell" data-label="Título">
             {{area.titulo}}

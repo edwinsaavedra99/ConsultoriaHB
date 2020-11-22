@@ -6,13 +6,13 @@
         <thead>
             <tr>
                 <th class="cell header number">#Nro</th>
-                <th class="cell header">Nombre Completo</th>
+                <th class="cell header">Nombre Completo1</th>
                 <th class="actions cell header">Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr class="body" *ngFor ="let user of list | paginate: { itemsPerPage: 7, currentPage: actualPage}; let count=index">
-                <td class="cell number" data-label="#Nro">{{count+1+((actualPage-1)*7)}} </td>
+            <tr class="body" *ngFor ="let user of list | paginate: { itemsPerPage: 10, currentPage: actualPage}; let count=index">
+                <td class="cell number" data-label="#Nro">{{count+1+((actualPage-1)*10)}} </td>
                 <td class="cell" data-label="Nombre Completo">
                     {{user.fullname}}
                 </td>
