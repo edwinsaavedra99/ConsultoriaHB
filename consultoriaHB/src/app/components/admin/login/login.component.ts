@@ -6,6 +6,7 @@ import { User } from '../../../models/user'
 import { CookieService } from 'ngx-cookie-service';
 import { Router, ActivatedRoute } from '@angular/router'
 import {Md5} from 'ts-md5/dist/md5';
+import {MessageService } from '../../../services/message_email/message_email.service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
     private notificationService: NotificationService,
     private cookieService: CookieService,
     private router: Router,
-    private route: ActivatedRoute 
+    private route: ActivatedRoute,
+    private messageService: MessageService
     ) { 
      }
 
@@ -123,8 +125,10 @@ export class LoginComponent implements OnInit {
           let user:User = user_json as User;
           this.userService.requestResetPassword(user)
           .then( res =>{
-            this.notificationService.sucess("Solicitud enviada", "Por favor revisa tu correo.")
-            window.location.href = window.location.href +"/"+res.key;
+            this.notificationService.sucess("Solicitud enviada", "Por favor revisa tu correo.");
+            //console.log(this.reset_password_form.value.email);
+            console.log(this.messageService.messagePassword(this.reset_password_form.value.email, window.location.href +"/"+res.key));
+            //window.location.href = window.location.href +"/"+res.key;
 //            console.log(window.location.href +"/"+res.key)
           }).catch(
             error=>{

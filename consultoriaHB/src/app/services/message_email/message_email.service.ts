@@ -38,16 +38,23 @@ export class MessageService {
         return 'clave';
   }
 
-  messagePassword(email: string): any {
+  messagePassword(email:string, link: string): any {
+    this.apiMessage1 = {
+      service_id:'service_pup8ucs',
+      template_id:'template_7d5m7jl',
+      user_id:'user_W6btBArAnPt3qti8Z41D3'
+    };
     //template 1      
     const templateParams = {
-      message: this.changePassword(email),
-      to_email: email,
-      from_name: 'Recuperar Contraseña - Consulta Legal',
-      from_team: 'Legal Hoffmann',
-      notes: 'Check this out!'
+      link_password: link,
+      to_email: email
     };
-    this.sendEmail(templateParams);      
+    this.sendEmail(templateParams);
+    this.apiMessage1 = {
+      service_id:'service_pup8ucs',
+      template_id:'template_w9qcjtn',
+      user_id:'user_W6btBArAnPt3qti8Z41D3'
+    };    
     return this.status;
   }
  
