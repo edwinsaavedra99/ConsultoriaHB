@@ -39,25 +39,27 @@
               Correo electronico no valido.
             </div>
           </div>
-          <div class="form-group" [hidden]="getUser().$id != undefined" >            
+          <div *ngIf="!editar" class="form-group" [hidden]="getUser().$id != undefined" >            
               <label for="password1">Contraseña: </label>
               <input type="password" class="inputItem form-control" id="password" formControlName="password" [(ngModel)]="getUser().password">
           </div>
-          <div *ngIf="password1().invalid && (password1().dirty || password1().touched)" class="alert alert-danger">
-            <div *ngIf="password1().errors.required">
-              Por favor, ingrese una Contraseña.
+          <div *ngIf="!editar">
+            <div *ngIf="password1().invalid && (password1().dirty || password1().touched)" class="alert alert-danger">
+              <div *ngIf="password1().errors.required">
+                Por favor, ingrese una Contraseña.
+              </div>
+              <!--div *ngIf="password1().errors.pattern">
+                Su Contraseña debe tener al menos un digito.
+              </div-->
+              <div *ngIf="password1().errors.minlength">
+                Su Contraseña debe tener al menos 6 caracteres.
+              </div>
             </div>
-            <!--div *ngIf="password1().errors.pattern">
-              Su Contraseña debe tener al menos un digito.
-            </div-->
-            <div *ngIf="password1().errors.minlength">
-              Su Contraseña debe tener al menos 6 caracteres.
-            </div>
-          </div>
+          </div>          
           <div class="derecha">
             <div class="botonesForm">
               <button type="button" (click)="closeModal()">Cancelar</button>
-              <button type="submit" [disabled]="dataForm.invalid || isLoading">Publicar</button> 
+              <button type="submit" [disabled]="(dataForm.invalid )|| isLoading">Publicar</button> 
             </div> 
           <br><br><br>
          </div>        

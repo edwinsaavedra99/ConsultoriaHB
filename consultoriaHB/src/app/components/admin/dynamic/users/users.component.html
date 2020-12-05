@@ -1,5 +1,5 @@
 <div class="modal">
-    <app-form [visible]="myModal" (close)="cerrarModal($event)">
+    <app-form [visible]="myModal" [editar]="editar" (close)="cerrarModal($event)">
        
     </app-form>
 </div>
@@ -10,6 +10,6 @@
     </div>
 </div>
 <div class="section" *ngIf="!myModal">
-    <app-list-users (openForm)="mostrarModal($event)"></app-list-users>
+    <app-list-users (openForm)="mostrarModalEditar($event)"></app-list-users>
  
 </div>

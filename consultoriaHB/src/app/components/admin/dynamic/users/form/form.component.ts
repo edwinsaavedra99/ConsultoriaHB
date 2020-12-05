@@ -12,6 +12,7 @@ import {Md5} from 'ts-md5/dist/md5';
 })
 export class FormComponent implements OnInit {
   @Input() visible: boolean;
+  @Input() editar: boolean;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
   dataForm: any;
   listUser: User[] = [];
@@ -23,29 +24,51 @@ export class FormComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.dataForm = this.formBuilder.group({
-      fullname : ['',{
-        validators:[
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(60),
-          Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9., '-])*$")
-        ]
-      }],
-      email : ['', {
-        validators: [
-          Validators.email,
-          Validators.required
-        ]
-      }],
-      password:['', {
-        validators: [
-          //Validators.pattern('^(.*[0-9].*)+$'),
-          Validators.minLength(6),
-          Validators.required
-        ]
-      }]
-    });
+
+    if(this.editar==false){
+      this.dataForm = this.formBuilder.group({
+        fullname : ['',{
+          validators:[
+            Validators.required,
+            Validators.minLength(5),
+            Validators.maxLength(60),
+            Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9., '-])*$")
+          ]
+        }],
+        email : ['', {
+          validators: [
+            Validators.email,
+            Validators.required
+          ]
+        }],
+        password:['']
+      });
+    }else{
+      this.dataForm = this.formBuilder.group({
+        fullname : ['',{
+          validators:[
+            Validators.required,
+            Validators.minLength(5),
+            Validators.maxLength(60),
+            Validators.pattern("^([\nña-zA-ZÀ-ÿ\u00f1\u00d10-9., '-])*$")
+          ]
+        }],
+        email : ['', {
+          validators: [
+            Validators.email,
+            Validators.required
+          ]
+        }],
+        password:['', {
+          validators: [
+            //Validators.pattern('^(.*[0-9].*)+$'),
+            Validators.minLength(6),
+            Validators.required
+          ]
+        }]
+      });
+    }
+    
     this.getUserList()
   }
 

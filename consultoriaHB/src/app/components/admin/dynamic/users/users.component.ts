@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class UsersComponent implements OnInit {
 
   myModal = false;
+  editar = false;
   constructor() {
    }
 
@@ -18,8 +19,14 @@ export class UsersComponent implements OnInit {
     this.myModal = e;
   }
 
+  mostrarModalEditar(e) {
+    this.myModal = e;
+    this.editar = true;
+  }
+
   cerrarModal(e) {
     this.myModal = e;
+    this.editar = false;
   }
   
 }

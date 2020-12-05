@@ -22,12 +22,14 @@ export class InfoComponent implements OnInit {
   listHeaders: String[] = ["#Nro","Título","Fecha","Hora","Acciones"];
   actualPage: number = 1;
   title:String;
+  contenido;
 
   constructor(private infoService: InfoService, private notificationService: NotificationService) {   }
  
   ngOnInit() {
     this.getInfoList();    
     this.list=this.listInfo;
+
   }
 
 
