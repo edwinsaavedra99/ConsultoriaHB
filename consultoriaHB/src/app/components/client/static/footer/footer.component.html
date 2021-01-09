@@ -1,5 +1,6 @@
+
 <div class="container-all">
-		<button name="button" class="arriba">IR ARRIBA</button>
+		<button  *ngIf="isShow" (click)="gotoTop()" name="button" class="arriba">IR ARRIBA</button>
 		<div class="content">
 		<p class="letter">
  			<span style="color: black">
@@ -42,5 +43,6 @@
 	   <div class="rights">
 	    	<h2>© 2020 Hoffman y Bauer. Todos los derechos reservados | Allforone | Gestión</h2>
 	    </div>
-	    
+	 
 	</div>
+  
