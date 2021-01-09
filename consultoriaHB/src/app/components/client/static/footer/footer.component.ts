@@ -4,7 +4,7 @@ import { CompanyService } from '../../../../services/company/company.service';
 import { NotificationService } from '../../../../services/notification/notification.service'
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
-import { Component, HostListener, ElementRef } from '@angular/core';
+import { HostListener, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -42,6 +42,8 @@ export class FooterComponent implements OnInit {
       left: 0, 
       behavior: 'smooth' 
     });
+  }
+  ngOnInit() {
   }
 
  }

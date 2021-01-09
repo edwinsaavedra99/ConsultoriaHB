@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\consultoriaHB",
+    "\\consultoriaHB\\src",
+    "\\consultoriaHB\\src\\app",
+    "\\consultoriaHB\\src\\app\\components",
+    "\\consultoriaHB\\src\\app\\components\\client",
+    "\\consultoriaHB\\src\\app\\components\\client\\static",
+    "\\consultoriaHB\\src\\app\\components\\client\\static\\footer",
+    "\\consultoriaHB\\src\\app\\components\\client\\static\\header"
+  ],
+  "SelectedNode": "\\consultoriaHB\\src\\app\\components\\client\\static\\footer\\footer.component.ts",
+  "PreviewInSolutionExplorer": false
+}
