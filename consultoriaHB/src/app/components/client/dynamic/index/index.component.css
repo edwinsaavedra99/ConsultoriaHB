@@ -1,18 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
-html{
+html,body{
     margin: 0;
     padding: 0;
+    height:100%; 
+    width:101%; 
 }
-body{
-    margin: 0;
-    padding: 0;
-}
-html, body { height: 100%; }
-body { margin: 0; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;}
+body { font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;}
 .pantalla-emergente{
     height: 50%;
     width: 100%;
     position: absolute;
     top: 0px;
     z-index:4;
+}
+.grid-image{
+    display: grid;
+    padding: 1rem;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-rows: repeat(2, 400px);
+    font-size: 5rem;
+    position: relative;
+}
+img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.layout-super{
+    position: absolute;
+    background: white;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    font-size: 0.4em;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    padding: 2rem;
+}
+.color-primary{
+    color: #AB2A3E;
+}
+.color-normal{
+    color: black;
+}
+.color-secundary{
+    color: #434B4D;
+}
+@media (max-width:1000px){
+    .item-hide-small{
+        display: none;
+    }
+    /*.layout-super{
+        display: none;
+    }*/
 }

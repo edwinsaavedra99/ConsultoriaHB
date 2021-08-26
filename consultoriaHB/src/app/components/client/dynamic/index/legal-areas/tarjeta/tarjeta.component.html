@@ -5,7 +5,7 @@
     <div class="figure-center">
         <img src={{imagen}}>
     </div>
-    <p>{{ contenido }}</p>
+    <p *ngIf="area!=undefined" [innerHTML]="area.contenido"></p>
     <button (click)="activarEmergente()">Leer Màs</button>
 </div>
 

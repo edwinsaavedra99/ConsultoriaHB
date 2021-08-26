@@ -50,7 +50,7 @@
     font-family: Trebuchet MS;
     font-style: normal;
     font-weight: normal;
-    font-size: 28px;
+    font-size: calc(0.7em + 0.7vw);
     line-height: 35px;
     text-align: center;
 	color: #AB2A3E;
@@ -92,6 +92,7 @@
     line-height: 21px;
     text-align: center;
     color: #AB2A3E;
+    cursor: pointer;
 }
 .card button:hover{
 	background: #AB2A3E;

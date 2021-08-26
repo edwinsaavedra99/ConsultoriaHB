@@ -1,11 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
-html{
-    margin: 0;
-    padding: 0;
-}
-body{
+html,body{
     margin: 0;
     padding: 0;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;}
+::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */
+    height: 0px;    /* Tamaño del scroll en horizontal */
+    /*display: none;  /* Ocultar scroll */
+}
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Cambiamos el fondo cuando esté en active */
+::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}

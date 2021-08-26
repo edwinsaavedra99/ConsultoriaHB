@@ -15,28 +15,28 @@
 .arriba{
     color: #F5F5F5;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-     margin-left: auto;
-     margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
     background: #AB2A3E;
     transition: all .3s ease-in-out;
-     font-size: 1.5vw;
+    font-size: 1.3vw;
     border: 2px solid #AB2A3E;
     padding: 0.5% 7% 0.5% 7%;
 
 }
 .arriba:hover{
-   transform: scale(1.1,1.1)
-
+   transform: scale(1.1,1.1);
+   cursor: pointer;
 }
 .letter{
-     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-     margin-left: auto;
-     margin-right: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
-    font-size: 2.4vw;
+    font-size: 1.4vw;
  }
  .direction{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -47,12 +47,12 @@
     font-size: 1.6vw;
  }
  p{
-     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-     margin-left: auto;
-     margin-right: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
-    font-size: 1.7vw;
+    font-size: 1vw;
  }
 
 .rights{
@@ -67,9 +67,8 @@
     font-size: 0.8vw;
 }
 .social{
-    
     margin-left: auto;
-     margin-right: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
     margin-bottom: 5%;

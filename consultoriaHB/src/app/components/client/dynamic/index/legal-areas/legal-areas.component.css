@@ -7,17 +7,18 @@ h1{
     margin-bottom: 0px;
     /*Marcas*/
     border-bottom: 5px solid #AB2A3E;
-    font-family: Trebuchet MS;
+    /*font-family: Trebuchet MS;*/
     font-style: normal;
     font-weight: bold;
-    font-size: 45px;
-    line-height: 21px;
+    font-size: calc(1em + 1vw);
+    line-height: 18px;
     text-align: center;
     color: #af3c4d;
 }
 h2{
-    font-family: Trebuchet MS;
+    /*font-family: Trebuchet MS;*/
     padding: 20px;
+    font-size: calc(0.7em + 0.7vw);
     color: #707B7C;
 }
 

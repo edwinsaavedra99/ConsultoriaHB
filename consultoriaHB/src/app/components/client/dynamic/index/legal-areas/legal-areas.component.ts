@@ -3,30 +3,8 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { AreaLegal } from '../../../../../models/areaLegal'
 import { LegalAreasService } from '../../../../../services/legal_areas/legal-areas.service';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-@Component({
-  selector: 'ngbd-modal-content',
-  template: `
-    <div class="modal-header">
-      <h4 class="modal-title">Hi there!</h4>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <p>Hello, {{name}}!</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-    </div>
-  `
-})
-export class NgbdModalContent {
-  @Input() name;
-
-  constructor(public activeModal: NgbActiveModal) { }
-}
 
 @Component({
   selector: 'app-legal-areas',
@@ -56,18 +34,14 @@ export class LegalAreasComponent implements OnInit {
       res.forEach(t => {
         const areaLegal = t.payload.toJSON();
         this.listArea.push(areaLegal as AreaLegal)
-
       })
     });
   }
 
 
   recibirData(dato) {
-    //this.activar=true;
-    //this.area=dato;
-
-    const modalRef = this.modalService.open(NgbdModalContent);
-    modalRef.componentInstance.name = 'World';
+    this.activar=true;
+    this.area=dato;
   }
   apagarEmergente(apagar) {
     this.activar = false;

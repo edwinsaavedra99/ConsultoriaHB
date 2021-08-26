@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { InfoComponent } from './info/info.component';
-import { LegalAreasComponent, NgbdModalContent } from './legal-areas/legal-areas.component';
+import { LegalAreasComponent } from './legal-areas/legal-areas.component';
 import { HomeComponent } from './home/home.component';
 import { ContacComponent } from '../../static/contac/contac.component';
 import { FooterComponent } from '../../static/footer/footer.component';
@@ -44,11 +44,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     WriteUsComponent,
     TarjetaComponent,
     PopupAreasComponent,
-    NgbdModalContent,
     OneNewComponent,
   ],
   providers: [],
-  entryComponents: [NgbdModalContent]
   //bootstrap: [IndexComponent]
 })
 export class IndexModule { }

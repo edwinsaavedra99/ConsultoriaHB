@@ -11,23 +11,8 @@
     background-color: rgba(0,0,0,0.8);
     visibility: visible;
     opacity: 1;
-    
-    
 }
-.popup{
-    visibility: visible;
-    width: 90%;
-    max-width: 720px;
-    max-height: 40%;
-    position: fixed;
-    top: 35%;
-    left: 50%;
-    display: flex;
-    background: #AB2A3E;
-    transform: rotate(0deg) translate(-50%, 20%);
-    transition: all 900ms;
-    z-index:5;
-}
+
 
 img{
     margin: 12% 5%;
@@ -37,47 +22,65 @@ img{
     background-position: center;
 }
 .container-text{
-    width: 50%;
     padding: 35px;
+    text-align: center;
     overflow-y: auto;
 }
 .container-text h1{
     text-align : center;
     font-size: 30px;
-    color:white;
+    border-bottom: 3px solid #AB2A3E;
+    padding-bottom: 10px;
+    color: #AB2A3E;
 }
 .container-text p{
     text-align : justify;
     margin-top: 20px;
     font-size: 20px;
-    color:white;
+    color: #434B4D;
 }
 .btn-close-popup{
     transition: all 200ms;
-    font-size: 25px;
     font-weight: bold;
-    width: 100px;
-    height: 45px;
     position: absolute;
-    right: -20px;
-    top: -20px;
+    right: 0;
     padding: 20px;
+    border-style: none;
     background: white;
     color: #AB2A3E;
-    border-radius: 20px;
     line-height: 10px;
-    
 }
 .btn-close-popup:hover{
-    background: #AB2A3E;;
-    color: white;
+    /*background:#AB2A3E;*/
+    color: black;
+    cursor: pointer;
 }
-@media (max-width:1400px){
+
+.popup{
+    /*visibility: visible;
+    width: 90%;
+    max-width: 720px;*/
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    background: white;
+    /*transform: rotate(0deg) translate(-50%, 20%);*/
+    transition: all 900ms;
+    z-index:5;
+}
+
+@media (max-width:1130px){
+    .popup{
+        width: 90%;
+        top: 0%;
+    }
+
     .btn-close-popup{
         width: 80px;
         height: 38px;
         font-size: 20px;
-        
     }
     .container-text p{
         margin-top: 13px;
@@ -94,12 +97,7 @@ img{
         background-size: cover;
         background-position: center;
     }
-    .popup{
-        left: 50%;
-        top: 35%;
-        height: 50%;
-        
-    }
+    
 }
 @media (max-width:940px){
     .btn-close-popup{
@@ -116,11 +114,11 @@ img{
         font-size: 26px;
 
     }
-    .popup{
+    /*.popup{
         left: 50%;
         top: 35%;
         height: 50%;
-    }
+    }*/
 }
 
 
