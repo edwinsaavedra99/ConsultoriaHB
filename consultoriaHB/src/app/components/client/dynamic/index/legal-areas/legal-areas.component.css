@@ -1,7 +1,8 @@
 h1{
     display: inline-block;
 	padding: 15px;
-	margin-top: 30px;
+	margin-top: 3rem;
+    margin-bottom: 1rem;
 	text-decoration: none;
     margin-bottom: 0px;
     /*Marcas*/
@@ -12,14 +13,12 @@ h1{
     font-size: 45px;
     line-height: 21px;
     text-align: center;
-    color: #AB2A3E;
+    color: #af3c4d;
 }
 h2{
     font-family: Trebuchet MS;
-    padding: 20px; 
-}
-.emergente{
-    /*height: 100%;*/
+    padding: 20px;
+    color: #707B7C;
 }
 
 

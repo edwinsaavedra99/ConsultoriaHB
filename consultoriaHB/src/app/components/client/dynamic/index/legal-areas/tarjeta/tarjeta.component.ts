@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AreaLegal } from 'src/app/models/areaLegal';
 
+
 @Component({
   selector: 'app-tarjeta',
   templateUrl: './tarjeta.component.html',
@@ -14,9 +15,7 @@ export class TarjetaComponent implements OnInit {
   imagen:String;
   activar:boolean=false;
 
-  constructor() {
-      
-   }
+  constructor() {}
 
   ngOnInit(): void {
     if(this.area != null){
@@ -27,8 +26,5 @@ export class TarjetaComponent implements OnInit {
   }
   activarEmergente(){
     this.salida.emit(this.area);
-    
   }
-
-
 }

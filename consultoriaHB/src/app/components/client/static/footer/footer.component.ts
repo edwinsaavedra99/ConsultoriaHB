@@ -12,23 +12,19 @@ import { HostListener, ElementRef } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-   company : Company = new Company();
+  company: Company = new Company();
 
-      constructor(private companyService: CompanyService){
-		this.companyService.getCompanyItem().valueChanges().subscribe( res=>{
-        this.company = res;
-       });
+  constructor(private companyService: CompanyService) {
+    this.companyService.getCompanyItem().valueChanges().subscribe(res => {
+      this.company = res;
+    });
   }
- isShow: boolean;
+  isShow: boolean;
   topPosToStartShowing = 100;
 
   @HostListener('window:scroll')
   checkScroll() {
-   
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-
-    console.log('[scroll]', scrollPosition);
-    
     if (scrollPosition >= this.topPosToStartShowing) {
       this.isShow = true;
     } else {
@@ -37,14 +33,14 @@ export class FooterComponent implements OnInit {
   }
 
   gotoTop() {
-    window.scroll({ 
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth' 
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
     });
   }
   ngOnInit() {
   }
 
- }
+}
 
