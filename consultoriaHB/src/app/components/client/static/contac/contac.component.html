@@ -1,1 +1,75 @@
-<p>contac works!</p>
+<div class="card-flotant-fixed" (click)="activarEmergente()">
+    <p class="text-card-flotant">Escribemos</p>
+</div>
+<div *ngIf="activar" class="container-all" id="modal">
+    <div class="popup">
+        <button class="btn-close-popup" (click)="apagarEmergente()">X</button>
+        <div class="container-text">
+            <h1>ESCRÍBENOS</h1>
+            <p >Nuestro equipo estara a total disposisición de ayudarte en
+             tu caso, describe tu consulta por este medio y deja tus medios 
+             de contacto para responderte lo mas pronto posible. 
+             consulta@hoffmannb.com</p>
+             <p>Datos de Contacto :</p>
+             <form [formGroup]="dataForm" (submit)="submit()">
+                <div class="form-group">
+                        <div class="form-input">
+                            <input placeholder="Nombre: " class="form-control" type="text" id="name" formControlName="name" [(ngModel)]="name_value">
+                        </div>
+                        <div *ngIf="name().invalid && (name().dirty || name().touched)"  class="alert alert-danger">
+                            <div *ngIf="name().errors.required">
+                                Por favor, ingrese su nombre.
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group">
+                        <div class="form-input">
+                            <input placeholder="Apellido: " class="form-control" type="text" id="surname" formControlName="surname" [(ngModel)]="surname_value">
+                        </div>
+                        <div *ngIf="surname().invalid && (surname().dirty || surname().touched)"  class="alert alert-danger">
+                            <div *ngIf="name().errors.required">
+                                Por favor, ingrese su apellido.
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group">
+                        <div class="form-input">
+                            <input placeholder="Correo electrónico: " class="form-control" type="email" id="email" formControlName="email" [(ngModel)]="email_value">
+                        </div>
+                        <div *ngIf="email().invalid && (email().dirty || email().touched)"  class="alert alert-danger">
+                            <div *ngIf="email().errors.required">
+                                Por favor, ingrese su correo electronico.
+                            </div>
+                            <div *ngIf="email().errors.email">
+                                Correo electronico no valido.
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group">
+                        <div class="form-input">
+                            <input placeholder="Celular (Opcional): " type="number" id="number" formControlName="number" [(ngModel)]="number_value">
+                        </div>
+                </div>
+                <div class="form-group">
+                    <p>
+                        Descripción de la Consulta
+                    </p>
+                        <div class="form-input">
+                            <textarea
+                                class="form-control" type="text" id="description" 
+                                formControlName="description" [(ngModel)]="description_value">
+                            </textarea>
+                        </div>
+                        <div *ngIf="description().invalid && (description().dirty || description().touched)"  class="alert alert-danger">
+                            <div *ngIf="description().errors.required">
+                                Por favor, ingrese su consulta.
+                            </div>
+                        </div>
+                </div>
+                <div class="buttons-contact">
+                    <button [disabled]="dataForm.invalid">Enviar Mensaje</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

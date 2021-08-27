@@ -1,0 +1,143 @@
+.card-flotant-fixed{
+    position: fixed;
+    right: 0;
+    top: 20%;
+    background: #AB2A3E;
+    color: #F5F5F5;
+    z-index: 2;
+}
+
+.text-card-flotant{
+    writing-mode: vertical-lr; 
+    transform: rotate(180deg);
+    padding-bottom: 2.5rem;
+    padding-top: 2.5rem;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+    font-size: 1em;
+}   
+.card-flotant-fixed:hover{
+    background: #fff;
+    border: solid #880a0a 2px;
+    color: #880a0a;
+    cursor: pointer;
+}
+.container-all{
+    transition: all 900ms;
+    width: 100%;
+    height: 520%;
+    padding: 40px;
+    position: fixed;
+    top: -100px;
+    bottom: 0;
+    transition: all 600ms;
+    z-index:4;
+    background-color: rgba(0,0,0,0.8);
+    visibility: visible;
+    opacity: 1;
+}
+.popup{
+    position: fixed;
+    width: 30%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    display: flex;
+    background: #1F4D56;
+    transition: all 900ms;
+    z-index:5;
+}
+.container-text{
+    margin-top: 3rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+.container-text h1{
+    font-size: 2em;
+    padding-bottom: 10px;
+    color: white;
+}
+
+.container-text p{
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: white;
+}
+
+.form-input{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+.input-label{
+    width: 25%;
+}
+input, textarea{
+    float: right;
+    width: 90%;
+    padding: 1em;
+    border-style: none;
+    color: #6a6a6a;
+    background-color: #FBFBFB;
+}
+
+.btn-close-popup{
+    margin-top: 2rem;
+    transition: all 200ms;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    padding: 20px;
+    border-style: none;
+    background: #1F4D56;
+    color: white;
+    line-height: 10px;
+    font-size: 2em;
+}
+.btn-close-popup:hover{
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.buttons-contact{
+    text-align: center;
+}
+
+.buttons-contact:hover{
+    cursor: pointer;
+}
+
+.buttons-contact button{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1em;
+    width: 97%;
+    background-color: #AB2A3E;
+    color: white;
+}
+
+.buttons-contact button:hover{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1em;
+    width: 97%;
+    background-color: #AB2A3E;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width:1125px){
+    .popup{
+        width: 50%;
+    }
+}
+
+@media (max-width:940px){
+    .popup{
+        width: 50%;
+    }
+}
+
+@media (max-width:600px){
+    .popup{
+        width: 100%;
+    }
+}
